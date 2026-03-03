@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Permainan Meneka",
+  "meta.description": "Teka watak Dragon Ball hari ini dalam cabaran harian yang pantas dan percuma! Taip nama, dapatkan petunjuk dan kongsi keputusan anda.",
+
+  "intro.title": "Teka watak Dragon Ball hari ini!",
+  "intro.subtitle": "Taip nama watak untuk mula bermain.",
+  
+  "wins.today": "已有 {n} 人猜对了今天的角色！",
+
+  "tutorial.title": "Penunjuk Warna",
+  "tutorial.quickGuide": "Perlu panduan ringkas?",
+  "tutorial.correct": "Betul",
+  "tutorial.partial": "Sebahagian",
+  "tutorial.incorrect": "Salah",
+  "tutorial.after": "Selepas",
+  "tutorial.before": "Sebelum",
+
+  "help.correct": "Betul — Ciri ini adalah tepat.",
+  "help.partial": "Sebahagian — Sekurang-kurangnya satu nilai sepadan.",
+  "help.incorrect": "Salah — Ciri ini tidak sepadan langsung.",
+  "help.after": "Selepas — Saga penampilan pertama watak hari ini berlaku selepas tekaan anda.",
+  "help.before": "Sebelum — Saga penampilan pertama watak hari ini berlaku sebelum tekaan anda.",
+  
+  "yesterday.title": "Watak semalam",
+  "yesterday.label": "Watak:",
+
+  "search.placeholder": "Taip nama watak...",
+
+  "columns.character": "Watak",
+  "columns.gender": "Jantina",
+  "columns.race": "Kaum",
+  "columns.affiliation": "Gabungan",
+  "columns.transformation": "Transformasi",
+  "columns.attribute": "Atribut",
+  "columns.series": "Siri",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Keputusan hari ini",
+  "winMini.tries": "Percubaan",
+  "winMini.next": "Watak seterusnya",
+  "winMini.todayChar": "Watak hari ini",
+
+  "share.label": "Kongsi di X",
+  "share.tweet.one": "Saya meneka watak DragonBallDle hari ini dalam 1 percubaan — cuba juga di {url}",
+  "share.tweet.other": "Saya meneka watak DragonBallDle hari ini dalam {tries} percubaan — cuba juga di {url}",
+
+  "popup.congrats": "Tahniah!",
+  "popup.line.before": "Anda meneka watak Dragon Ball hari ini dalam",
+  "popup.line.after": "percubaan:",
+  "popup.close": "Tutup",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Cabaran harian untuk peminat sejati Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Hak cipta terpelihara."
+}
+

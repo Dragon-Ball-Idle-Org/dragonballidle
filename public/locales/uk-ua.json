@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Гра на вгадування",
+  "meta.description": "Вгадай сьогоднішнього персонажа Dragon Ball у швидкому, безкоштовному щоденному випробуванні. Введи ім’я, отримай підказки та поділися результатом.",
+
+  "intro.title": "Вгадай сьогоднішнього персонажа Dragon Ball!",
+  "intro.subtitle": "Введи ім’я персонажа, щоб почати.",
+  
+  "wins.today": "{n} людей уже відгадали сьогоднішнього персонажа!",
+
+  "tutorial.title": "Кольоровий Індикатор",
+  "tutorial.quickGuide": "Потрібна коротка інструкція?",
+  "tutorial.correct": "Правильно",
+  "tutorial.partial": "Частково",
+  "tutorial.incorrect": "Неправильно",
+  "tutorial.after": "Після",
+  "tutorial.before": "До",
+
+  "help.correct": "Правильно — Цей атрибут повністю збігається.",
+  "help.partial": "Частково — Принаймні одне значення збігається.",
+  "help.incorrect": "Неправильно — Цей атрибут зовсім неправильний.",
+  "help.after": "Після — Дебютна сага сьогоднішнього персонажа відбувається після твого припущення.",
+  "help.before": "До — Дебютна сага сьогоднішнього персонажа відбувається до твого припущення.",
+  
+  "yesterday.title": "Учорашній персонаж",
+  "yesterday.label": "Персонаж:",
+
+  "search.placeholder": "Введи ім’я персонажа...",
+
+  "columns.character": "Персонаж",
+  "columns.gender": "Стать",
+  "columns.race": "Раса",
+  "columns.affiliation": "Належність",
+  "columns.transformation": "Трансформація",
+  "columns.attribute": "Атрибут",
+  "columns.series": "Серія",
+  "columns.saga": "Сага",
+
+  "winMini.title": "Результат дня",
+  "winMini.tries": "Спроби",
+  "winMini.next": "Наступний персонаж",
+  "winMini.todayChar": "Сьогоднішній персонаж",
+
+  "share.label": "Поділитися в X",
+  "share.tweet.one": "Я вгадав сьогоднішнього персонажа DragonBallDle з 1 спроби — спробуй і ти на {url}",
+  "share.tweet.other": "Я вгадав сьогоднішнього персонажа DragonBallDle за {tries} спроб — спробуй і ти на {url}",
+
+  "popup.congrats": "Вітаємо!",
+  "popup.line.before": "Ти вгадав сьогоднішнього персонажа Dragon Ball за",
+  "popup.line.after": "спроб:",
+  "popup.close": "Закрити",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Щоденне випробування для справжніх фанатів Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Усі права захищено."
+}
+

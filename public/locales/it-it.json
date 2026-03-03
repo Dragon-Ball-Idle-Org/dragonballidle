@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Gioco di Indovinelli",
+  "meta.description": "Indovina il personaggio di Dragon Ball di oggi in una sfida quotidiana veloce e gratuita. Scrivi un nome, ottieni suggerimenti e condividi il tuo risultato.",
+
+  "intro.title": "Indovina il personaggio di Dragon Ball di oggi!",
+  "intro.subtitle": "Scrivi il nome di un personaggio per iniziare.",
+  
+  "wins.today": "{n} persone hanno già indovinato il personaggio di oggi!",
+
+  "tutorial.title": "Indicatore di Colore",
+  "tutorial.quickGuide": "Hai bisogno di una guida rapida?",
+  "tutorial.correct": "Corretto",
+  "tutorial.partial": "Parziale",
+  "tutorial.incorrect": "Errato",
+  "tutorial.after": "Dopo",
+  "tutorial.before": "Prima",
+
+  "help.correct": "Corretto — Questo attributo è esatto.",
+  "help.partial": "Parziale — Almeno un valore corrisponde.",
+  "help.incorrect": "Errato — Questo attributo è completamente sbagliato.",
+  "help.after": "Dopo — La saga di debutto del personaggio del giorno è dopo il tuo indovinello.",
+  "help.before": "Prima — La saga di debutto del personaggio del giorno è prima del tuo indovinello.",
+  
+  "yesterday.title": "Il personaggio di ieri",
+  "yesterday.label": "Personaggio:",
+
+  "search.placeholder": "Scrivi il nome di un personaggio...",
+
+  "columns.character": "Personaggio",
+  "columns.gender": "Genere",
+  "columns.race": "Razza",
+  "columns.affiliation": "Affiliazione",
+  "columns.transformation": "Trasformazione",
+  "columns.attribute": "Attributo",
+  "columns.series": "Serie",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Risultato di oggi",
+  "winMini.tries": "Tentativi",
+  "winMini.next": "Prossimo personaggio",
+  "winMini.todayChar": "Personaggio di oggi",
+
+  "share.label": "Condividi su X",
+  "share.tweet.one": "Ho indovinato il personaggio di DragonBallDle di oggi in 1 tentativo — prova anche tu su {url}",
+  "share.tweet.other": "Ho indovinato il personaggio di DragonBallDle di oggi in {tries} tentativi — prova anche tu su {url}",
+
+  "popup.congrats": "Congratulazioni!",
+  "popup.line.before": "Hai indovinato il personaggio di Dragon Ball di oggi in",
+  "popup.line.after": "tentativi:",
+  "popup.close": "Chiudi",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "La sfida quotidiana per i veri fan di Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Tutti i diritti riservati."
+}
+

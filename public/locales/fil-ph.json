@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Laro ng Hulaan",
+  "meta.description": "Hulaan ang Dragon Ball character ngayong araw sa isang mabilis at libreng pang-araw-araw na hamon! Mag-type ng pangalan, kumuha ng mga pahiwatig, at ibahagi ang iyong resulta.",
+
+  "intro.title": "Hulaan ang Dragon Ball character ngayong araw!",
+  "intro.subtitle": "I-type ang pangalan ng isang character para magsimula.",
+  
+  "wins.today": "{n} tao na ang nakahula ng karakter ngayon!",
+
+  "tutorial.title": "Color Indicator",
+  "tutorial.quickGuide": "Kailangan mo ba ng mabilis na gabay?",
+  "tutorial.correct": "Tama",
+  "tutorial.partial": "Bahagyang Tama",
+  "tutorial.incorrect": "Mali",
+  "tutorial.after": "Pagkatapos",
+  "tutorial.before": "Bago",
+
+  "help.correct": "Tama — Ang katangiang ito ay ganap na tama.",
+  "help.partial": "Bahagyang Tama — Mayroon kahit isang halaga na tumutugma.",
+  "help.incorrect": "Mali — Ang katangiang ito ay ganap na mali.",
+  "help.after": "Pagkatapos — Ang unang paglabas ng character ngayong araw ay pagkatapos ng iyong hula.",
+  "help.before": "Bago — Ang unang paglabas ng character ngayong araw ay bago ang iyong hula.",
+  
+  "yesterday.title": "Character kahapon",
+  "yesterday.label": "Character:",
+
+  "search.placeholder": "I-type ang pangalan ng character...",
+
+  "columns.character": "Character",
+  "columns.gender": "Kasarian",
+  "columns.race": "Lahi",
+  "columns.affiliation": "Samahan",
+  "columns.transformation": "Pagbabago",
+  "columns.attribute": "Katangian",
+  "columns.series": "Serye",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Resulta ngayong araw",
+  "winMini.tries": "Mga Pagsubok",
+  "winMini.next": "Susunod na character",
+  "winMini.todayChar": "Character ngayong araw",
+
+  "share.label": "Ibahagi sa X",
+  "share.tweet.one": "Nahulaan ko ang DragonBallDle character ngayong araw sa 1 pagsubok — subukan mo rin sa {url}",
+  "share.tweet.other": "Nahulaan ko ang DragonBallDle character ngayong araw sa {tries} pagsubok — subukan mo rin sa {url}",
+
+  "popup.congrats": "Binabati kita!",
+  "popup.line.before": "Nahulaan mo ang Dragon Ball character ngayong araw sa",
+  "popup.line.after": "pagsubok:",
+  "popup.close": "Isara",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Ang pang-araw-araw na hamon para sa mga tunay na tagahanga ng Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Lahat ng karapatan ay nakalaan."
+}
+

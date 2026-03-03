@@ -1,0 +1,1342 @@
+img{ max-width: 100%; height: auto; }  /* segurança extra para qualquer imagem */
+:root{
+  /* tamanhos base */
+  --logo-vw: 68vw;
+  --logo-max: 520px;
+
+
+  --col-w: 87px;   /* largura fixa de cada coluna (img + 7 atributos) */
+  --col-gap: 12px; /* ÚNICO gap entre colunas para header e linhas */
+  
+  
+  --header-tile-w: 320px;
+  --header-tile-h: 78px;
+
+  --hero-pad-y: clamp(10px, 1.8vh, 16px);  /* padding vertical do card */
+  --hero-title: clamp(20px, 2.4vw, 32px);  /* tamanho do "Guess today’s"  */
+  --hero-sub: clamp(13px, 1.6vw, 18px);    /* tamanho do "Type any..."   */
+  --hero-pad-x: clamp(14px, 3vw, 28px);
+
+  /* Color Indicator */
+  --swatch: 64px;            /* tamanho dos blocos de cor / setas */
+  --indicator-gap: 18px;
+
+  /* espaçamento do formulário */
+  --form-gap-top: clamp(12px, 2.6vh, 20px);
+}
+
+/* Ajustes finos em telas muito largas */
+@media (min-width: 1400px){
+  .indicator-swatch{ width: 68%; }   /* dá um respiro extra nas telas grandes */
+  .help-summary{ font-size: 15px; }
+  .help-row{ font-size: 14px; }
+}
+
+@media (max-width: 320px){
+  :root{
+    --header-tile-w: 280px;
+    --header-tile-h: 72px;
+  }
+}
+
+
+/* Logo sempre centralizada e limitada à viewport */
+.logo{
+  display:block;
+  margin-inline:auto;
+  width: min(var(--logo-vw), var(--logo-max));
+  height:auto;
+  max-width:100%;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+}
+
+/* bloco laranja vazio (id="headers") sempre centralizado e fluido */
+.headers{
+  display:none !important;
+}
+
+
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+  gap: 20px;
+}
+
+.game-sub-container{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:100%;
+  max-width: 720px;                 /* um pouco menor para caber tudo antes da dobra */
+  margin: 0 auto;
+  padding: var(--hero-pad-y) var(--hero-pad-x);
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border:2px solid #e65100; border-radius:10px;
+  box-shadow: 5px 5px 3px rgba(0,0,0,.2);
+  gap: 6px;
+}
+
+.intro-text{
+  font-family:"Bangers",sans-serif;
+  font-size: var(--hero-title);
+  color:#fff; text-shadow:3px 3px 4px #000;
+  margin:0;
+}
+
+.intro-guess{
+  font-family:"Roboto",sans-serif; font-weight:700;
+  font-size: var(--hero-sub);
+  color:#1e2328; margin:0;
+}
+
+
+/* PAINEL – nunca tem scroll vertical; scroll-x só após 1º chute */
+.guess-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+
+  padding: 12px 12px 16px 12px;   /* era 16px 12px 20px 12px */
+  position: relative;   
+  margin-top: 6px;               /* era clamp(16px, 3vh, 28px) */
+  max-height: none;
+  overflow: visible;
+  
+  padding-bottom: 28px; 
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+  
+  z-index: 1;  
+
+  background: rgba(0,0,0,0.06);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.15);
+}
+
+
+.guess-container.scroll-on{ overflow-x: auto; }
+.guess-container.panel-active{
+  background: rgba(0,0,0,0.09);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+
+
+/* Botão (esfera) SEMPRE visível, com tamanho adaptável */
+#submit-button{
+  flex: 0 0 auto;
+  width: clamp(56px, 10vw, 80px);
+  height: clamp(56px, 10vw, 80px);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.typeBox,
+.attribute-type{
+  scroll-snap-align: start;
+}
+
+/* === Thumbnail (primeira coluna) com rótulo elegante no hover === */
+.typeBox.guess-image{
+  box-sizing: border-box;               /* <<< */
+  position: relative;
+  width: var(--col-w);
+  height: var(--col-w);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  border-radius: 8px;
+  overflow: visible;
+  color: transparent !important;
+  text-shadow: none !important;
+  z-index: 50;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.14);
+}
+
+
+.typeBox.guess-image:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.2); /* “anel” externo bem suave */
+}
+
+
+#dragonball{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+}
+
+.guesses-container {
+  display: block;                 /* corrigido (era 'blcok') */
+  flex-direction: column-reverse; /* mantém a ordem mais recente em cima */
+  align-items: flex-start;        /* alinha à esquerda */
+  justify-content: flex-start;
+  width: max-content;             /* largura real do grid (pai vai rolar) */
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+
+/* uma LINHA de chute (8 colunas: img + 7 atributos) */
+.guessesBox-container{
+  display: grid;
+  grid-template-columns: repeat(8, var(--col-w));
+  column-gap: var(--col-gap);   /* antes era 14px */
+  row-gap: 12px;
+  align-items: stretch;
+  width: max-content;           /* casa a largura com o cabeçalho */
+  margin: 12px 0;
+}
+
+
+.typeBox {
+  box-sizing: border-box;       /* <<< garante que 87px é 87px “por fora” */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+  width: var(--col-w);
+  height: var(--col-w);
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+
+  padding: 4px;
+  line-height: 1.1;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Roboto;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+/* Cabeçalho: encostado no topo e próximo da linha */
+.attribute-container{
+  position: relative;
+  z-index: 2;
+  display: none; /* vira grid via .show-attrs no JS */
+  grid-template-columns: repeat(8, var(--col-w));
+  gap: var(--col-gap);
+  justify-content: start;
+  width: max-content;
+
+  margin-top: 0 !important;
+  margin-bottom: 2px !important;
+}
+.attribute-container.show-attrs{ display: grid; }
+
+
+
+/* Texto encostado na base (linha branca) */
+/* Labels do cabeçalho, coladas para baixo com pouca altura total */
+.attribute-type{
+  width: 87px;
+  height: 20px;                 /* ↓ bem mais baixo (era 64px) */
+  display: flex;
+  align-items: flex-end;        /* texto gruda embaixo */
+  justify-content: center;
+  padding-bottom: 4px;          /* distância confortável da linha */
+  text-align: center;
+
+  color: #fff;
+  font: 600 13px/1.05 Poppins, sans-serif;
+  border-bottom: 3px solid #fff;
+  border-radius: 6px;
+  text-shadow: 2px 2px 3px #000;
+
+}
+
+
+
+.typeBox.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* célula de imagem (primeira coluna) como QUADRADO cheio */
+/* Primeira coluna (imagem) – quadrada; mostra o nome no hover sem cobrir tudo *
+
+
+  /* encolhe e limita a largura do bloco laranja */
+
+/* SEMPRE 5 colunas — os blocos encolhem para caber */
+/* (você já tem estes estilos do indicador; mantive por clareza) */
+/* === GRID: garante 5 colunas estáveis e não quebra === */
+/* === Container laranja (só garantindo respiro e sem vazamento) === */
+.tutorial-container{
+  margin: 0 auto;
+  max-width: min(96vw, 620px);
+  padding: 16px 18px;                /* um pouquinho mais de respiro */
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border: 2px solid #e65100;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  text-align: center;
+  overflow: hidden;                  /* nada vaza pra fora */
+  box-sizing: border-box;
+}
+
+
+
+.tutorial-title{
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  color: #1e2328;
+  font-size: clamp(18px, 2.5vw, 22px);
+  margin-bottom: 10px;
+}
+
+/* === GRID DO COLOR INDICATOR === */
+/* ===== COLOR INDICATOR – grade fixa com 5 colunas ===== */
+.indicator-grid{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* sempre 5 colunas */
+  gap: var(--indicator-gap);
+  align-items: start;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+/* célula: swatch + legenda centralizados */
+.indicator-item{
+  display: grid;
+  grid-auto-rows: max-content;
+  justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* quadrado/ícone: sempre 1:1 e encolhe em telas pequenas */
+.indicator-swatch{
+  /* o swatch ocupa até 72% da célula, mas nunca passa do clamp abaixo */
+  width: min(72%, clamp(38px, 13.5vw, 64px));
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  border: 3px solid #fff;                  /* borda branca do jogo */
+  box-shadow: inset 0 0 6px rgba(0,0,0,.55);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+/* setas dentro do swatch */
+.indicator-swatch.arrow img{
+  display: block;
+  width: 70%;
+  height: auto;
+}
+
+/* legenda embaixo do swatch */
+.indicator-label{
+  margin-top: 6px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+}
+
+/* ===== AJUSTES FINOS POR LARGURA (sem mexer em colunas!) ===== */
+@media (max-width: 420px){
+  .indicator-swatch{
+    width: min(72%, clamp(34px, 15vw, 56px));
+  }
+  .indicator-label{ font-size: 12px; }
+  :root{ --indicator-gap: 12px; } /* dá um respiro */
+}
+
+@media (max-width: 360px){
+  .indicator-swatch{
+    width: min(70%, clamp(30px, 16vw, 50px));
+  }
+  .indicator-label{ font-size: 11px; }
+  :root{ --indicator-gap: 10px; }
+}
+
+/* Cores idênticas ao jogo */
+.bg-correct   { background: rgb(0,180,0); }
+.bg-partial   { background: rgba(236,138,10,1); }
+.bg-incorrect { background: rgb(255,0,0); }
+
+/* After/Before também vermelho, com seta “respirando” */
+.indicator-swatch.arrow{ background: rgb(255,0,0); }
+.indicator-swatch.arrow img{
+  width: 70%;
+  height: auto;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.6));
+  pointer-events: none;
+}
+
+/* === Legendas: podem quebrar sem achatar nada === */
+.indicator-label{
+  margin-top: 6px;
+  padding: 0 2px;                    /* micro padding pra não encostar */
+  font: 700 clamp(11px, 1.7vw, 15px)/1.1 Roboto, system-ui, sans-serif;
+  color: #1e2328;
+  text-align: center;
+  word-break: break-word;            /* se precisar, quebra palavra longa */
+  overflow-wrap: anywhere;
+  text-shadow:
+    0 2px 3px rgba(255,255,255,.35),
+    0 1px 2px rgba(0,0,0,.35);
+}
+
+/* === Dicas (menu expansível) — contraste melhor e alinhamento à esquerda === */
+.indicator-help{
+  margin: 12px auto 0;
+  width: 100%;
+  max-width: min(96vw, 720px);
+  background: rgba(0,0,0,.20);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  box-sizing: border-box;
+}
+.help-summary{
+  cursor: pointer; user-select: none;
+  padding: 10px 14px;
+  font: 700 14px/1.2 Roboto, system-ui, sans-serif;
+  color: #fff;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(0,0,0,.14);
+  text-shadow: 0 2px 4px rgba(0,0,0,.45);
+}
+.help-summary::after{
+  content: "▼";
+  margin-left: auto;
+  font-size: 12px;
+  opacity: .9;
+  transition: transform .2s ease;
+}
+.indicator-help[open] .help-summary::after{ transform: rotate(-180deg); }
+
+.help-body{ padding: 10px 14px 12px; }
+.help-row{
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 8px 0;
+  color: #fff;
+  font: 500 13px/1.35 Roboto, system-ui, sans-serif;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.55),
+    0 0 2px rgba(0,0,0,.45);
+  box-sizing: border-box;
+}
+.help-swatch{
+  width: 20px; height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid #fff;
+  box-shadow: inset 0 0 3px rgba(0,0,0,.45);
+  display: inline-grid; place-items: center;
+  box-sizing: border-box;
+}
+.help-swatch.arrow{ background: rgb(255,0,0); }
+.help-swatch.arrow img{
+  width: 75%; height: auto;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.6));
+}
+
+
+/* ===================== */
+/* POPUP DE VITÓRIA      */
+/* ===================== */
+
+/* ===== Popup Vitória: centralizado e com variáveis ===== */
+
+/* Esconde tudo relacionado à vitória até o momento do acerto */
+#won-container{ display:none !important; }
+
+#clip-character-main,
+
+#clip-character-popup { display: none; }
+
+/* ===== Popup de vitória (vars simples para ajuste) ===== */
+#win-game {
+  /* ---- ajustes simples (edite só aqui) ---- */
+  --card-width: min(80vw, 500px);   /* largura do card */
+  --card-margin-top: clamp(8px, 6vh, 40px);
+  --art-scale: 1;                   /* escala da arte da Baba */
+  --art-offset-y: -15%;             /* sobe/desce a arte */
+  --crystal-x: 49%;                 /* posição X do centro da bolinha */
+  --crystal-y: 80%;                 /* posição Y do centro da bolinha */
+  --crystal-size: 36%;              /* diâmetro da bolinha relativo à arte */
+  --popup-duration: 420ms;
+  --focus-delay: 200ms;             /* atraso para começar a nitidez */
+  --focus-duration: 1200ms;         /* tempo para “ficar nítido” */
+  --focus-ease: cubic-bezier(.28,.79,.28,.79);
+
+  /* ---- overlay ---- */
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;                    /* começa SEMPRE escondido */
+  padding: clamp(12px, 3vw, 24px);
+  place-items: start center;        /* centraliza horizontalmente */
+  overflow: auto;                   /* rola se a tela for baixa */
+}
+
+/* fazer a arte usar a largura fixa acima */
+#win-game .win-art {
+  width: var(--art-fixed-width);
+  margin-inline: auto;
+  transform: translateY(var(--art-offset-y)) scale(var(--art-scale));
+  transform-origin: center bottom;
+}
+
+
+/* mostra o overlay */
+#win-game.show { display: grid; }
+
+/* cartão interno */
+#win-game .win-card {
+  position: relative;
+  width: var(--card-width);
+  margin-top: var(--card-margin-top);
+  margin-inline: auto;
+  background: linear-gradient(to bottom, #32cd32, #228b22);
+  border: 3px solid #ffcc00;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.7);
+  overflow: visible;                /* chapéu pode “vazar” */
+  padding: clamp(12px, 2.5vw, 24px);
+  animation: popupZoom var(--popup-duration) ease-out both;
+}
+
+/* base da arte */
+.win-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  width: min(92%, 540px);
+  transform: translateY(var(--art-offset-y)) scale(var(--art-scale));
+  transform-origin: center bottom;
+}
+.win-img { display:block; width:100%; height:auto; pointer-events:none; }
+
+/* bolinha – começa oculta e sem nitidez */
+#clip-character-popup {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  left: var(--crystal-x);
+  top:  var(--crystal-y);
+  transform: translate(-50%, -50%);
+  width: var(--crystal-size);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+
+
+
+#clip-character-popup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1; /* sempre atrás do vidro */
+  opacity: 0.75;   /* = 35% visível => ~65% transparente */
+  transition: none; /* não deixa outra transição “roubar” a opacidade */
+}
+
+
+#clip-character-popup.show{
+  animation: focusIn var(--focus-duration) var(--focus-ease) var(--focus-delay) both;
+}
+
+
+
+/* textos */
+.winText-container {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  margin-top:14px; text-align:center;
+}
+
+.win-line{
+  margin: 2px 0 0;
+  font: 600 clamp(14px, 2.3vw, 18px)/1.25 "Roboto", system-ui, sans-serif;
+  color:#112;
+  text-align:center;
+}
+.win-name{
+  margin: 0 0 6px;
+  font: 800 clamp(18px, 3vw, 24px)/1.2 "Inter", system-ui, sans-serif;
+  text-align:center;
+}
+.win-name #character-name{
+  display:inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#6dd5fa,#2980b9);
+  color:#fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+  box-shadow: 0 2px 12px rgba(41,128,185,.35) inset, 0 2px 10px rgba(0,0,0,.12);
+}
+
+.countdown-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius:12px;
+  background: rgba(0,0,0,.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border:1.5px solid rgba(255,255,255,.55);
+  color:#fff;
+  font: 800 clamp(14px,2.4vw,18px)/1 "Inter", system-ui, sans-serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18) inset, 0 4px 16px rgba(0,0,0,.15);
+  text-shadow:1px 1px 3px #000;
+}
+
+.countdown-badge::before{
+  content:"⏳";
+  font-size: 1.1em;
+  line-height:1;
+}
+
+
+.congrats { font-family:"Bangers",sans-serif; color:#1e2328; font-size:clamp(20px,4vw,28px); }
+
+.win-h2   { font-family:"Roboto",sans-serif; color:#1e2328; font-weight:700; font-size:clamp(14px,2.6vw,18px); }
+
+/* botão X */
+#close-popup{
+  position:absolute; top:-10px; right:-10px;
+  width:30px; height:30px; border-radius:4px;
+  background:#e53935; color:#fff; font:bold 16px/30px Roboto,sans-serif;
+  text-align:center; cursor:pointer;
+}
+
+/* animações */
+@keyframes popupZoom { from{transform:scale(.88);opacity:0} to{transform:scale(1);opacity:1} }
+@keyframes focusIn{
+  from{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.94); /* mantém o mesmo translate do container */
+  }
+  to{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes charFinish{
+  to{
+    /* leve “claridade” no centro (gradiente aplicado via filter-drop)
+       + um pouquinho de definição geral */
+    filter:
+      saturate(1.08)
+      contrast(1.06)
+      brightness(1.05)
+      drop-shadow(0 0 0 rgba(0,0,0,0)); /* mantém compatibilidade */
+  }
+}
+
+
+/* fade-in da camada vítrea */
+@keyframes glossIn{
+  from{ opacity:0; }
+  to  { opacity:1; }
+}
+
+
+
+@media (max-width: 480px){
+  #win-game { --art-scale:.95; --crystal-size:36%; --crystal-y:73%; }
+}
+
+
+
+.footer-glass {
+  position: relative;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+
+.footer-glass a {
+  color: #e0e0e0;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-glass a:hover {
+  color: #f1c40f;
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  background: linear-gradient(
+                rgba(0, 0, 0, 0.4),   /* camada escura uniforme */
+                rgba(0, 0, 0, 0.4)
+              ),
+              url("/src/images/background-img.jpg") center bottom / cover no-repeat fixed;
+}
+
+#guess-form{
+  position: sticky;
+  top: 0;
+  left: 0;                 /* <- gruda na borda esquerda do scrollport   */
+  right: 0;                /* <- mantém largura fixa ao rolar na horiz.  */
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 0 8px 0;
+  background: transparent;
+  overflow: visible;
+}
+
+
+
+
+
+#guess-form .guess-input{
+  flex: 1 1 auto;
+  min-width: 0;              /* impede “estouro” */
+}
+
+
+/* ========= DROPDOWN ========= */
+/* alternância já existe no seu CSS; complemento: hover e seleção */
+
+
+/* Placeholder branco com sombra (todos os motores) */
+#guess-form .guess-input::placeholder{ color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.9); }
+#guess-form .guess-input::-webkit-input-placeholder{ color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.9); }
+#guess-form .guess-input::-moz-placeholder{ color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.9); opacity:1; }
+#guess-form .guess-input:-ms-input-placeholder{ color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.9); }
+#guess-form .guess-input::-ms-input-placeholder{ color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.9); }
+
+
+/* Campo de busca: volta o laranja e tipografia branca com sombra */
+.guess-input{
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 56px;
+  padding: 0 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;                        /* texto branco */
+  caret-color: #fff;                  /* cursor branco */
+
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border: 2px solid #e65100;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.55);   /* sombra p/ contraste */
+}
+
+.guess-input::placeholder{
+  color: #fff; 
+  opacity: .95;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.65);
+}
+
+/* ===== Dropdown preso ao form ===== */
+#suggestions.dropdown{
+  position: absolute;
+  left: 0;
+  right: calc(clamp(56px, 10vw, 80px) + 10px); /* espaço do botão + gap */
+  top: calc(100% + 8px);
+  width: auto;
+
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+
+  /* altura base; o JS vai sobrescrever com o espaço real disponível */
+  max-height: calc(5 * 80px);
+  overflow-y: auto;
+
+  background: #fb8c00;
+  border: 2px solid #e65100;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  z-index: 10000; /* antes era 4000 */
+}
+
+/* === MODO PORTAL: quando o JS move #suggestions para <body> === */
+#suggestions.dropdown.portal{
+  position: fixed !important;  /* ignora posicionamento relativo ao form */
+  left: 0;                     /* JS ajusta left/top/bottom/width */
+  right: auto !important;
+  top: auto; bottom: auto;
+  width: auto;
+  z-index: 99999;              /* só para garantir sobre qualquer vidro/blur */
+}
+
+#suggestions.dropdown.open{ display:block !important; }
+#suggestions.dropdown.drop-up{ top:auto; bottom:calc(100% + 8px); }
+
+
+/* Itens do dropdown */
+#suggestions.dropdown li{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px;
+  min-height: 80px;
+  font: 600 16px/1.2 "Inter", system-ui, sans-serif;
+  color:#fff; 
+  text-shadow: 2px 2px 3px #000;
+  cursor:pointer; 
+  transition: background .12s ease;
+}
+
+#suggestions.dropdown li:nth-child(odd){  background: rgba(0,0,0,.03); }
+#suggestions.dropdown li:nth-child(even){ background: rgba(0,0,0,.08); }
+#suggestions.dropdown li:hover{           background: rgba(255,255,255,.16); }
+#suggestions.dropdown li.selected{
+  outline: 2px solid #fff; background: rgba(255,255,255,.22);
+}
+
+/* Miniatura maior, quadrada */
+#suggestions.dropdown img{
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+
+  background: #fff;                       /* fundo branco sob PNG transparente */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.18) inset; /* contorno interno sutil */
+}
+
+/* ===== Tooltip flutuante do nome (fora do container) ===== */
+.hover-name {
+  position: fixed;
+  left: 0; top: 0;
+  transform: translate(-50%, 0);
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  background: rgba(18,26,36,.96);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 8px 22px rgba(0,0,0,.42), 0 0 0 1px rgba(0,0,0,.25) inset;
+
+  font: 700 clamp(11px, 1.05vw, 14px)/1.25 "Inter", system-ui, sans-serif;
+  text-align: center;
+
+  width: max-content;                 /* largura = conteúdo */
+  max-width: min(60vw, 640px);        /* limite pro viewport */
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity .12s ease, transform .12s ease;
+}
+.hover-name::before{
+  content:"";
+  position: absolute;
+  left: 50%; top: -8px;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(18,26,36,.96);
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.35));
+}
+
+/* Ajustes de estilo da tela de vitória */
+.winText-container h2.congrats,
+.winText-container .win-line,
+.winText-container #countdown {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px #000 !important;
+}
+
+.winText-container .win-name #character-name {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px #000 !important;
+  background: linear-gradient(135deg, #fb8c00, #ffa726) !important; /* mesmo laranja dos menus */
+  border: 2px solid #e65100;
+}
+
+/* Força texto branco com sombra em elementos de interface */
+.intro-text,
+.intro-guess,
+.tutorial-title,
+.indicator-label,
+.help-summary,
+.help-body,
+.winText-container h2.congrats,
+.winText-container .win-line,
+.winText-container #countdown {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px #000 !important;
+}
+
+/* Espaço reservado equivalente à altura do form fixo */
+@media (min-width: 768px){
+  .guess-form-offset{ height: 96px; }         /* telas maiores */
+}
+
+/* utilitário */
+.hidden{ display:none !important; }
+
+/* wrapper centralizado */
+.win-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 12px 0 16px 0;
+}
+
+/* card laranja — texto TODO branco com sombra preta */
+.win-summary{
+  --card-bg:#fb8c00; --card-border:#e65100;
+
+  /* mais compacto */
+  width:min(520px, 96vw);
+  padding:2px 14px;
+  background:linear-gradient(135deg, var(--card-bg), #ffa726);
+  border:2px solid var(--card-border);
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,.26);
+
+  color:#fff;
+  text-shadow:1px 1px 3px rgba(0,0,0,.85);
+  font-family:Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+
+  /* >>> vira grid para centralizar facilmente itens “soltos” (Share) */
+  display:grid;
+  grid-auto-rows:max-content;
+  justify-items:center;     /* Share on X no centro sem gambiarra */
+}
+
+
+
+.win-summary__title{
+  text-align:center;
+  font-weight:900;
+  font-size:19px;
+  letter-spacing:.3px;
+  margin:0 0 6px 0;
+  padding-bottom:6px;
+  border-bottom:2px solid rgba(0,0,0,.16);
+}
+
+
+.win-summary__row{
+  width:100%;                /* ocupa a largura do grid */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 0;
+  border-top:1px solid rgba(0,0,0,.12);
+}
+
+/* garante que a 1ª row NÃO crie “segunda linha” logo após o título */
+.win-summary > .win-summary__row:first-of-type{
+  border-top:none !important;
+}
+
+
+.win-summary__label{ font-weight:800; }
+
+.win-summary__value{
+  font-weight:900;
+  padding:2px 10px;       /* ↓ chip mais compacto */
+  border-radius:10px;
+  outline:1px solid rgba(255,255,255,.45);
+  background:rgba(0,0,0,.15);
+}
+
+
+/* vira coluna: imagem em cima, nome embaixo; tudo centralizado */
+.win-summary__char{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border-top:1px solid rgba(0,0,0,.12); /* mantém separação desta seção */
+  padding-top:8px;
+}
+
+.win-summary__char .char-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;   /* centraliza label + nome */
+  gap:6px;
+  min-width:0;
+  text-align:center;
+}
+
+
+.win-summary__char .char-name{
+  display:inline-block;
+  font-weight:900;
+  font-size:18px;
+  color:#fff;
+  text-shadow:1px 1px 2px rgba(0,0,0,.6);
+  background:linear-gradient(135deg, #32cd32, #228b22); /* pílula verde “satisfatória” */
+  padding:5px 12px;
+  border-radius:14px;
+  box-shadow:0 1px 8px rgba(0,0,0,.22) inset, 0 2px 8px rgba(0,0,0,.12);
+  white-space:nowrap;
+  max-width:100%;
+}
+
+
+
+#inline-char-thumb{
+  width:90px; height:90px;     /* maior e marcante */
+  border-radius:12px;
+  object-fit:cover;
+  margin:0;                    /* sem deslocar pra direita */
+  box-shadow:0 0 0 1px rgba(255,255,255,.65), 0 4px 14px rgba(0,0,0,.28);
+}
+@media (max-width:560px){ #inline-char-thumb{ width:78px; height:78px; } }
+@media (max-width:420px){ #inline-char-thumb{ width:68px; height:68px; } }
+
+
+.win-summary__share{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top:10px;                 /* só topo; centralização vem do grid */
+  padding:8px 12px;
+  border-radius:10px;
+  color:#fff; text-decoration:none;
+  background:#111;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.2), 0 6px 14px rgba(0,0,0,.25);
+  transition: transform .05s ease, filter .15s ease;
+}
+.win-summary__share:hover{ filter:brightness(1.15); }
+.win-summary__share:active{ transform:translateY(1px); }
+
+
+/* responsividade extra */
+@media (max-width:560px){
+  .win-summary{ padding:14px 16px; }
+  .win-summary__char .char-name{ max-width:48vw; }
+}
+@media (max-width:420px){
+  #inline-char-thumb{ width:40px; height:40px; }
+  .win-summary__value{ padding:2px 10px; }
+}
+
+header.container { position: relative; }
+.lang-toggle{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  background:#111; color:#fff; border:none; border-radius:10px; padding:6px 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.25); cursor:pointer;
+}
+
+
+.lang-menu a:hover{ background:#222; }
+
+/* === Stagger reveal dos quadradinhos === */
+@keyframes cellPop {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0)     scale(1);    }
+}
+
+/* comece invisível (você já tinha algo parecido; pode manter) */
+.typeBox {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+}
+
+/* quando revelamos via JS */
+.typeBox.revealed {
+  animation: cellPop .18s ease-out forwards;   /* duração curtinha e dramática */
+}
+
+/* (opcional) se você ainda usa .visible em outras partes do site, mantemos
+   compatibilidade: assegura que .visible também mostre 100% */
+.typeBox.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+/* ====== Language switch next to the logo ====== */
+.site-header{
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-top: 24px;
+}
+
+.brand{
+  position: relative;            /* âncora do botão */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-wrap{
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translate(100%, -50%); /* fica colado à direita da logo */
+}
+
+
+/* botão redondinho */
+.lang-toggle{
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #e65100;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#fb8c00,#ffa726);
+  color: #111;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+
+
+.lang-menu a:hover{ background: rgba(255,255,255,.15); }
+
+.lang-menu img{
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25) inset;
+}
+
+/* ===== Idioma: botão fixo igual ao LoLdle ===== */
+.site-header{
+  display:grid;
+  place-items:center;
+  margin-top: 12px;
+}
+.brand{
+  position: relative;            /* âncora do botão */
+  display: inline-block;
+}
+.logo{
+  display:block;
+  height:auto;
+  max-width: 100%;
+}
+
+/* Botão redondinho colado no logo (lado direito) */
+.lang-fixed{
+  position: static;
+  margin-left: 0px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1.5px solid #00000055;
+  background: #0e0e0e;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.lang-fixed:hover{ filter: brightness(1.1); }
+
+/* Normaliza tamanho das bandeiras (nada gigante!) */
+.lang-fixed img,
+.lang-menu  img{
+  width: 24px;
+  height: 16px;
+  display:block;
+  object-fit: cover;   /* mantém proporção */
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25) inset;
+}
+
+/* Popover compacto */
+/* Popover de idiomas — abre SEMPRE para baixo e “virado para dentro” (à esquerda do botão) */
+.lang-menu{
+  position: absolute;
+  top: calc(100% + 10px);   /* abre para baixo do botão */
+  right: 0;                 /* gruda pela direita do wrapper/botão */
+  left: auto;
+  transform: none;          /* nada de translateX aqui */
+  background: #131313;
+  border: 1px solid #00000066;
+  border-radius: 10px;
+  padding: 8px;
+  display: grid; gap: 6px;
+  min-width: 150px;
+  z-index: 100001;
+  box-shadow: 0 12px 28px rgba(0,0,0,.45);
+  max-height: calc(5 * 36px + 4 * 6px);
+  overflow-y: auto;
+}
+
+
+/* itens com altura consistente ~36px (ajuste se quiser) */
+.lang-menu a{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  height: 36px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color:#fff;
+  text-decoration:none;
+  font: 600 13px/1.1 Roboto, system-ui, sans-serif;
+}
+.lang-menu a:hover{ background: rgba(255,255,255,.08); }
+
+.lang-menu a:hover{ background: rgba(255,255,255,.08); }
+
+/* (Opcional) se tiver alguma regra global tipo img{max-width:100%} que
+   esteja esticando os SVGs, isso aqui garante tamanho final: */
+.lang-menu img,
+.lang-fixed img{ max-width: none; }
+
+
+/* ===== FIX 1: garantir largura fixa da arte mesmo com regras duplicadas ===== */
+#win-game .win-art{
+  width: var(--art-fixed-width) !important; /* vence o width: min(92%,540px) */
+}
+
+/* ===== FIX 2: só variar o Y da bolinha quando a tela for menor ===== */
+/* (ajuste os percentuais como preferir) */
+@media (max-width: 560px){ #win-game{ --crystal-y: 80% !important; } }
+@media (max-width: 500px){ #win-game{ --crystal-y: 80% !important; } }
+@media (max-width: 460px){ #win-game{ --crystal-y: 80% !important; } }
+@media (max-width: 420px){ #win-game{ --crystal-y: 80% !important; } }
+@media (max-width: 380px){ #win-game{ --crystal-y: 80% !important; } }
+
+/* se quiser controlar por proporção (tela bem “alta”), pode usar também: */
+/* @media (max-aspect-ratio: 9/16){ #win-game{ --crystal-y: 72% !important; } } */
+/* ==== Yesterday block (ajustes) ==== */
+.yesterday-container{
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border: 2px solid #e65100;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  color:#fff;
+  text-shadow: 1px 1px 3px #000;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  padding: 10px 12px;
+
+  /* NOVO: compacto e centralizado */
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  row-gap: 8px;
+}
+
+.yesterday-title{
+  font: 700 14px/1.2 Roboto, system-ui, sans-serif;
+  letter-spacing:.2px;
+  margin-bottom: 0;            /* evitamos altura extra */
+}
+
+.yesterday-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;           /* mantém compacto em telas médias */
+}
+
+#yesterday-thumb{
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  background:#fff;             /* <-- corrige parêntese extra */
+  box-shadow: 0 0 0 2px rgba(255,255,255,.6),
+              0 4px 12px rgba(0,0,0,.3);
+}
+
+.yesterday-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.yesterday-label{
+  font: 600 13px/1 Roboto, system-ui, sans-serif;
+  opacity:.9;
+}
+
+.yesterday-name{
+  font: 800 clamp(14px, 2.6vw, 16px)/1.1 Inter, system-ui, sans-serif;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #32cd32, #228b22);
+  color:#fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+  box-shadow: 0 2px 10px rgba(0,0,0,.18) inset, 0 1px 10px rgba(0,0,0,.12);
+}
+
+/* NOVO: contador "N pessoas acertaram hoje!" */
+.yesterday-extras{
+  font: 700 clamp(11px, 2.4vw, 13px)/1.2 Roboto, system-ui, sans-serif;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+  white-space: nowrap;      /* fica curto quando couber */
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 560px){
+  .yesterday-content{ gap: 8px; }
+  #yesterday-thumb{ width: 40px; height: 40px; }
+  /* quando apertar muito, deixa o contador quebrar abaixo sem esticar o card */
+  .yesterday-extras{
+    white-space: normal;
+    justify-self: center;
+  }
+}

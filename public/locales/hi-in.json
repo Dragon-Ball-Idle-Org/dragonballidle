@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — अनुमान लगाने का खेल",
+  "meta.description": "आज के ड्रैगन बॉल कैरेक्टर का अंदाजा लगाइए — एक तेज़, मुफ़्त दैनिक चुनौती! नाम टाइप करें, संकेत प्राप्त करें और अपना परिणाम साझा करें।",
+
+  "intro.title": "आज के ड्रैगन बॉल कैरेक्टर का अनुमान लगाइए!",
+  "intro.subtitle": "शुरू करने के लिए किसी भी कैरेक्टर का नाम टाइप करें।",
+  
+  "wins.today": "आज के किरदार को {n} लोगों ने पहले ही पहचान लिया है!",
+
+  "tutorial.title": "रंग संकेतक",
+  "tutorial.quickGuide": "क्या आपको एक त्वरित मार्गदर्शिका चाहिए?",
+  "tutorial.correct": "सही",
+  "tutorial.partial": "आंशिक",
+  "tutorial.incorrect": "गलत",
+  "tutorial.after": "बाद में",
+  "tutorial.before": "पहले",
+
+  "help.correct": "सही — यह विशेषता बिल्कुल सही है।",
+  "help.partial": "आंशिक — कम से कम एक मान मेल खाता है।",
+  "help.incorrect": "गलत — यह विशेषता पूरी तरह गलत है।",
+  "help.after": "बाद में — आज के कैरेक्टर की डेब्यू सागा आपके अनुमान के बाद की है।",
+  "help.before": "पहले — आज के कैरेक्टर की डेब्यू सागा आपके अनुमान से पहले की है।",
+  
+  "yesterday.title": "कल का कैरेक्टर",
+  "yesterday.label": "कैरेक्टर:",
+
+  "search.placeholder": "कैरेक्टर का नाम टाइप करें...",
+
+  "columns.character": "कैरेक्टर",
+  "columns.gender": "लिंग",
+  "columns.race": "जाति",
+  "columns.affiliation": "संबंध",
+  "columns.transformation": "रूपांतरण",
+  "columns.attribute": "गुण",
+  "columns.series": "श्रृंखला",
+  "columns.saga": "सागा",
+
+  "winMini.title": "आज का परिणाम",
+  "winMini.tries": "प्रयास",
+  "winMini.next": "अगला कैरेक्टर",
+  "winMini.todayChar": "आज का कैरेक्टर",
+
+  "share.label": "X पर साझा करें",
+  "share.tweet.one": "मैंने आज के DragonBallDle कैरेक्टर को 1 प्रयास में पहचान लिया — आप भी आज़माएँ: {url}",
+  "share.tweet.other": "मैंने आज के DragonBallDle कैरेक्टर को {tries} प्रयासों में पहचान लिया — आप भी आज़माएँ: {url}",
+
+  "popup.congrats": "बधाई हो!",
+  "popup.line.before": "आपने आज के ड्रैगन बॉल कैरेक्टर को",
+  "popup.line.after": "प्रयासों में पहचान लिया:",
+  "popup.close": "बंद करें",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "सच्चे ड्रैगन बॉल प्रशंसकों के लिए दैनिक चुनौती",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "सभी अधिकार सुरक्षित।"
+}
+

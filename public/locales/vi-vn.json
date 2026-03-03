@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Trò chơi đoán nhân vật",
+  "meta.description": "Hãy đoán nhân vật Dragon Ball hôm nay trong thử thách hàng ngày nhanh và miễn phí! Nhập tên, nhận gợi ý và chia sẻ kết quả của bạn.",
+
+  "intro.title": "Đoán nhân vật Dragon Ball hôm nay!",
+  "intro.subtitle": "Nhập tên nhân vật để bắt đầu.",
+  
+  "wins.today": "Đã có {n} người đoán đúng nhân vật hôm nay!",
+
+  "tutorial.title": "Chỉ báo màu",
+  "tutorial.quickGuide": "Cần hướng dẫn nhanh?",
+  "tutorial.correct": "Chính xác",
+  "tutorial.partial": "Một phần",
+  "tutorial.incorrect": "Sai",
+  "tutorial.after": "Sau",
+  "tutorial.before": "Trước",
+
+  "help.correct": "Chính xác — Thuộc tính này hoàn toàn đúng.",
+  "help.partial": "Một phần — Ít nhất một giá trị trùng khớp.",
+  "help.incorrect": "Sai — Thuộc tính này hoàn toàn sai.",
+  "help.after": "Sau — Câu chuyện ra mắt của nhân vật hôm nay diễn ra sau dự đoán của bạn.",
+  "help.before": "Trước — Câu chuyện ra mắt của nhân vật hôm nay diễn ra trước dự đoán của bạn.",
+  
+  "yesterday.title": "Nhân vật hôm qua",
+  "yesterday.label": "Nhân vật:",
+
+  "search.placeholder": "Nhập tên nhân vật...",
+
+  "columns.character": "Nhân vật",
+  "columns.gender": "Giới tính",
+  "columns.race": "Chủng tộc",
+  "columns.affiliation": "Liên kết",
+  "columns.transformation": "Biến hình",
+  "columns.attribute": "Thuộc tính",
+  "columns.series": "Loạt phim",
+  "columns.saga": "Câu chuyện",
+
+  "winMini.title": "Kết quả hôm nay",
+  "winMini.tries": "Lần thử",
+  "winMini.next": "Nhân vật tiếp theo",
+  "winMini.todayChar": "Nhân vật hôm nay",
+
+  "share.label": "Chia sẻ trên X",
+  "share.tweet.one": "Tôi đã đoán đúng nhân vật DragonBallDle hôm nay trong 1 lần thử — hãy thử ngay tại {url}",
+  "share.tweet.other": "Tôi đã đoán đúng nhân vật DragonBallDle hôm nay trong {tries} lần thử — hãy thử ngay tại {url}",
+
+  "popup.congrats": "Chúc mừng!",
+  "popup.line.before": "Bạn đã đoán đúng nhân vật Dragon Ball hôm nay trong",
+  "popup.line.after": "lần thử:",
+  "popup.close": "Đóng",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Thử thách hàng ngày dành cho fan chân chính của Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Bản quyền ©. Giữ mọi quyền."
+}
+

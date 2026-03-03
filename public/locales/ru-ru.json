@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Игра-Угадайка",
+  "meta.description": "Угадай сегодняшнего персонажа Dragon Ball в быстрой, бесплатной ежедневной игре. Введи имя, получай подсказки и делись результатом.",
+
+  "intro.title": "Угадай сегодняшнего персонажа Dragon Ball!",
+  "intro.subtitle": "Введите имя персонажа, чтобы начать.",
+  
+  "wins.today": "{n} человек уже угадал сегодняшнего персонажа!",
+
+  "tutorial.title": "Цветовой Индикатор",
+  "tutorial.quickGuide": "Нужна быстрая подсказка?",
+  "tutorial.correct": "Правильно",
+  "tutorial.partial": "Частично",
+  "tutorial.incorrect": "Неправильно",
+  "tutorial.after": "После",
+  "tutorial.before": "До",
+
+  "help.correct": "Правильно — Этот параметр указан точно.",
+  "help.partial": "Частично — Совпадает хотя бы одно значение.",
+  "help.incorrect": "Неправильно — Этот параметр полностью ошибочен.",
+  "help.after": "После — Дебютная сага сегодняшнего персонажа произошла после вашего предположения.",
+  "help.before": "До — Дебютная сага сегодняшнего персонажа произошла до вашего предположения.",
+  
+  "yesterday.title": "Вчерашний персонаж",
+  "yesterday.label": "Персонаж:",
+
+  "search.placeholder": "Введите имя персонажа...",
+
+  "columns.character": "Персонаж",
+  "columns.gender": "Пол",
+  "columns.race": "Раса",
+  "columns.affiliation": "Принадлежность",
+  "columns.transformation": "Трансформация",
+  "columns.attribute": "Атрибут",
+  "columns.series": "Серия",
+  "columns.saga": "Сага",
+
+  "winMini.title": "Результат дня",
+  "winMini.tries": "Попытки",
+  "winMini.next": "Следующий персонаж",
+  "winMini.todayChar": "Сегодняшний персонаж",
+
+  "share.label": "Поделиться в X",
+  "share.tweet.one": "Я угадал сегодняшнего персонажа DragonBallDle с 1 попытки — попробуй и ты на {url}",
+  "share.tweet.other": "Я угадал сегодняшнего персонажа DragonBallDle за {tries} попыток — попробуй и ты на {url}",
+
+  "popup.congrats": "Поздравляем!",
+  "popup.line.before": "Вы угадали сегодняшнего персонажа Dragon Ball за",
+  "popup.line.after": "попыток:",
+  "popup.close": "Закрыть",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Ежедневное испытание для настоящих фанатов Dragon Ball",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Все права защищены."
+}
+

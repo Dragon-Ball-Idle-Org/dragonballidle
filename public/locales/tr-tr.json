@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Tahmin Oyunu",
+  "meta.description": "Bugünün Dragon Ball karakterini hızlı, ücretsiz günlük bir meydan okumada tahmin et. Bir isim yaz, ipuçları al ve sonucunu paylaş.",
+
+  "intro.title": "Bugünün Dragon Ball karakterini tahmin et!",
+  "intro.subtitle": "Başlamak için bir karakter adı yaz.",
+  
+  "wins.today": "{n} orang sudah menebak karakter hari ini!",
+
+  "tutorial.title": "Renk Göstergesi",
+  "tutorial.quickGuide": "Hızlı bir rehbere mi ihtiyacın var?",
+  "tutorial.correct": "Doğru",
+  "tutorial.partial": "Kısmen",
+  "tutorial.incorrect": "Yanlış",
+  "tutorial.after": "Sonra",
+  "tutorial.before": "Önce",
+
+  "help.correct": "Doğru — Bu özellik tamamen doğru.",
+  "help.partial": "Kısmen — En az bir değer eşleşiyor.",
+  "help.incorrect": "Yanlış — Bu özellik tamamen yanlış.",
+  "help.after": "Sonra — Günün karakterinin çıkış sagası tahmininden sonra.",
+  "help.before": "Önce — Günün karakterinin çıkış sagası tahmininden önce.",
+  
+  "yesterday.title": "Dünün karakteri",
+  "yesterday.label": "Karakter:",
+
+  "search.placeholder": "Bir karakter adı yaz...",
+
+  "columns.character": "Karakter",
+  "columns.gender": "Cinsiyet",
+  "columns.race": "Irk",
+  "columns.affiliation": "Bağlılık",
+  "columns.transformation": "Dönüşüm",
+  "columns.attribute": "Özellik",
+  "columns.series": "Seri",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Bugünün sonucu",
+  "winMini.tries": "Deneme",
+  "winMini.next": "Sonraki karakter",
+  "winMini.todayChar": "Bugünün karakteri",
+
+  "share.label": "X’te paylaş",
+  "share.tweet.one": "Bugünün DragonBallDle karakterini 1 denemede bildim — sen de dene: {url}",
+  "share.tweet.other": "Bugünün DragonBallDle karakterini {tries} denemede bildim — sen de dene: {url}",
+
+  "popup.congrats": "Tebrikler!",
+  "popup.line.before": "Bugünün Dragon Ball karakterini",
+  "popup.line.after": "denemede bildin:",
+  "popup.close": "Kapat",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Gerçek Dragon Ball hayranları için günlük meydan okuma",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Tüm hakları saklıdır."
+}
+

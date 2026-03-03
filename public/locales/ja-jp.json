@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — 推測ゲーム",
+  "meta.description": "今日のドラゴンボールのキャラクターを素早く無料で当てよう！名前を入力してヒントを得て、結果を共有しよう。",
+
+  "intro.title": "今日のドラゴンボールキャラクターを当てよう！",
+  "intro.subtitle": "キャラクター名を入力してスタート。",
+  
+  "wins.today": "本日のキャラクターをすでに{n}人が正解！",
+
+  "tutorial.title": "カラーインジケーター",
+  "tutorial.quickGuide": "クイックガイドが必要ですか？",
+  "tutorial.correct": "正解",
+  "tutorial.partial": "一部一致",
+  "tutorial.incorrect": "不正解",
+  "tutorial.after": "後",
+  "tutorial.before": "前",
+
+  "help.correct": "正解 — この属性は完全に正しいです。",
+  "help.partial": "一部一致 — 少なくとも1つの値が一致しています。",
+  "help.incorrect": "不正解 — この属性は完全に間違っています。",
+  "help.after": "後 — 今日のキャラクターの登場サーガはあなたの推測より後です。",
+  "help.before": "前 — 今日のキャラクターの登場サーガはあなたの推測より前です。",
+  
+  "yesterday.title": "昨日のキャラクター",
+  "yesterday.label": "キャラクター：",
+
+  "search.placeholder": "キャラクター名を入力...",
+
+  "columns.character": "キャラクター",
+  "columns.gender": "性別",
+  "columns.race": "種族",
+  "columns.affiliation": "所属",
+  "columns.transformation": "変身",
+  "columns.attribute": "属性",
+  "columns.series": "シリーズ",
+  "columns.saga": "サーガ",
+
+  "winMini.title": "今日の結果",
+  "winMini.tries": "試行回数",
+  "winMini.next": "次のキャラクター",
+  "winMini.todayChar": "今日のキャラクター",
+
+  "share.label": "Xで共有",
+  "share.tweet.one": "今日のDragonBallDleキャラクターを1回で当てた！あなたも挑戦してみて！ {url}",
+  "share.tweet.other": "今日のDragonBallDleキャラクターを{tries}回で当てた！あなたも挑戦してみて！ {url}",
+
+  "popup.congrats": "おめでとう！",
+  "popup.line.before": "今日のドラゴンボールキャラクターを",
+  "popup.line.after": "回の試行で当てました：",
+  "popup.close": "閉じる",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "ドラゴンボールファンのための毎日のチャレンジ",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "すべての権利を保有します。"
+}
+

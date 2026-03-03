@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Guess Game",
+  "meta.description": "Guess today’s Dragon Ball character in a fast, free daily challenge. Type a name, get hints, and share your result.",
+
+
+  "intro.title": "Guess today's Dragon Ball character!",
+  "intro.subtitle": "Type any character to begin.",
+  
+  "wins.today": "{n} people have already guessed today's character!",
+
+  "tutorial.title": "Color Indicator",
+  "tutorial.quickGuide": "Need a quick guide?",
+  "tutorial.correct": "Correct",
+  "tutorial.partial": "Partial",
+  "tutorial.incorrect": "Incorrect",
+  "tutorial.after": "After",
+  "tutorial.before": "Before",
+
+  "help.correct": "Correct — This attribute is exactly right.",
+  "help.partial": "Partial — At least one value matches.",
+  "help.incorrect": "Incorrect — This attribute is completely wrong.",
+  "help.after": "After — The daily character’s debut saga is after your guess.",
+  "help.before": "Before — The daily character’s debut saga is before your guess.",
+  
+  "yesterday.title": "Yesterday’s character",
+  "yesterday.label": "Character:",
+
+  "search.placeholder": "Type character name...",
+
+  "columns.character": "Character",
+  "columns.gender": "Gender",
+  "columns.race": "Race",
+  "columns.affiliation": "Affiliation",
+  "columns.transformation": "Transformation",
+  "columns.attribute": "Attribute",
+  "columns.series": "Series",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Today’s result",
+  "winMini.tries": "Tries",
+  "winMini.next": "Next character",
+  "winMini.todayChar": "Today’s character",
+
+  "share.label": "Share on X",
+  "share.tweet.one": "I guessed today's DragonBallDle character in 1 try — try it too at {url}",
+  "share.tweet.other": "I guessed today's DragonBallDle character in {tries} tries — try it too at {url}",
+
+  "popup.congrats": "Congratulations!",
+  "popup.line.before": "You guessed today’s Dragon Ball character in",
+  "popup.line.after": "tries:",
+  "popup.close": "Close",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "The daily challenge for true Dragon Ball fans",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "All rights reserved."
+}

@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — 추측 게임",
+  "meta.description": "오늘의 드래곤볼 캐릭터를 빠르고 무료로 맞혀보세요! 이름을 입력하고 힌트를 얻어 결과를 공유하세요.",
+
+  "intro.title": "오늘의 드래곤볼 캐릭터를 맞혀보세요!",
+  "intro.subtitle": "시작하려면 캐릭터 이름을 입력하세요.",
+  
+  "wins.today": "오늘의 캐릭터를 이미 {n}명이 맞췄어요!",
+
+  "tutorial.title": "색상 표시기",
+  "tutorial.quickGuide": "빠른 가이드가 필요하신가요?",
+  "tutorial.correct": "정답",
+  "tutorial.partial": "부분 일치",
+  "tutorial.incorrect": "오답",
+  "tutorial.after": "이후",
+  "tutorial.before": "이전",
+
+  "help.correct": "정답 — 이 속성은 정확히 일치합니다.",
+  "help.partial": "부분 일치 — 적어도 하나의 값이 일치합니다.",
+  "help.incorrect": "오답 — 이 속성은 완전히 틀렸습니다.",
+  "help.after": "이후 — 오늘의 캐릭터가 등장한 사가는 당신의 추측 이후입니다.",
+  "help.before": "이전 — 오늘의 캐릭터가 등장한 사가는 당신의 추측 이전입니다.",
+  
+  "yesterday.title": "어제의 캐릭터",
+  "yesterday.label": "캐릭터:",
+
+  "search.placeholder": "캐릭터 이름을 입력하세요...",
+
+  "columns.character": "캐릭터",
+  "columns.gender": "성별",
+  "columns.race": "종족",
+  "columns.affiliation": "소속",
+  "columns.transformation": "변신",
+  "columns.attribute": "속성",
+  "columns.series": "시리즈",
+  "columns.saga": "사가",
+
+  "winMini.title": "오늘의 결과",
+  "winMini.tries": "시도 횟수",
+  "winMini.next": "다음 캐릭터",
+  "winMini.todayChar": "오늘의 캐릭터",
+
+  "share.label": "X에 공유하기",
+  "share.tweet.one": "오늘의 DragonBallDle 캐릭터를 한 번 만에 맞혔어요! 당신도 도전해 보세요: {url}",
+  "share.tweet.other": "오늘의 DragonBallDle 캐릭터를 {tries}번 만에 맞혔어요! 당신도 도전해 보세요: {url}",
+
+  "popup.congrats": "축하합니다!",
+  "popup.line.before": "오늘의 드래곤볼 캐릭터를",
+  "popup.line.after": "번의 시도로 맞혔습니다:",
+  "popup.close": "닫기",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "진정한 드래곤볼 팬을 위한 매일의 도전",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "모든 권리 보유."
+}
+

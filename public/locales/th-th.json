@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — เกมทายตัวละคร",
+  "meta.description": "ทายตัวละครดราก้อนบอลประจำวันในความท้าทายรายวันที่รวดเร็วและฟรี! พิมพ์ชื่อ รับคำใบ้ และแชร์ผลลัพธ์ของคุณ.",
+
+  "intro.title": "ทายตัวละครดราก้อนบอลของวันนี้!",
+  "intro.subtitle": "พิมพ์ชื่อตัวละครเพื่อเริ่มเกม.",
+  
+  "wins.today": "{n} คนเดาได้ถูกต้องแล้วสำหรับตัวละครของวันนี้!",
+
+  "tutorial.title": "ตัวบ่งชี้สี",
+  "tutorial.quickGuide": "ต้องการคู่มือแบบย่อไหม?",
+  "tutorial.correct": "ถูกต้อง",
+  "tutorial.partial": "บางส่วน",
+  "tutorial.incorrect": "ไม่ถูกต้อง",
+  "tutorial.after": "หลังจาก",
+  "tutorial.before": "ก่อนหน้า",
+
+  "help.correct": "ถูกต้อง — คุณสมบัตินี้ถูกต้องทั้งหมด.",
+  "help.partial": "บางส่วน — อย่างน้อยหนึ่งค่าตรงกัน.",
+  "help.incorrect": "ไม่ถูกต้อง — คุณสมบัตินี้ผิดทั้งหมด.",
+  "help.after": "หลังจาก — ตอนแรกของตัวละครวันนี้อยู่หลังจากการคาดเดาของคุณ.",
+  "help.before": "ก่อนหน้า — ตอนแรกของตัวละครวันนี้อยู่ก่อนการคาดเดาของคุณ.",
+  
+  "yesterday.title": "ตัวละครเมื่อวาน",
+  "yesterday.label": "ตัวละคร:",
+
+  "search.placeholder": "พิมพ์ชื่อตัวละคร...",
+
+  "columns.character": "ตัวละคร",
+  "columns.gender": "เพศ",
+  "columns.race": "เผ่าพันธุ์",
+  "columns.affiliation": "สังกัด",
+  "columns.transformation": "การแปลงร่าง",
+  "columns.attribute": "คุณสมบัติ",
+  "columns.series": "ซีรีส์",
+  "columns.saga": "ซาก้า",
+
+  "winMini.title": "ผลลัพธ์ของวันนี้",
+  "winMini.tries": "จำนวนครั้ง",
+  "winMini.next": "ตัวละครถัดไป",
+  "winMini.todayChar": "ตัวละครวันนี้",
+
+  "share.label": "แชร์บน X",
+  "share.tweet.one": "ฉันทายตัวละคร DragonBallDle ของวันนี้ถูกในครั้งเดียว — มาลองดูสิที่ {url}",
+  "share.tweet.other": "ฉันทายตัวละคร DragonBallDle ของวันนี้ถูกใน {tries} ครั้ง — มาลองดูสิที่ {url}",
+
+  "popup.congrats": "ขอแสดงความยินดี!",
+  "popup.line.before": "คุณทายตัวละครดราก้อนบอลของวันนี้ได้ใน",
+  "popup.line.after": "ครั้ง:",
+  "popup.close": "ปิด",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "ความท้าทายรายวันสำหรับแฟนดราก้อนบอลตัวจริง",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "สงวนลิขสิทธิ์ทั้งหมด."
+}
+

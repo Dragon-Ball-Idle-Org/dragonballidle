@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — 猜謎遊戲",
+  "meta.description": "在快速又免費的每日挑戰中，猜出今天的《七龍珠》角色。輸入名字、獲得提示並分享你的結果。",
+
+  "intro.title": "猜猜今天的《七龍珠》角色！",
+  "intro.subtitle": "輸入任何角色名稱即可開始。",
+  
+  "wins.today": "已有 {n} 人猜對了今天的角色！",
+
+  "tutorial.title": "顏色指示器",
+  "tutorial.quickGuide": "需要快速指南嗎？",
+  "tutorial.correct": "正確",
+  "tutorial.partial": "部分正確",
+  "tutorial.incorrect": "錯誤",
+  "tutorial.after": "之後",
+  "tutorial.before": "之前",
+
+  "help.correct": "正確 — 此屬性完全正確。",
+  "help.partial": "部分正確 — 至少有一個值相符。",
+  "help.incorrect": "錯誤 — 此屬性完全錯誤。",
+  "help.after": "之後 — 今日角色的初次登場篇章在你的猜測之後。",
+  "help.before": "之前 — 今日角色的初次登場篇章在你的猜測之前。",
+  
+  "yesterday.title": "昨日角色",
+  "yesterday.label": "角色：",
+
+  "search.placeholder": "輸入角色名稱...",
+
+  "columns.character": "角色",
+  "columns.gender": "性別",
+  "columns.race": "種族",
+  "columns.affiliation": "所屬",
+  "columns.transformation": "變身",
+  "columns.attribute": "屬性",
+  "columns.series": "系列",
+  "columns.saga": "篇章",
+
+  "winMini.title": "今日結果",
+  "winMini.tries": "嘗試次數",
+  "winMini.next": "下一個角色",
+  "winMini.todayChar": "今日角色",
+
+  "share.label": "分享到 X",
+  "share.tweet.one": "我在 1 次嘗試中猜出了今天的 DragonBallDle 角色 — 你也來試試吧：{url}",
+  "share.tweet.other": "我在 {tries} 次嘗試中猜出了今天的 DragonBallDle 角色 — 你也來試試吧：{url}",
+
+  "popup.congrats": "恭喜！",
+  "popup.line.before": "你在",
+  "popup.line.after": "次嘗試中猜出了今天的《七龍珠》角色：",
+  "popup.close": "關閉",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "為真正的七龍珠粉絲準備的每日挑戰",
+  "footer.arthur": "Arthur（LinkedIn）",
+  "footer.julio": "Júlio（LinkedIn）",
+  "footer.copyright": "版權所有。"
+}
+

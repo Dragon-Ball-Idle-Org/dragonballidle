@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — لعبة التخمين",
+  "meta.description": "خمن شخصية دراغون بول لليوم في تحدٍ يومي سريع ومجاني. اكتب اسمًا، واحصل على تلميحات، وشارك نتيجتك.",
+
+  "intro.title": "خمن شخصية دراغون بول لليوم!",
+  "intro.subtitle": "اكتب اسم أي شخصية للبدء.",
+
+  "wins.today": "لقد خمن {n} شخصًا شخصية اليوم بالفعل!",
+
+  "tutorial.title": "مؤشر الألوان",
+  "tutorial.quickGuide": "هل تحتاج إلى دليل سريع؟",
+  "tutorial.correct": "صحيح",
+  "tutorial.partial": "جزئي",
+  "tutorial.incorrect": "خاطئ",
+  "tutorial.after": "بعد",
+  "tutorial.before": "قبل",
+
+  "help.correct": "صحيح — هذه الخاصية صحيحة تمامًا.",
+  "help.partial": "جزئي — هناك على الأقل قيمة واحدة متطابقة.",
+  "help.incorrect": "خاطئ — هذه الخاصية غير صحيحة تمامًا.",
+  "help.after": "بعد — ظهرت ملحمة ظهور الشخصية اليومية بعد تخمينك.",
+  "help.before": "قبل — ظهرت ملحمة ظهور الشخصية اليومية قبل تخمينك.",
+  
+  "yesterday.title": "شخصية الأمس",
+  "yesterday.label": "الشخصية:",
+
+  "search.placeholder": "اكتب اسم الشخصية...",
+
+  "columns.character": "الشخصية",
+  "columns.gender": "الجنس",
+  "columns.race": "العرق",
+  "columns.affiliation": "الانتماء",
+  "columns.transformation": "التحول",
+  "columns.attribute": "الخاصية",
+  "columns.series": "السلسلة",
+  "columns.saga": "الملحمة",
+
+  "winMini.title": "نتيجة اليوم",
+  "winMini.tries": "المحاولات",
+  "winMini.next": "الشخصية التالية",
+  "winMini.todayChar": "شخصية اليوم",
+
+  "share.label": "شارك على X",
+  "share.tweet.one": "لقد خمّنت شخصية DragonBallDle لليوم من أول محاولة — جرّب أنت أيضًا على {url}",
+  "share.tweet.other": "لقد خمّنت شخصية DragonBallDle لليوم بعد {tries} محاولات — جرّب أنت أيضًا على {url}",
+
+  "popup.congrats": "تهانينا!",
+  "popup.line.before": "لقد خمّنت شخصية دراغون بول لليوم بعد",
+  "popup.line.after": "محاولات:",
+  "popup.close": "إغلاق",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "التحدي اليومي لعشاق دراغون بول الحقيقيين",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "جميع الحقوق محفوظة."
+}
+

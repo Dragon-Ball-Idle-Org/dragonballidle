@@ -1,0 +1,58 @@
+{
+  "meta.title": "DragonBallDle — Ratespiel",
+  "meta.description": "Errate den heutigen Dragon Ball-Charakter in einer schnellen, kostenlosen täglichen Herausforderung. Gib einen Namen ein, erhalte Hinweise und teile dein Ergebnis.",
+
+  "intro.title": "Errate den heutigen Dragon Ball-Charakter!",
+  "intro.subtitle": "Gib den Namen eines Charakters ein, um zu beginnen.",
+  
+  "wins.today": "{n} Personen haben die heutige Figur bereits erraten!",
+
+  "tutorial.title": "Farbindikator",
+  "tutorial.quickGuide": "Brauchst du eine kurze Anleitung?",
+  "tutorial.correct": "Richtig",
+  "tutorial.partial": "Teilweise",
+  "tutorial.incorrect": "Falsch",
+  "tutorial.after": "Nach",
+  "tutorial.before": "Vor",
+
+  "help.correct": "Richtig — Dieses Attribut ist genau richtig.",
+  "help.partial": "Teilweise — Mindestens ein Wert stimmt überein.",
+  "help.incorrect": "Falsch — Dieses Attribut ist völlig falsch.",
+  "help.after": "Nach — Die Debütsaga des heutigen Charakters liegt nach deinem Tipp.",
+  "help.before": "Vor — Die Debütsaga des heutigen Charakters liegt vor deinem Tipp.",
+  
+  "yesterday.title": "Charakter von gestern",
+  "yesterday.label": "Charakter:",
+
+  "search.placeholder": "Gib den Namen eines Charakters ein...",
+
+  "columns.character": "Charakter",
+  "columns.gender": "Geschlecht",
+  "columns.race": "Rasse",
+  "columns.affiliation": "Zugehörigkeit",
+  "columns.transformation": "Transformation",
+  "columns.attribute": "Attribut",
+  "columns.series": "Serie",
+  "columns.saga": "Saga",
+
+  "winMini.title": "Heutiges Ergebnis",
+  "winMini.tries": "Versuche",
+  "winMini.next": "Nächster Charakter",
+  "winMini.todayChar": "Heutiger Charakter",
+
+  "share.label": "Auf X teilen",
+  "share.tweet.one": "Ich habe den heutigen DragonBallDle-Charakter in 1 Versuch erraten — probiere es auch auf {url}",
+  "share.tweet.other": "Ich habe den heutigen DragonBallDle-Charakter in {tries} Versuchen erraten — probiere es auch auf {url}",
+
+  "popup.congrats": "Glückwunsch!",
+  "popup.line.before": "Du hast den heutigen Dragon Ball-Charakter in",
+  "popup.line.after": "Versuchen erraten:",
+  "popup.close": "Schließen",
+
+  "footer.brand": "DragonBallDle",
+  "footer.tagline": "Die tägliche Herausforderung für wahre Dragon Ball-Fans",
+  "footer.arthur": "Arthur (LinkedIn)",
+  "footer.julio": "Júlio (LinkedIn)",
+  "footer.copyright": "Alle Rechte vorbehalten."
+}
+
