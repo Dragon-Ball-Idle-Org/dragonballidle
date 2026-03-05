@@ -65,46 +65,6 @@ export function scrollToLeftNow(el) {
   el.style.scrollBehavior = prev || "";
 }
 
-export function showInlineWinSummary(triesCount) {
-  const wrapper = document.getElementById("inline-win-wrapper");
-  const tries = document.getElementById("inline-tries");
-  const cd = document.getElementById("inline-countdown");
-  const nameEl = document.getElementById("inline-char-name");
-  const thumbEl = document.getElementById("inline-char-thumb");
-  const share = document.getElementById("inline-share");
-  if (!wrapper || !tries || !cd || !nameEl || !thumbEl) return;
-
-  const character = getRandomCharacter();
-  const name = character?.name || "—";
-  const thumb = getThumbSrc(character?.image || "");
-
-  tries.textContent = String(triesCount);
-  nameEl.textContent = name;
-  if (thumb) {
-    thumbEl.src = thumb;
-    thumbEl.alt = name + " thumbnail";
-  }
-  if (share) share.href = buildXShareURL(triesCount);
-
-  if (_inlineCountdownTimer) clearInterval(_inlineCountdownTimer);
-  const tick = () => {
-    cd.textContent = formatHMS(getMsToNextDailyReset());
-  };
-  tick();
-  _inlineCountdownTimer = setInterval(tick, 1000);
-
-  wrapper.classList.remove("hidden");
-}
-
-export function hideInlineWinSummary() {
-  const wrapper = document.getElementById("inline-win-wrapper");
-  if (wrapper) wrapper.classList.add("hidden");
-  if (_inlineCountdownTimer) {
-    clearInterval(_inlineCountdownTimer);
-    _inlineCountdownTimer = null;
-  }
-}
-
 /**
  * Inicia (ou garante que já existe) o countdown exibido no popup
  * de vitória (#countdown). Só age se o jogo já foi vencido.
@@ -162,4 +122,9 @@ export async function waitForCharacters(maxMs = 7000) {
     if (window.performance.now() - started > maxMs)
       throw new Error("characters not loaded");
   }
+}
+
+// pega o span do herói onde estava o "Type any character..."
+export function getIntroEl() {
+  return document.querySelector(".intro-guess");
 }
