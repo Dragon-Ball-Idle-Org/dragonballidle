@@ -1,7 +1,7 @@
 import { isGameWon } from "../state/game-state.js";
 import { getBrasiliaTime } from "../utils/date.js";
 
-const CHAR_IMG_BASE_THUMB = "/public/thumbs/";
+const CHAR_IMG_BASE_THUMB = "/thumbs/";
 
 // --- Util para apontar para o thumb (public/thumb/<arquivo>.png) ---
 export function getThumbSrc(imagePath) {

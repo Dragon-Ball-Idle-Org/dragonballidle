@@ -46,9 +46,6 @@ import { getCurrentLang } from "./utils/lang.js";
 import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
 import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 
-// ── Constantes ────────────────────────────────────────────────────────────────
-const CHAR_IMG_BASE = "/public/";
-
 // Breakpoint onde telas "pequenas" não devem rolar para a direita
 const STICK_LEFT_BP = 768;
 
@@ -262,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       // yThumb.src =
       //   typeof getThumbSrc === "function"
       //     ? getThumbSrc(yesterdayChar.image)
-      //     : "/public/thumbs/" +
+      //     : "/thumbs/" +
       //       String(yesterdayChar.image || "")
       //         .split("/")
       //         .pop();
@@ -326,7 +323,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const randomCharacter = getRandomCharacter();
     const clipCharacterImage = document.getElementById("clip-character-image");
     if (clipCharacterImage)
-      clipCharacterImage.src = `${CHAR_IMG_BASE}${randomCharacter.image}`;
+      clipCharacterImage.src = `${randomCharacter.image}`;
     const tryCountEl = document.getElementById("try-count");
     const charNameEl = document.getElementById("character-name");
     if (tryCountEl) tryCountEl.textContent = String(tryCount);

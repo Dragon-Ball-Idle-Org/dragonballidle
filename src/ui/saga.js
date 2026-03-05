@@ -1,6 +1,6 @@
 import { norm, hnorm } from "../utils/string";
 
-const SAGA_CSV_URL = "/public/data/debutSaga-tr.csv";
+const SAGA_CSV_URL = "/data/debutSaga-tr.csv";
 
 // ── Parser CSV simples (suporta aspas duplas) ─────────────────────────────────
 function parseCSV(text) {

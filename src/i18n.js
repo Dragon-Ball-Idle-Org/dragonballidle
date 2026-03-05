@@ -1,9 +1,25 @@
 // src/i18n.js
 const SUPPORTED = [
-  "pt-br", "en-us", "es-es",            // os 3 que já existiam
-  "fr-fr","it-it","de-de","ru-ru","tr-tr","uk-ua","ar-sa",
-  "ja-jp","ko-kr","hi-in","th-th","vi-vn","id-id",
-  "zh-cn","zh-tw","fil-ph","ms-my"      // os 16 novos
+  "pt-br",
+  "en-us",
+  "es-es", // os 3 que já existiam
+  "fr-fr",
+  "it-it",
+  "de-de",
+  "ru-ru",
+  "tr-tr",
+  "uk-ua",
+  "ar-sa",
+  "ja-jp",
+  "ko-kr",
+  "hi-in",
+  "th-th",
+  "vi-vn",
+  "id-id",
+  "zh-cn",
+  "zh-tw",
+  "fil-ph",
+  "ms-my", // os 16 novos
 ];
 const DEFAULT_LANG = "en-us";
 
@@ -20,8 +36,6 @@ export function langToCharsFile(lang = DEFAULT_LANG) {
   const code = String(lang || DEFAULT_LANG).toLowerCase();
   return `public/characters-${code.replace("-", "_")}.js`;
 }
-
-
 
 export function applyStrings(dict) {
   // exemplo de binding por data-i18n
@@ -45,10 +59,10 @@ export function persistLang(lang) {
 }
 
 export async function loadLocaleStrings(lang) {
-  const url = `/public/locales/${lang}.json`;
+  const url = `/locales/${lang}.json`;
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load locale " + lang);
   const dict = await res.json();
-  window.LOCALE = dict;  // deixa disponível para outras funções
+  window.LOCALE = dict; // deixa disponível para outras funções
   return dict;
 }
