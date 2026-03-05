@@ -1,9 +1,3 @@
-// ============================================================
-// ui/suggestions.js
-// Responsabilidade: abrir/fechar/posicionar o dropdown de sugestões
-// Dependências externas: nenhuma (manipula apenas DOM)
-// ============================================================
-
 let suggestions = null;
 let _portalActive = false;
 

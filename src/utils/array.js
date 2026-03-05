@@ -14,7 +14,7 @@ export function toArray(val) {
 }
 
 // Função para comparar arrays
-function compareValuesArray(val1, val2) {
+export function compareValuesArray(val1, val2) {
   const arr1 = toArray(val1);
   const arr2 = toArray(val2);
 

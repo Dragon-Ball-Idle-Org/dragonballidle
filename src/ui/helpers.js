@@ -1,15 +1,7 @@
-// ============================================================
-// ui/helpers.js
-// Responsabilidade: helpers de UI pós-vitória e carregamento
-//                   de personagens
-// Dependências externas: state/gameState.js
-// ============================================================
-
-import { getRandomCharacter, isGameWon } from "../state/game-state.js";
-import { getBrasiliaTime, getMsToNextDailyReset } from "../utils/date.js";
+import { isGameWon } from "../state/game-state.js";
+import { getBrasiliaTime } from "../utils/date.js";
 
 const CHAR_IMG_BASE_THUMB = "/public/thumbs/";
-let _inlineCountdownTimer = null;
 
 // --- Util para apontar para o thumb (public/thumb/<arquivo>.png) ---
 export function getThumbSrc(imagePath) {

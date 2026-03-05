@@ -17,38 +17,34 @@ import {
   setActiveIndex,
 } from "./ui/suggestions.js";
 import {
-  showInlineWinSummary,
   setupCountdown,
   waitForCharacters,
-} from "./ui/helpers.js";
-import {
-  createGuessBox,
-  fitAllTypeBoxes,
   getThumbSrc,
+  fitAllTypeBoxes,
   scrollToLeftNow,
-} from "./ui/guessBox.js";
+} from "./ui/helpers.js";
+import { createGuessBox, handleGuess } from "./ui/guess-box.js";
 import {
   ensureWinsBadgeCSS,
   startWinsPolling,
   scheduleMidnightRefresh,
+  showInlineWinSummary,
 } from "./ui/wins.js";
 import { loadSagaOrderByCSV } from "./ui/saga.js";
 import { initHoverTooltip } from "./ui/tooltip.js";
-import { startMidnightCheck, hardReloadClearCaches } from "./utils/reset.js";
 import {
+  hardReloadClearCaches,
+  startMidnightCheck,
+  doDailyResetState,
   getDailyCharacter,
   getCharacterForDay,
-  ensureDailyResetOnBoot,
-  todayBrasiliaKey,
-  getBrasiliaTime,
-  formatYMD,
   isGameWon,
   getSavedGuesses,
   getRandomCharacter,
-  doDailyResetState,
 } from "./state/game-state.js";
 import { getCurrentLang } from "./utils/lang.js";
-import { doDailyResetUi } from "./ui/reset.js";
+import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
+import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 
 // ── Constantes ────────────────────────────────────────────────────────────────
 const CHAR_IMG_BASE = "/public/";
@@ -84,7 +80,9 @@ getSubmitGuess.addEventListener("click", () => {
     closeSuggestions();
     return;
   }
-  handleGuess(userInput);
+  handleGuess(userInput, attributeContainer, tryNumber, (v) => {
+    getInput.value = v;
+  });
   closeSuggestions();
 });
 
@@ -108,7 +106,9 @@ getInput.addEventListener("keydown", (e) => {
       const name =
         li?.dataset?.name || li?.querySelector("span")?.textContent || "";
       if (name) {
-        handleGuess(name);
+        handleGuess(name, attributeContainer, tryNumber, (v) => {
+          getInput.value = v;
+        });
         closeSuggestions();
         getInput.value = "";
       }
@@ -186,7 +186,9 @@ getInput.addEventListener("input", async () => {
       usingMouse = true;
     });
     li.addEventListener("click", () => {
-      handleGuess(c.name);
+      handleGuess(c.name, attributeContainer, tryNumber, (v) => {
+        getInput.value = v;
+      });
       closeSuggestions();
       getInput.value = "";
     });

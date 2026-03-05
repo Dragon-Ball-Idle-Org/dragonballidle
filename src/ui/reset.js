@@ -1,4 +1,6 @@
 import { doDailyResetState } from "../state/game-state";
+import { todayBrasiliaKey } from "../utils/date";
+import { hideInlineWinSummary } from "./wins";
 
 export function ensureDailyResetOnBoot() {
   const today = todayBrasiliaKey();
@@ -9,7 +11,7 @@ export function ensureDailyResetOnBoot() {
   }
 }
 
-export function doDailyResetUi() {
+export function doDailyResetUi(attributeContainer) {
   hideInlineWinSummary();
 
   const guessesContainer = document.getElementById("guesses-container");

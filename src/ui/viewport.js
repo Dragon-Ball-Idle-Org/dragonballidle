@@ -3,7 +3,6 @@ export function setVH() {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 }
 
-
 export function initViewport() {
   setVH();
   window.addEventListener("resize", setVH);

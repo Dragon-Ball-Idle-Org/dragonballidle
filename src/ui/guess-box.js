@@ -1,4 +1,17 @@
-import { getRandomCharacter } from "../state/gameState.js";
+import {
+  getRandomCharacter,
+  getTryCount,
+  saveGuess,
+  setTryCount,
+} from "../state/game-state.js";
+import { compareValuesArray } from "../utils/array.js";
+import { todayBrasiliaKey } from "../utils/date.js";
+import {
+  fitAllTypeBoxes,
+  fitTextToBox,
+  getThumbSrc,
+  scrollToLeftNow,
+} from "./helpers.js";
 import { drawSagaArrow } from "./saga.js";
 import { winGame } from "./wins.js";
 
@@ -101,7 +114,13 @@ export function createGuessBox(itemFound) {
 
 // ── handleGuess ───────────────────────────────────────────────────────────────
 
-export function handleGuess(userInput) {
+export function handleGuess(
+  userInput,
+  attributeContainer,
+  tryNumber,
+  setInputValue,
+) {
+  let tryCount = getTryCount();
   const g = String(userInput || "").trim();
   if (!g) return;
 
@@ -146,7 +165,7 @@ export function handleGuess(userInput) {
   });
 
   // limpa input (qualquer caso)
-  getInput.value = "";
+  setInputValue("");
   attributeContainer.classList.add("show-attrs");
   document.querySelector(".guess-container")?.classList.add("scroll-on");
 
@@ -169,7 +188,7 @@ export function handleGuess(userInput) {
   if (idx !== -1) window.characters.splice(idx, 1);
 
   localStorage.setItem("attributeContainer", "true");
-  if (correct) winGame();
+  if (correct) winGame(tryCount);
 }
 
 export function scrollGuessesToRight() {

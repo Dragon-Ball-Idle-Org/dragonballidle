@@ -1,3 +1,7 @@
+import { todayBrasiliaKey } from "./utils/date";
+
+const WINS_API = "/api/wins.php";
+
 export async function fetchWinsToday() {
   const ymd = todayBrasiliaKey();
   const url = `${WINS_API}?date=${encodeURIComponent(ymd)}&_=${Date.now()}`;

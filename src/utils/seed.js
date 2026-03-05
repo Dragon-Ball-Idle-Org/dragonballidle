@@ -2,13 +2,13 @@
 // Troque por um valor só seu; mantenha privado em produção:
 // TODO:Importar do .env ou algo assim, para não expor no código-fonte público
 const DAILY_SECRET = "mude-este-sal-secreto-🔥";
-const EPOCH_YMD = "2025-01-01"; // mantenha estável (fixa o calendário)
+export const EPOCH_YMD = "2025-01-01"; // mantenha estável (fixa o calendário)
 
 /**
  * cyrb128: hash 128-bit rápido e estável.
  * Mesma string → sempre os mesmos 4 números.
  */
-function cyrb128(str) {
+export function cyrb128(str) {
   let h1 = 1779033703,
     h2 = 3144134277,
     h3 = 1013904242,
@@ -36,7 +36,7 @@ function cyrb128(str) {
  * mulberry32: PRNG simples, rápido e com boa distribuição.
  * Retorna uma função que, a cada chamada, devolve um float [0, 1).
  */
-function mulberry32(a) {
+export function mulberry32(a) {
   return function () {
     a |= 0;
     a = (a + 0x6d2b79f5) | 0;
@@ -50,7 +50,7 @@ function mulberry32(a) {
  * Gera um índice [0, N) de forma determinística:
  * mesmos ymd + attempt + N → sempre o mesmo índice.
  */
-function deterministicCandidate(ymd, attempt, N) {
+export function deterministicCandidate(ymd, attempt, N) {
   const seedStr = `${ymd}|${attempt}|${DAILY_SECRET}|soft-norepeat-v1`;
   const [s0] = cyrb128(seedStr);
   const rnd = mulberry32(s0);
@@ -61,7 +61,7 @@ function deterministicCandidate(ymd, attempt, N) {
  * Permutação Fisher–Yates seeded.
  * Garante que o calendário não repita personagens por N dias.
  */
-function buildDeterministicPermutation(n, salt) {
+export function buildDeterministicPermutation(n, salt) {
   const arr = Array.from({ length: n }, (_, i) => i);
   const [s0] = cyrb128(String(salt || ""));
   const rand = mulberry32(s0);

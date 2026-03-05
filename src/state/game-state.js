@@ -1,3 +1,12 @@
+import { getCanonicalList } from "../utils/array";
+import {
+  daysBetween,
+  getBrasiliaTime,
+  todayBrasiliaKey,
+  ymdFromDayIndex,
+} from "../utils/date";
+import { deterministicCandidate, EPOCH_YMD } from "../utils/seed";
+
 // Cache da permutação por dataset
 let __PERM_CACHE = null;
 let __PERM_SIG = null;
@@ -21,41 +30,12 @@ export function setTryCount(n) {
   localStorage.setItem("tryCount", String(n));
 }
 
-// ── Sorteio do personagem ─────────────────────────────────────────────────────
-
 /** Quantos dias se passaram desde EPOCH_YMD */
 function daysSinceEpoch(ymd) {
   const [y, m, d] = ymd.split("-").map(Number);
   const epoch = new Date(EPOCH_YMD);
   const target = new Date(y, m - 1, d);
   return Math.round((target - epoch) / 86400000);
-}
-
-export function getCharacterForDay(ymd) {
-  const canon = getCanonicalList(window.characters || []);
-  if (!canon.length) return null;
-
-  const perm = getPermutationForCurrentDataset();
-  const N = canon.length;
-  const k = daysSinceEpoch(ymd);
-  const slot = ((k % N) + N) % N;
-
-  // tenta até MAX_ATTEMPTS evitar repetição na janela
-  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
-    const raw = deterministicCandidate(ymd, attempt, N);
-    const idx = perm[(slot + raw) % N];
-    return canon[idx]; // por ora retorna na 1ª tentativa válida
-  }
-
-  // fallback absoluto: posição do slot na permutação
-  return canon[perm[slot]];
-}
-
-/* Pega o personagem aleatório do dia com PRNG de seed (+ sal) */
-export function getDailyCharacter() {
-  const ymd = todayBrasiliaKey();
-  _randomCharacter = getCharacterForDay(ymd);
-  return _randomCharacter;
 }
 
 // ── Persistência de chutes ────────────────────────────────────────────────────
@@ -80,7 +60,7 @@ export function markGameWon() {
 }
 
 // ── Reset diário ──────────────────────────────────────────────────────────────
-export function doDailyResetState() {
+export function doDailyResetState(tryNumber) {
   // estado do jogo
   _tryCount = 1;
   if (tryNumber) tryNumber.innerHTML = _tryCount;

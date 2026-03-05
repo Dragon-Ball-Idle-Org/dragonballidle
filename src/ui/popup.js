@@ -1,8 +1,4 @@
-// ============================================================
-// ui/popup.js
-// Responsabilidade: mostrar/esconder o popup de vitória
-// Dependências externas: state/gameState.js (lê randomCharacter, tryCount)
-// ============================================================
+import { getRandomCharacter, getTryCount } from "../state/game-state.js";
 
 const CHAR_IMG_BASE = "/public/";
 

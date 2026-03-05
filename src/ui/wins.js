@@ -1,22 +1,21 @@
-// ============================================================
-// ui/wins.js
-// Responsabilidade: buscar, incrementar e exibir contagem de
-//                   vitórias do dia
-// Dependências externas: state/gameState.js, utils/i18n.js, utils/lang.js
-// ============================================================
-
-import { todayBrasiliaKey, getBrasiliaTime } from "../state/gameState.js";
+import {
+  getRandomCharacter,
+  markGameWon,
+} from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { getCurrentLang } from "../utils/lang.js";
-
-const WINS_API = "/api/wins.php";
+import { fetchWinsToday } from "../http.js";
+import { buildXShareURL, getThumbSrc } from "./helpers.js";
+import { formatHMS, getMsToNextDailyReset } from "../utils/date.js";
+import { openWinPopup } from "./popup.js";
+import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
 
 let _winsPollTimer = null;
 let _lastWinsShown = null;
 
 // ── CSS do badge (injetado uma vez) ──────────────────────────────────────────
 
-function ensureWinsBadgeCSS() {
+export function ensureWinsBadgeCSS() {
   if (document.getElementById("wins-badge-style")) return;
   const css = `
   .intro-guess .wins-badge{
@@ -59,7 +58,7 @@ function ensureWinsBadgeCSS() {
 
 // ── Atualiza o elemento .intro-guess com a contagem ──────────────────────────
 
-function updateIntroWins(n) {
+function _updateIntroWins(n) {
   const el = getIntroEl();
   if (!el) return;
   ensureWinsBadgeCSS();
@@ -103,7 +102,7 @@ export function startWinsPolling() {
   const T = 5 * 60 * 1000;
   const tick = async () => {
     try {
-      updateIntroWins(await fetchWinsToday());
+      _updateIntroWins(await fetchWinsToday());
     } catch (e) {
       console.warn("wins poll failed", e);
     }
@@ -168,7 +167,7 @@ export function hideInlineWinSummary() {
 
 // ── winGame ───────────────────────────────────────────────────────────────────
 
-export function winGame() {
+export function winGame(tryCount) {
   const randomCharacter = getRandomCharacter();
   showInlineWinSummary(tryCount);
 
@@ -245,7 +244,7 @@ export function winGame() {
   });
 
   incrementWinsToday()
-    .then(updateIntroWins)
+    .then(_updateIntroWins)
     .catch((e) => console.warn("increment failed", e));
 
   localStorage.setItem("lastResetDay", todayBrasiliaKey());

@@ -1,3 +1,5 @@
+import { EPOCH_YMD } from "./seed";
+
 export function formatYMD(d) {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -54,7 +56,7 @@ export function ymdFromDayIndex(k) {
   return d.toISOString().slice(0, 10);
 }
 
-function getMsToNextDailyReset() {
+export function getMsToNextDailyReset() {
   const now = getBrasiliaTime();
   const next = new Date(now);
   next.setHours(24, 0, 0, 0);
