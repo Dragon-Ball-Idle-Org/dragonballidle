@@ -138,8 +138,12 @@ getInput.addEventListener("input", async () => {
     }
   }
 
+  const guesses = getSavedGuesses();
   const filtered = pool
-    .filter((c) => (c.name || "").toLowerCase().includes(query))
+    .filter(
+      (c) =>
+        !guesses.includes(c.id) && (c.name || "").toLowerCase().includes(query),
+    )
     .sort((a, b) => {
       const nA = (a.name || "").toLowerCase();
       const nB = (b.name || "").toLowerCase();
@@ -322,8 +326,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     getInput.disabled = true;
     const randomCharacter = getRandomCharacter();
     const clipCharacterImage = document.getElementById("clip-character-image");
-    if (clipCharacterImage)
-      clipCharacterImage.src = `${randomCharacter.image}`;
+    if (clipCharacterImage) clipCharacterImage.src = `${randomCharacter.image}`;
     const tryCountEl = document.getElementById("try-count");
     const charNameEl = document.getElementById("character-name");
     if (tryCountEl) tryCountEl.textContent = String(tryCount);

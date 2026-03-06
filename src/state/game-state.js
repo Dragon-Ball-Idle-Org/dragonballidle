@@ -40,15 +40,21 @@ function daysSinceEpoch(ymd) {
 
 // ── Persistência de chutes ────────────────────────────────────────────────────
 export function getSavedGuesses() {
-  return JSON.parse(localStorage.getItem("guesses")) || [];
+  if (!window.guesses) {
+    window.guesses = JSON.parse(localStorage.getItem("guesses")) || [];
+  }
+  return window.guesses;
 }
 
-export function saveGuess(idOrName) {
+export function guessAlreadyMade(id) {
   const guesses = getSavedGuesses();
-  if (!guesses.includes(idOrName)) {
-    guesses.push(idOrName);
-    localStorage.setItem("guesses", JSON.stringify(guesses));
-  }
+  return guesses.includes(id);
+}
+
+export function saveGuessId(id) {
+  const guesses = getSavedGuesses();
+  guesses.push(id);
+  localStorage.setItem("guesses", JSON.stringify(guesses));
 }
 
 export function isGameWon() {

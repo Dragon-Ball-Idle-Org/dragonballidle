@@ -1,7 +1,8 @@
 import {
   getRandomCharacter,
   getTryCount,
-  saveGuess,
+  guessAlreadyMade,
+  saveGuessId,
   setTryCount,
 } from "../state/game-state.js";
 import { compareValuesArray } from "../utils/array.js";
@@ -153,6 +154,10 @@ export function handleGuess(
     return;
   }
 
+  if (guessAlreadyMade(itemFound.id)) {
+    return;
+  }
+
   const randomCharacter = getRandomCharacter();
   const correct = eq(itemFound.name, randomCharacter?.name);
 
@@ -175,7 +180,7 @@ export function handleGuess(
   }
 
   setTryCount(tryCount);
-  saveGuess(itemFound.id);
+  saveGuessId(itemFound.id);
 
   // desenha linha
   createGuessBox(itemFound);
