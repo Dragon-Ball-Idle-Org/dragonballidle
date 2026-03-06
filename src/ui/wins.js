@@ -1,8 +1,8 @@
 import { getRandomCharacter, markGameWon } from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { getCurrentLang } from "../utils/lang.js";
-import { fetchWinsToday } from "../http.js";
-import { buildXShareURL, getThumbSrc } from "./helpers.js";
+import { fetchWinsToday, incrementWinsToday } from "../http.js";
+import { buildXShareURL, getThumbSrc, setupCountdown } from "./helpers.js";
 import { formatHMS, getMsToNextDailyReset } from "../utils/date.js";
 import { openWinPopup } from "./popup.js";
 import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
@@ -170,8 +170,7 @@ export function winGame(tryCount) {
   showInlineWinSummary(tryCount);
 
   const clipCharacterImage = document.getElementById("clip-character-image");
-  if (clipCharacterImage)
-    clipCharacterImage.src = `${CHAR_IMG_BASE}${randomCharacter.image}`;
+  if (clipCharacterImage) clipCharacterImage.src = `${randomCharacter.image}`;
 
   // // pegue o contador de tentativas da variável que você já usa
   // // (se a sua variável tiver outro nome, troque aqui):

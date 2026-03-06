@@ -12,15 +12,6 @@ function getEls() {
   };
 }
 
-// TODO: Original
-// export function openWinPopup() {
-//   popup.classList.add("show"); // mostra o overlay + card
-//   requestAnimationFrame(() => {
-//     // dá 1 frame para layout assentar, então “foca” a bolinha
-//     crystal.classList.add("show");
-//   });
-// }
-// TODO: IA gerou um código diferente, validar porque
 export function openWinPopup() {
   const { popup, crystal, image, tryCountEl, charNameEl, winLine } = getEls();
   const character = getRandomCharacter();
@@ -51,26 +42,6 @@ export function openWinPopup() {
   }
 }
 
-// TODO: Original
-// export function closeWinPopup() {
-//   const popup = document.getElementById("win-game");
-//   if (!popup) return;
-//   popup.style.display = "none";
-//   popup.classList.remove("show");
-
-//   const crystal = document.getElementById("clip-character-popup");
-//   if (crystal) {
-//     crystal.style.display = "none";
-//     crystal.classList.remove("show");
-//   }
-
-//   const wonTab = document.getElementById("won-container");
-//   if (wonTab) {
-//     wonTab.style.display = "none";
-//     wonTab.classList.remove("show");
-//   }
-// }
-// TODO: IA gerou um código diferente, validar porque
 export function closeWinPopup() {
   const { popup, crystal } = getEls();
 
@@ -78,6 +49,7 @@ export function closeWinPopup() {
     popup.style.display = "none";
     popup.classList.remove("show");
   }
+
   if (crystal) {
     crystal.style.display = "none";
     crystal.classList.remove("show");
@@ -90,7 +62,6 @@ export function closeWinPopup() {
   }
 }
 
-// TODO: Método criado pela IA, validas se atende as necessidades do projeto
 /** Registra listeners de fechamento (X, clique fora, ESC) */
 export function initPopupListeners() {
   const { popup, closeX } = getEls();
