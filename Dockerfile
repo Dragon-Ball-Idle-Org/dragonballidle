@@ -6,9 +6,6 @@ RUN corepack enable
 COPY . /app
 WORKDIR /app
 
-# FROM builder AS prod-deps
-# RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
-
 FROM builder AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
@@ -23,7 +20,6 @@ RUN a2enmod rewrite \
 WORKDIR /var/www/html
 
 # Copia o dist gerado no stage anterior (sem precisar buildar localmente)
-# COPY --from=prod-deps /app/node_modules /var/www/html/node_modules
 COPY --from=build /app/dist/ /var/www/html/
 
 COPY api/ /var/www/html/api/
