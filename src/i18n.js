@@ -30,11 +30,11 @@ export function getLangFromPath(pathname = location.pathname) {
   return localStorage.getItem("lang") || DEFAULT_LANG;
 }
 
-// characters-[lang].js onde o hífen vrá para "_"
+// characters-[lang].js onde o hífen vira para "_"
 // pt-br -> characters-pt_br.js | en-us -> characters-en_us.js | fr-fr -> characters-fr_fr.js
 export function langToCharsFile(lang = DEFAULT_LANG) {
   const code = String(lang || DEFAULT_LANG).toLowerCase();
-  return `public/characters-${code.replace("-", "_")}.js`;
+  return `characters-${code.replace("-", "_")}.js`;
 }
 
 export function applyStrings(dict) {

@@ -2,7 +2,7 @@ import { getRandomCharacter, markGameWon } from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { getCurrentLang } from "../utils/lang.js";
 import { fetchWinsToday, incrementWinsToday } from "../http.js";
-import { buildXShareURL, getThumbSrc, setupCountdown } from "./helpers.js";
+import { buildXShareURL, getIntroEl, getThumbSrc, setupCountdown } from "./helpers.js";
 import { formatHMS, getMsToNextDailyReset } from "../utils/date.js";
 import { openWinPopup } from "./popup.js";
 import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
