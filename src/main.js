@@ -326,7 +326,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     getInput.disabled = true;
     const randomCharacter = getRandomCharacter();
     const clipCharacterImage = document.getElementById("clip-character-image");
-    if (clipCharacterImage) clipCharacterImage.src = `${randomCharacter.image}`;
+    if (clipCharacterImage)
+      clipCharacterImage.src = `/${randomCharacter.image}`;
     const tryCountEl = document.getElementById("try-count");
     const charNameEl = document.getElementById("character-name");
     if (tryCountEl) tryCountEl.textContent = String(tryCount);

@@ -18,7 +18,7 @@ export function openWinPopup() {
   const tries = getTryCount();
 
   // preenche conteúdo
-  if (image && character) image.src = `${character.image}`;
+  if (image && character) image.src = `/${character.image}`;
   if (tryCountEl) tryCountEl.textContent = String(tries);
   if (charNameEl && character) charNameEl.textContent = character.name;
   if (winLine) {
