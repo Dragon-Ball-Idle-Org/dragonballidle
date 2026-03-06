@@ -1,3 +1,4 @@
+import { EPOCH_YMD } from "../shared/contants";
 import { getCanonicalList } from "../utils/array";
 import {
   daysBetween,
@@ -5,7 +6,7 @@ import {
   todayBrasiliaKey,
   ymdFromDayIndex,
 } from "../utils/date";
-import { deterministicCandidate, EPOCH_YMD } from "../utils/seed";
+import { deterministicCandidate } from "../utils/seed";
 
 // Cache da permutação por dataset
 let __PERM_CACHE = null;

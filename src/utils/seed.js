@@ -1,8 +1,5 @@
 // === Seed & PRNG fortes para o "personagem do dia" ===
-// Troque por um valor só seu; mantenha privado em produção:
-// TODO:Importar do .env ou algo assim, para não expor no código-fonte público
-const DAILY_SECRET = "mude-este-sal-secreto-🔥";
-export const EPOCH_YMD = "2025-01-01"; // mantenha estável (fixa o calendário)
+const DAILY_SECRET = import.meta.env.VITE_DAILY_SECRET;
 
 /**
  * cyrb128: hash 128-bit rápido e estável.

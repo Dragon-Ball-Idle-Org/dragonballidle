@@ -1,4 +1,4 @@
-import { EPOCH_YMD } from "./seed";
+import { EPOCH_YMD } from "../shared/contants";
 
 export function formatYMD(d) {
   const y = d.getFullYear();
@@ -12,7 +12,7 @@ export function formatYMD(d) {
 export function getBrasiliaTime() {
   // se houver uma data forçada (query, LS ou objeto global), usa ela
   const forced =
-    window.DBZ_DEBUG.forceYMD ||
+    import.meta.env.VITE_FORCE_YMD ||
     localStorage.getItem("forceYMD") ||
     new URLSearchParams(location.search).get("ymd");
   if (forced && /^\d{4}-\d{2}-\d{2}$/.test(forced)) {

@@ -1,0 +1,4 @@
+# Gere o salt
+VITE_DAILY_SECRET=
+# Boolean (true|false)
+VITE_FORCE_YMD=

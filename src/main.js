@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initSuggestionsListeners(getInput, form);
 
   // expõe globals de debug
-  if (window.DBZ_DEBUG) {
+  if (import.meta.env.DEV) {
     window.openWinPopup = openWinPopup;
     window.closeWinPopup = closeWinPopup;
     window.getDailyCharacter = getDailyCharacter;
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.__getChar = () => getRandomCharacter();
     window.reseedDaily = (ymd) => {
       if (ymd && /^\d{4}-\d{2}-\d{2}$/.test(ymd)) {
-        window.DBZ_DEBUG.forceYMD = ymd;
+        import.meta.env.VITE_FORCE_YMD = ymd;
         localStorage.setItem("forceYMD", ymd);
       }
       const char = getDailyCharacter();
@@ -344,7 +344,6 @@ document.addEventListener("midnightBrasilia", () => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-window.DBZ_DEBUG = window.DBZ_DEBUG || {};
 startMidnightCheck();
 if (!localStorage.getItem("lastResetDay")) {
   localStorage.setItem("lastResetDay", todayBrasiliaKey());
