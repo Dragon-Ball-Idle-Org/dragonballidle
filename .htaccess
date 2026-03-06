@@ -27,6 +27,9 @@ AddType image/svg+xml .svg
 # fr-fr it-it de-de ru-ru tr-tr uk-ua ar-sa ja-jp ko-kr hi-in th-th vi-vn id-id zh-cn zh-tw fil-ph ms-my
 
 # 1) HOME "/" NÃO EXISTE: sempre 301 para /en-us/ (absoluto)
+#    Em produção força HTTPS, mas em localhost/127.0.0.1 mantém HTTP (evita erro SSL em dev)
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:[0-9]+)?$ [NC]
 RewriteRule ^$ https://%{HTTP_HOST}/en-us/ [R=301,L]
 
 # 2) Se for arquivo/pasta real, entrega direto (imagens/CSS/JS/404.html/etc)
@@ -39,12 +42,18 @@ RewriteRule ^(sitemap\.xml|robots\.txt|404\.html)$ - [L,NC]
 
 # 4) Força barra final no root do idioma
 RewriteCond %{REQUEST_URI} ^/(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)$ [NC]
+# Só força HTTPS fora de localhost/127.0.0.1
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:[0-9]+)?$ [NC]
 RewriteRule ^ https://%{HTTP_HOST}/%1/ [R=301,L]
 
 # 5) Qualquer coisa depois do idioma que NÃO exista -> volta para o root do idioma
 RewriteCond %{REQUEST_URI} ^/(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)/.+$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# Só força HTTPS fora de localhost/127.0.0.1
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:[0-9]+)?$ [NC]
 RewriteRule ^(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)/.*$ https://%{HTTP_HOST}/$1/ [R=301,L]
 
 # 6) SPA: as raízes dos idiomas respondem 200 servindo o MESMO index.html
