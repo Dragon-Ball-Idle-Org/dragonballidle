@@ -1,7 +1,4 @@
-import {
-  getRandomCharacter,
-  markGameWon,
-} from "../state/game-state.js";
+import { getRandomCharacter, markGameWon } from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { getCurrentLang } from "../utils/lang.js";
 import { fetchWinsToday } from "../http.js";
@@ -12,6 +9,7 @@ import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
 
 let _winsPollTimer = null;
 let _lastWinsShown = null;
+let _inlineCountdownTimer = null;
 
 // ── CSS do badge (injetado uma vez) ──────────────────────────────────────────
 
