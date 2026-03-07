@@ -16,8 +16,6 @@ import {
 import { drawSagaArrow } from "./saga.js";
 import { winGame } from "./wins.js";
 
-// ── createGuessBox ────────────────────────────────────────────────────────────
-
 export function createGuessBox(itemFound) {
   // HOST: onde as linhas de chute vão
   let host = document.getElementById("guesses-container");
@@ -112,8 +110,6 @@ export function createGuessBox(itemFound) {
     requestAnimationFrame(fitAllTypeBoxes);
   });
 }
-
-// ── handleGuess ───────────────────────────────────────────────────────────────
 
 export function handleGuess(
   userInput,
