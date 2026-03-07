@@ -32,7 +32,7 @@ Todo dia existe **um personagem diferente** e o jogador tenta adivinhar com base
   - `.htaccess` com regras de:
     - i18n por path (`/en-us/`, `/pt-br/`, etc.).
     - SPA servindo sempre o mesmo `index.html`.
-    - Redirecionos pensados para produção, mas neutros em `localhost`.
+    - Redirecionamentos pensados para produção, mas neutros em `localhost`.
 
 ---
 
