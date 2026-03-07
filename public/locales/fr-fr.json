@@ -7,6 +7,8 @@
   
   "wins.today": "{n} personnes ont déjà trouvé le personnage d’aujourd’hui !",
 
+  "wins.today.one": "{n} personne a déjà trouvé le personnage d'aujourd'hui !",
+
   "tutorial.title": "Indicateur de Couleur",
   "tutorial.quickGuide": "Besoin d’un guide rapide ?",
   "tutorial.correct": "Correct",
@@ -47,6 +49,7 @@
   "popup.congrats": "Félicitations !",
   "popup.line.before": "Tu as deviné le personnage Dragon Ball du jour en",
   "popup.line.after": "essais :",
+  "popup.line.after.one": "essai :",
   "popup.close": "Fermer",
 
   "footer.brand": "DragonBallDle",

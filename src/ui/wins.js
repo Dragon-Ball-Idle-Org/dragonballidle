@@ -1,6 +1,5 @@
 import { getRandomCharacter, markGameWon } from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
-import { getCurrentLang } from "../utils/lang.js";
 import { fetchWinsToday, incrementWinsToday } from "../http.js";
 import {
   buildXShareURL,
@@ -66,24 +65,14 @@ function _updateIntroWins(n) {
   if (!el) return;
   ensureWinsBadgeCSS();
 
-  const lang = getCurrentLang(
-    location.pathname,
-    document.documentElement.getAttribute("lang"),
+  const strings = window.LOCALE ?? {};
+  const plain = formatWinsI18n(Number(n) || 0, strings);
+  const numStr = String(Number(n) || 0);
+  const safeNum = numStr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  el.innerHTML = plain.replace(
+    new RegExp(safeNum, "g"),
+    `<span class="wins-badge">${numStr}</span>`,
   );
-  const tpl = window.strings?.["wins.today"] || null;
-
-  if (tpl) {
-    el.innerHTML = tpl.replace(
-      /\{n\}/g,
-      `<span class="wins-badge">${Number(n) || 0}</span>`,
-    );
-  } else {
-    const plain = formatWinsI18n(Number(n) || 0, lang, null);
-    el.innerHTML = plain.replace(
-      /\d[\d\.]*/,
-      (m) => `<span class="wins-badge">${m}</span>`,
-    );
-  }
 
   // efeito “pulse” apenas quando o valor AUMENTAR (ex.: após vitória)
   const badge = el.querySelector(".wins-badge");

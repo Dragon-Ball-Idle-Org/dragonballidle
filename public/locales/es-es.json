@@ -6,6 +6,7 @@
   "intro.subtitle": "Escribe cualquier personaje para comenzar.",
   
   "wins.today": "¡{n} personas ya adivinaron el personaje de hoy!",
+  "wins.today.one": "¡{n} persona ya adivinó el personaje de hoy!",
 
   "tutorial.title": "Indicador de color",
   "tutorial.quickGuide": "¿Necesitas una guía rápida?",
@@ -47,6 +48,7 @@
   "popup.congrats": "¡Felicidades!",
   "popup.line.before": "Adivinaste el personaje de Dragon Ball de hoy en",
   "popup.line.after": "intentos:",
+  "popup.line.after.one": "intento:",
   "popup.close": "Cerrar",
 
   "footer.brand": "DragonBallDle",

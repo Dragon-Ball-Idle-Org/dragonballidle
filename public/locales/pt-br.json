@@ -6,6 +6,7 @@
   "intro.subtitle": "Digite qualquer personagem para começar.",
   
   "wins.today": "{n} pessoas já acertaram o personagem de hoje!",
+  "wins.today.one": "{n} pessoa já acertou o personagem de hoje!",
 
   "tutorial.title": "Indicador de cores",
   "tutorial.quickGuide": "Precisa de um guia rápido?",
@@ -47,6 +48,7 @@
   "popup.congrats": "Parabéns!",
   "popup.line.before": "Você adivinhou o personagem de Dragon Ball de hoje em",
   "popup.line.after": "tentativas:",
+  "popup.line.after.one": "tentativa:",
 
   "popup.close": "Fechar",
 

@@ -63,6 +63,6 @@ export async function loadLocaleStrings(lang) {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load locale " + lang);
   const dict = await res.json();
-  window.LOCALE = dict; // deixa disponível para outras funções
+  window.LOCALE = dict;
   return dict;
 }

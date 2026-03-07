@@ -6,6 +6,7 @@
   "intro.subtitle": "Gib den Namen eines Charakters ein, um zu beginnen.",
   
   "wins.today": "{n} Personen haben die heutige Figur bereits erraten!",
+  "wins.today.one": "{n} Person hat die heutige Figur bereits erraten!",
 
   "tutorial.title": "Farbindikator",
   "tutorial.quickGuide": "Brauchst du eine kurze Anleitung?",
@@ -47,6 +48,7 @@
   "popup.congrats": "Glückwunsch!",
   "popup.line.before": "Du hast den heutigen Dragon Ball-Charakter in",
   "popup.line.after": "Versuchen erraten:",
+  "popup.line.after.one": "Versuch erraten:",
   "popup.close": "Schließen",
 
   "footer.brand": "DragonBallDle",

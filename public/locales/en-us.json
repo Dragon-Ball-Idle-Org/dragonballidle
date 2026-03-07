@@ -7,6 +7,7 @@
   "intro.subtitle": "Type any character to begin.",
   
   "wins.today": "{n} people have already guessed today's character!",
+  "wins.today.one": "{n} person has already guessed today's character!",
 
   "tutorial.title": "Color Indicator",
   "tutorial.quickGuide": "Need a quick guide?",
@@ -48,6 +49,7 @@
   "popup.congrats": "Congratulations!",
   "popup.line.before": "You guessed today’s Dragon Ball character in",
   "popup.line.after": "tries:",
+  "popup.line.after.one": "try:",
   "popup.close": "Close",
 
   "footer.brand": "DragonBallDle",

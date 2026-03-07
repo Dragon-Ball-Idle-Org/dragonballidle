@@ -1,4 +1,5 @@
 import { getRandomCharacter, getTryCount } from "../state/game-state.js";
+import { formatPopupLineI18n } from "../utils/i18n.js";
 
 function getEls() {
   return {
@@ -22,8 +23,12 @@ export function openWinPopup() {
   if (tryCountEl) tryCountEl.textContent = String(tries);
   if (charNameEl && character) charNameEl.textContent = character.name;
   if (winLine) {
-    const plural = tries === 1 ? "try" : "tries";
-    winLine.innerHTML = `You guessed today's Dragon Ball character in <strong id="try-count">${tries}</strong> ${plural}:`;
+    const strings = window.LOCALE ?? {};
+    const tpl = formatPopupLineI18n(tries, strings);
+    winLine.innerHTML = tpl.replace(
+      /\{tries\}/g,
+      `<strong id="try-count">${tries}</strong>`,
+    );
   }
 
   // exibe com animação
