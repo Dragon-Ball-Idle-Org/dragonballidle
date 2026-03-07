@@ -164,5 +164,20 @@ Algumas pastas/arquivos importantes:
 
 ## Licença e créditos
 
-- Projeto criado como jogo de fãs, sem afiliação oficial com a franquia Dragon Ball.
-- Ajuste aqui o tipo de licença e créditos de autores conforme necessário (por exemplo, MIT License + nomes dos autores).
+### Código deste projeto
+
+O código deste repositório é licenciado sob a **[MIT License](LICENSE)**. Você pode usar, modificar e redistribuir conforme os termos do arquivo [LICENSE](LICENSE).
+
+### Créditos
+
+- **Arthur Coelho** — [LinkedIn](https://www.linkedin.com/in/arthur-coelho-9a77a1216/)
+- **Júlio Villa Pires** — [LinkedIn](https://www.linkedin.com/in/j%C3%BAlio-villa-pires-2678431b8/)
+- **Gildo Júnior** — [LinkedIn](https://www.linkedin.com/in/gildofj/) [Github](https://github.com/Gildofj)
+
+### Aviso de marcas e direitos autorais
+
+**Dragon Ball** e todos os personagens, nomes, imagens e elementos relacionados são marcas registradas e/ou obras protegidas por direitos autorais de seus respectivos titulares, incluindo, mas não limitado a: **Toei Animation Co., Ltd.**, **Bandai Namco Entertainment Inc.**, **Shueisha Inc.** e demais detentores oficiais.
+
+Este projeto é um jogo de fãs, **não oficial** e **sem qualquer afiliação, aprovação ou endosso** pelos titulares dos direitos de Dragon Ball. Trata-se de projeto educacional e de entretenimento, de forma **não comercial**. O uso de referências a Dragon Ball é feito em caráter de paródia/homenagem e fair use, respeitando os direitos dos criadores originais.
+
+Se você é detentor de direitos e deseja solicitar alteração ou remoção de conteúdo, entre em contato pelos canais indicados no README.
