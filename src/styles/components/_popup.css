@@ -1,0 +1,275 @@
+@keyframes popupZoom {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  #win-game {
+    --art-scale: 0.95;
+    --crystal-size: 36%;
+    --crystal-y: 73%;
+  }
+}
+
+/* ===== FIX 1: garantir largura fixa da arte mesmo com regras duplicadas ===== */
+#win-game .win-art {
+  width: var(--art-fixed-width) !important; /* vence o width: min(92%,540px) */
+}
+
+/* ===== FIX 2: só variar o Y da bolinha quando a tela for menor ===== */
+/* (ajuste os percentuais como preferir) */
+@media (max-width: 560px) {
+  #win-game {
+    --crystal-y: 80% !important;
+  }
+}
+@media (max-width: 500px) {
+  #win-game {
+    --crystal-y: 80% !important;
+  }
+}
+@media (max-width: 460px) {
+  #win-game {
+    --crystal-y: 80% !important;
+  }
+}
+@media (max-width: 420px) {
+  #win-game {
+    --crystal-y: 80% !important;
+  }
+}
+@media (max-width: 380px) {
+  #win-game {
+    --crystal-y: 80% !important;
+  }
+}
+
+/* ===== Popup de vitória (vars simples para ajuste) ===== */
+#win-game {
+  /* ---- ajustes simples (edite só aqui) ---- */
+  --card-width: min(80vw, 500px); /* largura do card */
+  --card-margin-top: clamp(8px, 6vh, 40px);
+  --art-scale: 1; /* escala da arte da Baba */
+  --art-offset-y: -15%; /* sobe/desce a arte */
+  --crystal-x: 49%; /* posição X do centro da bolinha */
+  --crystal-y: 80%; /* posição Y do centro da bolinha */
+  --crystal-size: 36%; /* diâmetro da bolinha relativo à arte */
+  --popup-duration: 420ms;
+  --focus-delay: 200ms; /* atraso para começar a nitidez */
+  --focus-duration: 1200ms; /* tempo para “ficar nítido” */
+  --focus-ease: cubic-bezier(0.28, 0.79, 0.28, 0.79);
+
+  /* ---- overlay ---- */
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none; /* começa SEMPRE escondido */
+  padding: clamp(12px, 3vw, 24px);
+  place-items: start center; /* centraliza horizontalmente */
+  overflow: auto; /* rola se a tela for baixa */
+}
+
+#won-container {
+  display: none !important;
+}
+
+#clip-character-main,
+#clip-character-popup {
+  display: none;
+}
+/* fazer a arte usar a largura fixa acima */
+#win-game .win-art {
+  width: var(--art-fixed-width);
+  margin-inline: auto;
+  transform: translateY(var(--art-offset-y)) scale(var(--art-scale));
+  transform-origin: center bottom;
+}
+
+/* mostra o overlay */
+#win-game.show {
+  display: grid;
+}
+
+/* cartão interno */
+#win-game .win-card {
+  position: relative;
+  width: var(--card-width);
+  margin-top: var(--card-margin-top);
+  margin-inline: auto;
+  background: linear-gradient(to bottom, #32cd32, #228b22);
+  border: 3px solid #ffcc00;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.7);
+  overflow: visible; /* chapéu pode “vazar” */
+  padding: clamp(12px, 2.5vw, 24px);
+  animation: popupZoom var(--popup-duration) ease-out both;
+}
+
+/* base da arte */
+.win-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  width: min(92%, 540px);
+  transform: translateY(var(--art-offset-y)) scale(var(--art-scale));
+  transform-origin: center bottom;
+}
+.win-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* bolinha – começa oculta e sem nitidez */
+#clip-character-popup {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  left: var(--crystal-x);
+  top: var(--crystal-y);
+  transform: translate(-50%, -50%);
+  width: var(--crystal-size);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+
+#clip-character-popup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1; /* sempre atrás do vidro */
+  opacity: 0.75; /* = 35% visível => ~65% transparente */
+  transition: none; /* não deixa outra transição “roubar” a opacidade */
+}
+
+#clip-character-popup.show {
+  animation: focusIn var(--focus-duration) var(--focus-ease) var(--focus-delay)
+    both;
+}
+
+/* textos */
+.winText-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  text-align: center;
+}
+
+.win-line {
+  margin: 2px 0 0;
+  font:
+    600 clamp(14px, 2.3vw, 18px)/1.25 "Roboto",
+    system-ui,
+    sans-serif;
+  color: #112;
+  text-align: center;
+}
+.win-name {
+  margin: 0 0 6px;
+  font:
+    800 clamp(18px, 3vw, 24px)/1.2 "Inter",
+    system-ui,
+    sans-serif;
+  text-align: center;
+}
+.win-name #character-name {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 2px 12px rgba(41, 128, 185, 0.35) inset,
+    0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.winText-container h2.congrats,
+.winText-container .win-line,
+.winText-container #countdown {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px #000 !important;
+}
+
+.winText-container .win-name #character-name {
+  color: #fff !important;
+  text-shadow: 2px 2px 4px #000 !important;
+  background: linear-gradient(
+    135deg,
+    #fb8c00,
+    #ffa726
+  ) !important; /* mesmo laranja dos menus */
+  border: 2px solid #e65100;
+}
+
+.countdown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font:
+    800 clamp(14px, 2.4vw, 18px)/1 "Inter",
+    system-ui,
+    sans-serif;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.18) inset,
+    0 4px 16px rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 1px 3px #000;
+}
+
+.countdown-badge::before {
+  content: "⏳";
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.congrats {
+  font-family: "Bangers", sans-serif;
+  color: #1e2328;
+  font-size: clamp(20px, 4vw, 28px);
+}
+
+.win-h2 {
+  font-family: "Roboto", sans-serif;
+  color: #1e2328;
+  font-weight: 700;
+  font-size: clamp(14px, 2.6vw, 18px);
+}
+
+#close-popup {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: #e53935;
+  color: #fff;
+  font:
+    bold 16px/30px Roboto,
+    sans-serif;
+  text-align: center;
+  cursor: pointer;
+}

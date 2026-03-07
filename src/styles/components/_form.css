@@ -1,0 +1,221 @@
+/* Espaço reservado equivalente à altura do form fixo */
+@media (min-width: 768px) {
+  .guess-form-offset {
+    height: 96px;
+  } /* telas maiores */
+}
+
+.guess-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+
+  padding: 12px 12px 16px 12px; /* era 16px 12px 20px 12px */
+  position: relative;
+  margin-top: 6px; /* era clamp(16px, 3vh, 28px) */
+  max-height: none;
+  overflow: visible;
+
+  padding-bottom: 28px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+
+  z-index: 1;
+
+  background: rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.guess-container.scroll-on {
+  overflow-x: auto;
+}
+.guess-container.panel-active {
+  background: rgba(0, 0, 0, 0.09);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+#guess-form {
+  position: sticky;
+  top: 0;
+  left: 0; /* <- gruda na borda esquerda do scrollport   */
+  right: 0; /* <- mantém largura fixa ao rolar na horiz.  */
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 0 8px 0;
+  background: transparent;
+  overflow: visible;
+}
+
+#guess-form .guess-input {
+  flex: 1 1 auto;
+  min-width: 0; /* impede “estouro” */
+}
+
+/* ========= DROPDOWN ========= */
+/* alternância já existe no seu CSS; complemento: hover e seleção */
+
+/* Placeholder branco com sombra (todos os motores) */
+#guess-form .guess-input::placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+#guess-form .guess-input::-webkit-input-placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+#guess-form .guess-input::-moz-placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  opacity: 1;
+}
+#guess-form .guess-input:-ms-input-placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+#guess-form .guess-input::-ms-input-placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Campo de busca: volta o laranja e tipografia branca com sombra */
+.guess-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 56px;
+  padding: 0 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff; /* texto branco */
+  caret-color: #fff; /* cursor branco */
+
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border: 2px solid #e65100;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55); /* sombra p/ contraste */
+}
+
+.guess-input::placeholder {
+  color: #fff;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+/* Botão (esfera) SEMPRE visível, com tamanho adaptável */
+#submit-button {
+  flex: 0 0 auto;
+  width: clamp(56px, 10vw, 80px);
+  height: clamp(56px, 10vw, 80px);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+#dragonball {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+}
+
+/* ===== Dropdown preso ao form ===== */
+#suggestions.dropdown {
+  position: absolute;
+  left: 0;
+  right: calc(clamp(56px, 10vw, 80px) + 10px); /* espaço do botão + gap */
+  top: calc(100% + 8px);
+  width: auto;
+
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+
+  /* altura base; o JS vai sobrescrever com o espaço real disponível */
+  max-height: calc(5 * 80px);
+  overflow-y: auto;
+
+  background: #fb8c00;
+  border: 2px solid #e65100;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  z-index: 10000; /* antes era 4000 */
+}
+
+/* === MODO PORTAL: quando o JS move #suggestions para <body> === */
+#suggestions.dropdown.portal {
+  position: fixed !important; /* ignora posicionamento relativo ao form */
+  left: 0; /* JS ajusta left/top/bottom/width */
+  right: auto !important;
+  top: auto;
+  bottom: auto;
+  width: auto;
+  z-index: 99999; /* só para garantir sobre qualquer vidro/blur */
+}
+
+#suggestions.dropdown.open {
+  display: block !important;
+}
+#suggestions.dropdown.drop-up {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+/* Itens do dropdown */
+#suggestions.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  min-height: 80px;
+  font:
+    600 16px/1.2 "Inter",
+    system-ui,
+    sans-serif;
+  color: #fff;
+  text-shadow: 2px 2px 3px #000;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+#suggestions.dropdown li:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.03);
+}
+#suggestions.dropdown li:nth-child(even) {
+  background: rgba(0, 0, 0, 0.08);
+}
+#suggestions.dropdown li:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+#suggestions.dropdown li.selected {
+  outline: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Miniatura maior, quadrada */
+#suggestions.dropdown img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+
+  background: #fff; /* fundo branco sob PNG transparente */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset; /* contorno interno sutil */
+}

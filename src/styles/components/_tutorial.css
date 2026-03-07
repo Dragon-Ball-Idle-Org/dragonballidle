@@ -1,0 +1,183 @@
+/* célula de imagem (primeira coluna) como QUADRADO cheio */
+/* Primeira coluna (imagem) – quadrada; mostra o nome no hover sem cobrir tudo *
+
+
+  /* encolhe e limita a largura do bloco laranja */
+
+/* SEMPRE 5 colunas — os blocos encolhem para caber */
+/* (você já tem estes estilos do indicador; mantive por clareza) */
+/* === GRID: garante 5 colunas estáveis e não quebra === */
+/* === Container laranja (só garantindo respiro e sem vazamento) === */
+.tutorial-container {
+  margin: 0 auto;
+  max-width: min(96vw, 620px);
+  padding: 16px 18px; /* um pouquinho mais de respiro */
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+  border: 2px solid #e65100;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  overflow: hidden; /* nada vaza pra fora */
+  box-sizing: border-box;
+}
+
+.tutorial-title {
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  color: #1e2328;
+  font-size: clamp(18px, 2.5vw, 22px);
+  margin-bottom: 10px;
+}
+
+/* === GRID DO COLOR INDICATOR === */
+/* ===== COLOR INDICATOR – grade fixa com 5 colunas ===== */
+.indicator-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* sempre 5 colunas */
+  gap: var(--indicator-gap);
+  align-items: start;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+/* célula: swatch + legenda centralizados */
+.indicator-item {
+  display: grid;
+  grid-auto-rows: max-content;
+  justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* quadrado/ícone: sempre 1:1 e encolhe em telas pequenas */
+.indicator-swatch {
+  /* o swatch ocupa até 72% da célula, mas nunca passa do clamp abaixo */
+  width: min(72%, clamp(38px, 13.5vw, 64px));
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  border: 3px solid #fff; /* borda branca do jogo */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+/* setas dentro do swatch */
+.indicator-swatch.arrow img {
+  display: block;
+  width: 70%;
+  height: auto;
+}
+
+/* legenda embaixo do swatch */
+.indicator-label {
+  margin-top: 6px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Cores idênticas ao jogo */
+
+/* After/Before também vermelho, com seta “respirando” */
+.indicator-swatch.arrow {
+  background: rgb(255, 0, 0);
+}
+.indicator-swatch.arrow img {
+  width: 70%;
+  height: auto;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}
+
+/* === Legendas: podem quebrar sem achatar nada === */
+.indicator-label {
+  margin-top: 6px;
+  padding: 0 2px; /* micro padding pra não encostar */
+  font:
+    700 clamp(11px, 1.7vw, 15px)/1.1 Roboto,
+    system-ui,
+    sans-serif;
+  color: #1e2328;
+  text-align: center;
+  word-break: break-word; /* se precisar, quebra palavra longa */
+  overflow-wrap: anywhere;
+  text-shadow:
+    0 2px 3px rgba(255, 255, 255, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* === Dicas (menu expansível) — contraste melhor e alinhamento à esquerda === */
+.indicator-help {
+  margin: 12px auto 0;
+  width: 100%;
+  max-width: min(96vw, 720px);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+.help-summary {
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 14px;
+  font:
+    700 14px/1.2 Roboto,
+    system-ui,
+    sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.14);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+.help-summary::after {
+  content: "▼";
+  margin-left: auto;
+  font-size: 12px;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
+}
+.indicator-help[open] .help-summary::after {
+  transform: rotate(-180deg);
+}
+
+.help-body {
+  padding: 10px 14px 12px;
+}
+.help-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+  color: #fff;
+  font:
+    500 13px/1.35 Roboto,
+    system-ui,
+    sans-serif;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 0 2px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+}
+.help-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid #fff;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.45);
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+.help-swatch.arrow {
+  background: rgb(255, 0, 0);
+}
+.help-swatch.arrow img {
+  width: 75%;
+  height: auto;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+}

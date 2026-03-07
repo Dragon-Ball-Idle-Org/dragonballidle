@@ -1,0 +1,197 @@
+@keyframes cellPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.guesses-container {
+  display: block; /* corrigido (era 'blcok') */
+  flex-direction: column-reverse; /* mantém a ordem mais recente em cima */
+  align-items: flex-start; /* alinha à esquerda */
+  justify-content: flex-start;
+  width: max-content; /* largura real do grid (pai vai rolar) */
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* uma LINHA de chute (8 colunas: img + 7 atributos) */
+.guessesBox-container {
+  display: grid;
+  grid-template-columns: repeat(8, var(--col-w));
+  column-gap: var(--col-gap); /* antes era 14px */
+  row-gap: 12px;
+  align-items: stretch;
+  width: max-content; /* casa a largura com o cabeçalho */
+  margin: 12px 0;
+}
+
+.typeBox {
+  box-sizing: border-box; /* <<< garante que 87px é 87px “por fora” */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+  width: var(--col-w);
+  height: var(--col-w);
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+
+  padding: 4px;
+  line-height: 1.1;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Roboto;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.typeBox.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* comece invisível (você já tinha algo parecido; pode manter) */
+.typeBox {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+}
+
+/* quando revelamos via JS */
+.typeBox.revealed {
+  animation: cellPop 0.18s ease-out forwards; /* duração curtinha e dramática */
+}
+
+/* (opcional) se você ainda usa .visible em outras partes do site, mantemos
+   compatibilidade: assegura que .visible também mostre 100% */
+.typeBox.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.typeBox,
+.attribute-type {
+  scroll-snap-align: start;
+}
+
+/* === Thumbnail (primeira coluna) com rótulo elegante no hover === */
+.typeBox.guess-image {
+  box-sizing: border-box; /* <<< */
+  position: relative;
+  width: var(--col-w);
+  height: var(--col-w);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  overflow: visible;
+  color: transparent !important;
+  text-shadow: none !important;
+  z-index: 50;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14);
+}
+
+.typeBox.guess-image:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.2); /* “anel” externo bem suave */
+}
+
+/* Cabeçalho: encostado no topo e próximo da linha */
+.attribute-container {
+  position: relative;
+  z-index: 2;
+  display: none; /* vira grid via .show-attrs no JS */
+  grid-template-columns: repeat(8, var(--col-w));
+  gap: var(--col-gap);
+  justify-content: start;
+  width: max-content;
+
+  margin-top: 0 !important;
+  margin-bottom: 2px !important;
+}
+.attribute-container.show-attrs {
+  display: grid;
+}
+
+.attribute-type {
+  width: 87px;
+  height: 20px; /* ↓ bem mais baixo (era 64px) */
+  display: flex;
+  align-items: flex-end; /* texto gruda embaixo */
+  justify-content: center;
+  padding-bottom: 4px; /* distância confortável da linha */
+  text-align: center;
+
+  color: #fff;
+  font:
+    600 13px/1.05 Poppins,
+    sans-serif;
+  border-bottom: 3px solid #fff;
+  border-radius: 6px;
+  text-shadow: 2px 2px 3px #000;
+}
+
+.hover-name {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, 0);
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  background: rgba(18, 26, 36, 0.96);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+
+  font:
+    700 clamp(11px, 1.05vw, 14px)/1.25 "Inter",
+    system-ui,
+    sans-serif;
+  text-align: center;
+
+  width: max-content; /* largura = conteúdo */
+  max-width: min(60vw, 640px); /* limite pro viewport */
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+}
+.hover-name::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(18, 26, 36, 0.96);
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35));
+}
