@@ -20,10 +20,16 @@ let __SEQ_CACHE = []; // guarda índices da lista canônica
 export const WINDOW_DAYS = 30;
 export const MAX_ATTEMPTS = 6; // nº de tentativas por dia antes do fallback
 
-let _tryCount = 1;
+let _tryCount = null;
 let _randomCharacter = null;
 
-export const getTryCount = () => _tryCount;
+export const getTryCount = () => {
+  if (!_tryCount) {
+    _tryCount = localStorage.getItem("tryCount") ?? 1;
+  }
+
+  return _tryCount;
+};
 export const getRandomCharacter = () => _randomCharacter;
 
 export function setTryCount(n) {
