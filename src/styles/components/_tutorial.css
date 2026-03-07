@@ -1,13 +1,38 @@
-/* célula de imagem (primeira coluna) como QUADRADO cheio */
-/* Primeira coluna (imagem) – quadrada; mostra o nome no hover sem cobrir tudo *
+/* Ajustes finos em telas muito largas */
+@media (min-width: 1400px) {
+  .indicator-swatch {
+    width: 68%;
+  }
 
+  .help-summary {
+    font-size: 15px;
+  }
 
-  /* encolhe e limita a largura do bloco laranja */
+  .help-row {
+    font-size: 14px;
+  }
+}
 
-/* SEMPRE 5 colunas — os blocos encolhem para caber */
-/* (você já tem estes estilos do indicador; mantive por clareza) */
-/* === GRID: garante 5 colunas estáveis e não quebra === */
-/* === Container laranja (só garantindo respiro e sem vazamento) === */
+@media (max-width: 420px) {
+  .indicator-swatch {
+    width: min(72%, clamp(34px, 15vw, 56px));
+  }
+
+  .indicator-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .indicator-swatch {
+    width: min(70%, clamp(30px, 16vw, 50px));
+  }
+
+  .indicator-label {
+    font-size: 11px;
+  }
+}
+
 .tutorial-container {
   margin: 0 auto;
   max-width: min(96vw, 620px);
@@ -82,6 +107,7 @@
 .indicator-swatch.arrow {
   background: rgb(255, 0, 0);
 }
+
 .indicator-swatch.arrow img {
   width: 70%;
   height: auto;
@@ -119,6 +145,7 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
   box-sizing: border-box;
 }
+
 .help-summary {
   cursor: pointer;
   user-select: none;
@@ -134,6 +161,7 @@
   background: rgba(0, 0, 0, 0.14);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
 }
+
 .help-summary::after {
   content: "▼";
   margin-left: auto;
@@ -141,6 +169,7 @@
   opacity: 0.9;
   transition: transform 0.2s ease;
 }
+
 .indicator-help[open] .help-summary::after {
   transform: rotate(-180deg);
 }
@@ -148,6 +177,7 @@
 .help-body {
   padding: 10px 14px 12px;
 }
+
 .help-row {
   display: flex;
   align-items: flex-start;
@@ -163,6 +193,7 @@
     0 0 2px rgba(0, 0, 0, 0.45);
   box-sizing: border-box;
 }
+
 .help-swatch {
   width: 20px;
   height: 20px;
@@ -173,9 +204,11 @@
   place-items: center;
   box-sizing: border-box;
 }
+
 .help-swatch.arrow {
   background: rgb(255, 0, 0);
 }
+
 .help-swatch.arrow img {
   width: 75%;
   height: auto;

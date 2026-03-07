@@ -1,5 +1,4 @@
 :root {
-  /* tamanhos base */
   --logo-vw: 68vw;
   --logo-max: 520px;
 
@@ -14,11 +13,9 @@
   --hero-sub: clamp(13px, 1.6vw, 18px); /* tamanho do "Type any..."   */
   --hero-pad-x: clamp(14px, 3vw, 28px);
 
-  /* Color Indicator */
   --swatch: 64px; /* tamanho dos blocos de cor / setas */
   --indicator-gap: 18px;
 
-  /* espaçamento do formulário */
   --form-gap-top: clamp(12px, 2.6vh, 20px);
 }
 
@@ -34,14 +31,11 @@
 }
 @keyframes charFinish {
   to {
-    /* leve “claridade” no centro (gradiente aplicado via filter-drop)
-       + um pouquinho de definição geral */
     filter: saturate(1.08) contrast(1.06) brightness(1.05)
       drop-shadow(0 0 0 rgba(0, 0, 0, 0)); /* mantém compatibilidade */
   }
 }
 
-/* fade-in da camada vítrea */
 @keyframes glossIn {
   from {
     opacity: 0;
@@ -51,16 +45,15 @@
   }
 }
 
-/* Ajustes finos em telas muito largas */
-@media (min-width: 1400px) {
-  .indicator-swatch {
-    width: 68%;
-  } /* dá um respiro extra nas telas grandes */
-  .help-summary {
-    font-size: 15px;
+@media (max-width: 420px) {
+  :root {
+    --indicator-gap: 12px;
   }
-  .help-row {
-    font-size: 14px;
+}
+
+@media (max-width: 360px) {
+  :root {
+    --indicator-gap: 10px;
   }
 }
 
@@ -71,35 +64,10 @@
   }
 }
 
-/* ===== AJUSTES FINOS POR LARGURA (sem mexer em colunas!) ===== */
-@media (max-width: 420px) {
-  .indicator-swatch {
-    width: min(72%, clamp(34px, 15vw, 56px));
-  }
-  .indicator-label {
-    font-size: 12px;
-  }
-  :root {
-    --indicator-gap: 12px;
-  } /* dá um respiro */
-}
-
-@media (max-width: 360px) {
-  .indicator-swatch {
-    width: min(70%, clamp(30px, 16vw, 50px));
-  }
-  .indicator-label {
-    font-size: 11px;
-  }
-  :root {
-    --indicator-gap: 10px;
-  }
-}
-
 img {
   max-width: 100%;
   height: auto;
-} /* segurança extra para qualquer imagem */
+}
 
 /* Força texto branco com sombra em elementos de interface */
 .intro-text,
