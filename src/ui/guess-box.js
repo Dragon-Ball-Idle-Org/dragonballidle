@@ -111,12 +111,10 @@ export function createGuessBox(itemFound) {
   });
 }
 
-export function handleGuess(
-  userInput,
-  attributeContainer,
-  tryNumber,
-  setInputValue,
-) {
+export function handleGuess(userInput) {
+  const attributeContainer = document.getElementById("attribute-container");
+  const tryNumber = document.getElementById("nTry");
+  const guessInput = document.getElementById("search");
   let tryCount = getTryCount();
   const g = String(userInput || "").trim();
   if (!g) return;
@@ -166,7 +164,7 @@ export function handleGuess(
   });
 
   // limpa input (qualquer caso)
-  setInputValue("");
+  guessInput.value = "";
   attributeContainer.classList.add("show-attrs");
   document.querySelector(".guess-container")?.classList.add("scroll-on");
 

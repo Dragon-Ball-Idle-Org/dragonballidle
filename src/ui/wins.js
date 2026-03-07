@@ -1,4 +1,8 @@
-import { getRandomCharacter, markGameWon } from "../state/game-state.js";
+import {
+  getRandomCharacter,
+  getTryCount,
+  markGameWon,
+} from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { fetchWinsToday, incrementWinsToday } from "../http.js";
 import {
@@ -117,7 +121,7 @@ export function scheduleMidnightRefresh() {
   );
 }
 
-export function showInlineWinSummary(triesCount) {
+export function showInlineWinSummary() {
   const wrapper = document.getElementById("inline-win-wrapper");
   const tries = document.getElementById("inline-tries");
   const cd = document.getElementById("inline-countdown");
@@ -126,17 +130,18 @@ export function showInlineWinSummary(triesCount) {
   const share = document.getElementById("inline-share");
   if (!wrapper || !tries || !cd || !nameEl || !thumbEl) return;
 
+  const tryCount = getTryCount();
   const character = getRandomCharacter();
   const name = character?.name || "—";
   const thumb = getThumbSrc(character?.image || "");
 
-  tries.textContent = String(triesCount);
+  tries.textContent = String(tryCount);
   nameEl.textContent = name;
   if (thumb) {
     thumbEl.src = thumb;
     thumbEl.alt = name + " thumbnail";
   }
-  if (share) share.href = buildXShareURL(triesCount);
+  if (share) share.href = buildXShareURL(tryCount);
 
   if (_inlineCountdownTimer) clearInterval(_inlineCountdownTimer);
   const tick = () => {
@@ -159,33 +164,9 @@ export function hideInlineWinSummary() {
 
 // ── winGame ───────────────────────────────────────────────────────────────────
 
-export function winGame(tryCount) {
+export function winGame() {
   const randomCharacter = getRandomCharacter();
-  showInlineWinSummary(tryCount);
-
-  const clipCharacterImage = document.getElementById("clip-character-image");
-  if (clipCharacterImage) clipCharacterImage.src = `/${randomCharacter.image}`;
-
-  // // pegue o contador de tentativas da variável que você já usa
-  // // (se a sua variável tiver outro nome, troque aqui):
-  // TODO: Original
-  // const tries =
-  //   typeof tryCount !== "undefined"
-  //     ? tryCount
-  //     : parseInt(localStorage.getItem("tryCount") || "1", 10);
-  // === preencher mensagem da vitória ===
-  //TODO: Gerado por IA diferente do original, entender porque
-  const tryCountEl = document.getElementById("try-count");
-  const charNameEl = document.getElementById("character-name");
-  if (tryCountEl) tryCountEl.textContent = String(tryCount);
-  if (charNameEl) charNameEl.textContent = randomCharacter.name;
-
-  const winLine = document.querySelector(".win-line");
-  if (winLine) {
-    const plural = tryCount === 1 ? "try" : "tries";
-    winLine.innerHTML = `You guessed today’s Dragon Ball character in <strong id="try-count">${tryCount}</strong> ${plural}:`;
-  }
-
+  showInlineWinSummary();
   openWinPopup();
 
   const winGameContainer = document.getElementById("win-game");
@@ -219,6 +200,7 @@ export function winGame(tryCount) {
   markGameWon();
 
   // === GTM: marcou que acertou o personagem do dia ===
+  const tryCount = getTryCount();
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "dbz_win",

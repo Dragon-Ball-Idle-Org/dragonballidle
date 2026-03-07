@@ -96,19 +96,22 @@ export function closeSuggestions() {
 }
 
 /** Registra blur/focus/mousedown para fechar o dropdown */
-export function initSuggestionsListeners(inputEl, formEl) {
-  inputEl.addEventListener("blur", () => {
+export function initSuggestionsListeners() {
+  const guessInput = document.getElementById("search");
+  const form = document.getElementById("guess-form");
+
+  guessInput.addEventListener("blur", () => {
     setTimeout(() => closeSuggestions(), 150);
   });
 
-  inputEl.addEventListener("focus", () => {
+  guessInput.addEventListener("focus", () => {
     const el = getSuggestions();
-    if (inputEl.value.trim() && el?.children.length) openSuggestions();
+    if (guessInput.value.trim() && el?.children.length) openSuggestions();
   });
 
   document.addEventListener("mousedown", (ev) => {
     const el = getSuggestions();
-    if (!formEl.contains(ev.target) && !el?.contains(ev.target)) {
+    if (!form.contains(ev.target) && !el?.contains(ev.target)) {
       closeSuggestions();
     }
   });

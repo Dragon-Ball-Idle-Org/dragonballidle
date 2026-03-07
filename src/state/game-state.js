@@ -37,14 +37,6 @@ export function setTryCount(n) {
   localStorage.setItem("tryCount", String(n));
 }
 
-/** Quantos dias se passaram desde EPOCH_YMD */
-function daysSinceEpoch(ymd) {
-  const [y, m, d] = ymd.split("-").map(Number);
-  const epoch = new Date(EPOCH_YMD);
-  const target = new Date(y, m - 1, d);
-  return Math.round((target - epoch) / 86400000);
-}
-
 // ── Persistência de chutes ────────────────────────────────────────────────────
 export function getSavedGuesses() {
   if (!window.guesses) {
@@ -74,9 +66,7 @@ export function markGameWon() {
 
 // ── Reset diário ──────────────────────────────────────────────────────────────
 export function doDailyResetState(tryNumber) {
-  // estado do jogo
   _tryCount = 1;
-  if (tryNumber) tryNumber.innerHTML = _tryCount;
 
   localStorage.setItem("attributeContainer", "false");
   localStorage.setItem("gameWon", "false");

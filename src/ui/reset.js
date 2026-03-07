@@ -1,4 +1,4 @@
-import { doDailyResetState } from "../state/game-state";
+import { doDailyResetState, getTryCount } from "../state/game-state";
 import { todayBrasiliaKey } from "../utils/date";
 import { hideInlineWinSummary } from "./wins";
 
@@ -11,12 +11,16 @@ export function ensureDailyResetOnBoot() {
   }
 }
 
-export function doDailyResetUi(attributeContainer) {
+export function doDailyResetUi() {
   hideInlineWinSummary();
+
+  const tryNumber = document.getElementById("nTry");
+  if (tryNumber) tryNumber.innerHTML = getTryCount();
 
   const guessesContainer = document.getElementById("guesses-container");
   if (guessesContainer) guessesContainer.innerHTML = "";
 
+  const attributeContainer = document.getElementById("attribute-container");
   attributeContainer?.classList.remove("show-attrs");
 
   const searchInput = document.getElementById("search");
