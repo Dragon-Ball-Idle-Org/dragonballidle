@@ -59,12 +59,6 @@ export function closeWinPopup() {
     crystal.style.display = "none";
     crystal.classList.remove("show");
   }
-
-  const wonTab = document.getElementById("won-container");
-  if (wonTab) {
-    wonTab.style.display = "none";
-    wonTab.classList.remove("show");
-  }
 }
 
 /** Registra listeners de fechamento (X, clique fora, ESC) */

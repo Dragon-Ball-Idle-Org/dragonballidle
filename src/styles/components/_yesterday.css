@@ -1,4 +1,3 @@
-/* ===== Responsivo ===== */
 @media (max-width: 560px) {
   .yesterday-content {
     gap: 8px;
@@ -7,16 +6,8 @@
     width: 40px;
     height: 40px;
   }
-  /* quando apertar muito, deixa o contador quebrar abaixo sem esticar o card */
-  .yesterday-extras {
-    white-space: normal;
-    justify-self: center;
-  }
 }
 
-/* se quiser controlar por proporção (tela bem “alta”), pode usar também: */
-/* @media (max-aspect-ratio: 9/16){ #win-game{ --crystal-y: 72% !important; } } */
-/* ==== Yesterday block (ajustes) ==== */
 .yesterday-container {
   background: linear-gradient(135deg, #fb8c00, #ffa726);
   border: 2px solid #e65100;
@@ -92,17 +83,4 @@
   box-shadow:
     0 2px 10px rgba(0, 0, 0, 0.18) inset,
     0 1px 10px rgba(0, 0, 0, 0.12);
-}
-
-/* NOVO: contador "N pessoas acertaram hoje!" */
-.yesterday-extras {
-  font:
-    700 clamp(11px, 2.4vw, 13px)/1.2 Roboto,
-    system-ui,
-    sans-serif;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  white-space: nowrap; /* fica curto quando couber */
 }

@@ -36,12 +36,10 @@
   margin: 12px 0 16px 0;
 }
 
-/* card laranja — texto TODO branco com sombra preta */
 .win-summary {
   --card-bg: #fb8c00;
   --card-border: #e65100;
 
-  /* mais compacto */
   width: min(520px, 96vw);
   padding: 2px 14px;
   background: linear-gradient(135deg, var(--card-bg), #ffa726);
@@ -59,7 +57,6 @@
     Arial,
     sans-serif;
 
-  /* >>> vira grid para centralizar facilmente itens “soltos” (Share) */
   display: grid;
   grid-auto-rows: max-content;
   justify-items: center; /* Share on X no centro sem gambiarra */

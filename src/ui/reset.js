@@ -34,7 +34,4 @@ export function doDailyResetUi() {
 
   const clipCharacterMain = document.getElementById("clip-character-main");
   if (clipCharacterMain) clipCharacterMain.style.display = "none";
-
-  const wonTab = document.getElementById("won-container");
-  if (wonTab) wonTab.style.display = "none";
 }
