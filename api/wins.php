@@ -1,6 +1,4 @@
 <?php
-// public_html/api/wins.php
-
 // Timezone para “virar” meia-noite em BRT
 date_default_timezone_set('America/Sao_Paulo');
 
