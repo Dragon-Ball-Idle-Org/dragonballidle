@@ -4,7 +4,7 @@ import {
   markGameWon,
 } from "../state/game-state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
-import { fetchWinsToday, incrementWinsToday } from "../http.js";
+import { fetchWinsToday, incrementWinsToday } from "../services/wins.js";
 import {
   buildXShareURL,
   getIntroEl,
@@ -56,7 +56,7 @@ export function startWinsPolling() {
     try {
       _updateIntroWins(await fetchWinsToday());
     } catch (e) {
-      console.warn("wins poll failed", e);
+      console.error("wins poll failed", e);
     }
   };
   tick();
@@ -174,7 +174,7 @@ export function winGame() {
 
   incrementWinsToday()
     .then(_updateIntroWins)
-    .catch((e) => console.warn("increment failed", e));
+    .catch((e) => console.error("increment failed", e));
 
   localStorage.setItem("lastResetDay", todayBrasiliaKey());
   localStorage.setItem("wonTab", "true");

@@ -16,7 +16,7 @@ import { initLangMenu } from "./ui/lang-menu.js";
 import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
-import { initSuggestionsListeners, } from "./ui/suggestions.js";
+import { initSuggestionsListeners } from "./ui/suggestions.js";
 import {
   setupCountdown,
   getThumbSrc,
@@ -46,6 +46,7 @@ import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
 import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
+import { incrementWinsToday } from "./services/wins.js";
 
 const STICK_LEFT_BP = 768;
 
@@ -69,7 +70,10 @@ const charactersPromise = new Promise((resolve, reject) => {
       }
       resolve(window.characters);
     } catch (e) {
-      console.warn("characters carregado mas não exportado como binding global", e);
+      console.warn(
+        "characters carregado mas não exportado como binding global",
+        e,
+      );
       reject(e);
     }
   };
@@ -105,6 +109,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initSuggestionsListeners();
   initDetailsTagBehaviorsListener();
   initLangMenu();
+  startWinsPolling();
+  scheduleMidnightRefresh();
 
   // expõe globals de debug
   if (import.meta.env.DEV) {
@@ -118,6 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       doDailyResetUi();
       doDailyResetState();
     };
+    window.incrementWinsToday = incrementWinsToday;
     window.__getChar = () => getRandomCharacter();
     window.reseedDaily = (ymd) => {
       if (ymd && /^\d{4}-\d{2}-\d{2}$/.test(ymd)) {
@@ -133,9 +140,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
     };
   }
-
-  startWinsPolling();
-  scheduleMidnightRefresh();
 
   // ── Personagem de ontem ─────────────────────────────────────────────────────
   try {
