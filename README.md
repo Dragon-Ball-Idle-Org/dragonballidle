@@ -17,9 +17,10 @@ Todo dia existe **um personagem diferente** e o jogador tenta adivinhar com base
 ## Tecnologias principais
 
 - **Frontend**
-  - `Vite` (build e dev server)
-  - JavaScript modular (`/src`)
-  - Sistema de i18n próprio (`/src/i18n.js` + `/locales`)
+  - `Vite` (build e dev server com suporte a Multi-Page App via rollupOptions)
+  - CSS Moderno (`/src/styles/`) com Custom Properties (`var(--token)`) e Cascateamento (`@layer`)
+  - JavaScript Vanilla Modular (`/src/ui`, `/src/state`, `/src/utils`)
+  - Sistema de i18n Nativo (`/src/state/i18n.js` + `/locales`) com extrações dinâmicas
 
 - **Backend**
   - PHP 8.2 (imagem `php:8.2-apache`)
@@ -142,17 +143,21 @@ Esse fluxo torna o deploy praticamente automático a cada push na `main`.
 
 Algumas pastas/arquivos importantes:
 
-- `index.html` – HTML principal da SPA, carrega o bundle Vite e scripts de i18n.
+- `index.html` – HTML principal da SPA, carrega o bundle Vite, design e o entrypoint principal.
+- `404.html` – Página servida em caso de Not Found, acoplando i18n automático nativo sem bibliotecas.
 - `src/`
-  - `main.js` – bootstrap da UI e da lógica do jogo.
-  - `i18n.js` – detecção de idioma e carregamento de banco de caracteres (`characters-*.js`) e `locales`.
-  - `shared/constants.js` – constantes utilizadas em mais de um lugar.
+  - `main.js` – Ponto de injeção global que inicializa ferramentas e paraleliza as promessas principais.
+  - `head-seo.js` – Controlador para injetar Title e Tags de SEO dinâmicas para web-crawlers em 20+ linguagens com base em rotas.
+  - `styles/` – Estilizações modulares guiadas por `index.css` orquestrando: `base`, `layout`, `components` e `utilities`.
+  - `state/` – Camada de gerenciamento de dados essenciais e cache do app (Engine, I18n).
+  - `ui/` – Componentes limpos para montar botões, animações e listeners no DOM.
+  - `utils/` – Helpers assíncronos não acoplados ao DOM (como parseamento de datas).
 - `public/`
-  - `characters-*.js` – bancos de personagens por idioma.
-  - Assets de imagens, ícones, etc.
-- `api/wins.php` – endpoint para registrar/ler vitórias diárias.
-- `.htaccess` – regras de rewrite para i18n, SPA e redirecionos.
-- `Dockerfile` – build do front + servidor Apache/PHP.
+  - `characters-*.js` – Bancos de personagens por idioma exportados globalmente via script JSONP.
+  - Assets de imagens, bandeiras `.svg` e ícones `.ico`.
+- `api/wins.php` – endpoint para registrar/ler vitórias diárias no container backend.
+- `.htaccess` – regras de rewrite para i18n, SPA e redirecionamentos server-side.
+- `Dockerfile` – build do frontend otimizado com Node + Servidor Apache/PHP para ambiente local/produção.
 
 ---
 
