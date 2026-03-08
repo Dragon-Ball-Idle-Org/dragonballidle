@@ -158,6 +158,7 @@ function _formPreventDefaultSubmitListenerInit() {
 function _submitButtonOnClickListenerInit() {
   const getSubmitGuess = document.getElementById("submit-button");
   getSubmitGuess.addEventListener("click", () => {
+    const guessInput = document.getElementById("search");
     const userInput = (guessInput.value || "").trim();
     if (!userInput) {
       // <- bloqueia vazio

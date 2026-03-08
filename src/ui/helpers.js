@@ -90,31 +90,7 @@ export function setupCountdown() {
   }
 }
 
-//TODO: caracters é uma séries de arquivos json
-/**
- * Aguarda até maxMs ms que window.characters seja preenchido.
- * Suporta tanto window.characters quanto bindings léxicos de scripts
- * não-module (const characters = [...]).
- */
-export async function waitForCharacters(maxMs = 7000) {
-  const started = window.performance.now();
-  while (true) {
-    if (window.characters?.length) return window.characters;
-    try {
-      if (
-        typeof characters !== "undefined" &&
-        Array.isArray(characters) &&
-        characters.length
-      ) {
-        window.characters = characters;
-        return window.characters;
-      }
-    } catch (_) {}
-    await new Promise((r) => setTimeout(r, 25));
-    if (window.performance.now() - started > maxMs)
-      throw new Error("characters not loaded");
-  }
-}
+
 
 // pega o span do herói onde estava o "Type any character..."
 export function getIntroEl() {

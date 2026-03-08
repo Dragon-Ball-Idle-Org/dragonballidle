@@ -1,1060 +1,457 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link id="canon" rel="canonical" href="" />
-    <meta id="robotsTag" name="robots" content="index,follow" />
-    <meta id="ogUrl" property="og:url" content="" />
 
-    <script>
-      (function () {
-        // === SUPPORTED deve bater com i18n.js ===
-        var SUPPORTED = [
-          "pt-br",
-          "en-us",
-          "es-es",
-          "fr-fr",
-          "it-it",
-          "de-de",
-          "ru-ru",
-          "tr-tr",
-          "uk-ua",
-          "ar-sa",
-          "ja-jp",
-          "ko-kr",
-          "hi-in",
-          "th-th",
-          "vi-vn",
-          "id-id",
-          "zh-cn",
-          "zh-tw",
-          "fil-ph",
-          "ms-my",
-        ];
+<head>
+  <meta charset="UTF-8" />
+  <link id="canon" rel="canonical" href="" />
+  <meta id="robotsTag" name="robots" content="index,follow" />
+  <meta id="ogUrl" property="og:url" content="" />
 
-        var origin = location.origin;
-        var p = location.pathname.replace(/\/+$/, "");
-        var rx = new RegExp("/(" + SUPPORTED.join("|") + ")(/|$)", "i");
-        var m = rx.exec(p);
-        var lang = m ? m[1].toLowerCase() : "";
+  <!-- ICO (compat amplo) -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-        // root "/" => canônica para /en-us/ e NOINDEX (evita duplicata)
-        if (!lang) {
-          document.getElementById("canon").href = origin + "/en-us/";
-          var robots = document.getElementById("robotsTag");
-          if (robots) robots.setAttribute("content", "noindex,follow");
-        } else {
-          // páginas de idioma => canônica é a própria
-          document.getElementById("canon").href = origin + "/" + lang + "/";
-        }
+  <!-- SVG (ok) -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
-        // og:url alinhado com a canônica
-        var og = document.getElementById("ogUrl");
-        if (og)
-          og.setAttribute("content", document.getElementById("canon").href);
-      })();
-    </script>
+  <!-- PNGs (ok) -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
 
-    <!-- ICO (compat amplo) -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <!-- iOS (ok) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="DragonBallDle" />
 
-    <!-- SVG (ok) -->
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <!-- Manifest -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="application-name" content="DragonBallDle" />
 
-    <!-- PNGs (ok) -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/assets/favicon-96x96.png"
-    />
+  <title id="meta-title">DragonBallDle Guess Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- iOS (ok) -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="DragonBallDle" />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="application-name" content="DragonBallDle" />
+  <!-- i18n/SEO: alternate language versions -->
+  <link rel="alternate" hreflang="en-us" href="https://dragonballdle.site/en-us/" />
+  <link rel="alternate" hreflang="pt-br" href="https://dragonballdle.site/pt-br/" />
+  <link rel="alternate" hreflang="es-es" href="https://dragonballdle.site/es-es/" />
+  <link rel="alternate" hreflang="fr-fr" href="https://dragonballdle.site/fr-fr/" />
+  <link rel="alternate" hreflang="it-it" href="https://dragonballdle.site/it-it/" />
+  <link rel="alternate" hreflang="de-de" href="https://dragonballdle.site/de-de/" />
+  <link rel="alternate" hreflang="ru-ru" href="https://dragonballdle.site/ru-ru/" />
+  <link rel="alternate" hreflang="tr-tr" href="https://dragonballdle.site/tr-tr/" />
+  <link rel="alternate" hreflang="uk-ua" href="https://dragonballdle.site/uk-ua/" />
+  <link rel="alternate" hreflang="ar-sa" href="https://dragonballdle.site/ar-sa/" />
+  <link rel="alternate" hreflang="ja-jp" href="https://dragonballdle.site/ja-jp/" />
+  <link rel="alternate" hreflang="ko-kr" href="https://dragonballdle.site/ko-kr/" />
+  <link rel="alternate" hreflang="hi-in" href="https://dragonballdle.site/hi-in/" />
+  <link rel="alternate" hreflang="th-th" href="https://dragonballdle.site/th-th/" />
+  <link rel="alternate" hreflang="vi-vn" href="https://dragonballdle.site/vi-vn/" />
+  <link rel="alternate" hreflang="id-id" href="https://dragonballdle.site/id-id/" />
+  <link rel="alternate" hreflang="zh-cn" href="https://dragonballdle.site/zh-cn/" />
+  <link rel="alternate" hreflang="zh-tw" href="https://dragonballdle.site/zh-tw/" />
+  <link rel="alternate" hreflang="fil-ph" href="https://dragonballdle.site/fil-ph/" />
+  <link rel="alternate" hreflang="ms-my" href="https://dragonballdle.site/ms-my/" />
+  <link rel="alternate" hreflang="x-default" href="https://dragonballdle.site/en-us/" />
 
-    <title id="meta-title">DragonBallDle Guess Game</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+  <meta name="description" id="meta-description" content="" />
+  <meta property="og:title" id="og-title" content="" />
+  <meta property="og:description" id="og-description" content="" />
 
-    <link rel="stylesheet" href="/src/styles/index.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- i18n/SEO: alternate language versions -->
-    <link
-      rel="alternate"
-      hreflang="en-us"
-      href="https://dragonballdle.site/en-us/"
-    />
-    <link
-      rel="alternate"
-      hreflang="pt-br"
-      href="https://dragonballdle.site/pt-br/"
-    />
-    <link
-      rel="alternate"
-      hreflang="es-es"
-      href="https://dragonballdle.site/es-es/"
-    />
-    <link
-      rel="alternate"
-      hreflang="fr-fr"
-      href="https://dragonballdle.site/fr-fr/"
-    />
-    <link
-      rel="alternate"
-      hreflang="it-it"
-      href="https://dragonballdle.site/it-it/"
-    />
-    <link
-      rel="alternate"
-      hreflang="de-de"
-      href="https://dragonballdle.site/de-de/"
-    />
-    <link
-      rel="alternate"
-      hreflang="ru-ru"
-      href="https://dragonballdle.site/ru-ru/"
-    />
-    <link
-      rel="alternate"
-      hreflang="tr-tr"
-      href="https://dragonballdle.site/tr-tr/"
-    />
-    <link
-      rel="alternate"
-      hreflang="uk-ua"
-      href="https://dragonballdle.site/uk-ua/"
-    />
-    <link
-      rel="alternate"
-      hreflang="ar-sa"
-      href="https://dragonballdle.site/ar-sa/"
-    />
-    <link
-      rel="alternate"
-      hreflang="ja-jp"
-      href="https://dragonballdle.site/ja-jp/"
-    />
-    <link
-      rel="alternate"
-      hreflang="ko-kr"
-      href="https://dragonballdle.site/ko-kr/"
-    />
-    <link
-      rel="alternate"
-      hreflang="hi-in"
-      href="https://dragonballdle.site/hi-in/"
-    />
-    <link
-      rel="alternate"
-      hreflang="th-th"
-      href="https://dragonballdle.site/th-th/"
-    />
-    <link
-      rel="alternate"
-      hreflang="vi-vn"
-      href="https://dragonballdle.site/vi-vn/"
-    />
-    <link
-      rel="alternate"
-      hreflang="id-id"
-      href="https://dragonballdle.site/id-id/"
-    />
-    <link
-      rel="alternate"
-      hreflang="zh-cn"
-      href="https://dragonballdle.site/zh-cn/"
-    />
-    <link
-      rel="alternate"
-      hreflang="zh-tw"
-      href="https://dragonballdle.site/zh-tw/"
-    />
-    <link
-      rel="alternate"
-      hreflang="fil-ph"
-      href="https://dragonballdle.site/fil-ph/"
-    />
-    <link
-      rel="alternate"
-      hreflang="ms-my"
-      href="https://dragonballdle.site/ms-my/"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://dragonballdle.site/en-us/"
-    />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
-    <meta name="description" id="meta-description" content="" />
-    <meta property="og:title" id="og-title" content="" />
-    <meta property="og:description" id="og-description" content="" />
-    <meta property="og:type" content="website" />
+  <!-- Social preview / Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DragonBallDle" />
+  <meta property="og:image" content="https://dragonballdle.site/assets/win-png.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-    <meta
-      name="robots"
-      content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-    />
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://dragonballdle.site/assets/win-png.png" />
 
-    <!-- Social preview / Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="DragonBallDle" />
-    <meta
-      property="og:image"
-      content="https://dragonballdle.site/assets/win-png.png"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-TXJ5C7KW");
+  </script>
+  <!-- End Google Tag Manager -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9652117686251833"
+    crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1LV9DLX9B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    <!-- Twitter/X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:image"
-      content="https://dragonballdle.site/assets/win-png.png"
-    />
+    gtag("config", "G-B1LV9DLX9B");
+  </script>
 
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TXJ5C7KW");
-    </script>
-    <!-- End Google Tag Manager -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9652117686251833"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-B1LV9DLX9B"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  <!-- JS Section -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script type="module" src="/src/main.js"></script>
+  <!-- i18n the SEO tags -->
+  <script type="module" src="/src/head-seo.js"></script>
+</head>
 
-      gtag("config", "G-B1LV9DLX9B");
-    </script>
-  </head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXJ5C7KW" height="0" width="0"
+      style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TXJ5C7KW"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <header class="site-header">
+    <div class="brand">
+      <img src="/assets/logo.png" alt="DragonBallDle logo" class="logo" />
 
-    <header class="site-header">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="DragonBallDle logo" class="logo" />
+      <!-- Botão fixo de idioma  -->
+      <div class="lang-wrap">
+        <button id="lang-fixed" class="lang-fixed" title="Change language" aria-haspopup="true" aria-expanded="false"
+          aria-controls="lang-menu">
+          <img id="current-flag" alt="" />
+        </button>
 
-        <!-- Botão fixo de idioma  -->
-        <div class="lang-wrap">
-          <button
-            id="lang-fixed"
-            class="lang-fixed"
-            title="Change language"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="lang-menu"
-          >
-            <img id="current-flag" alt="" />
-          </button>
+        <!-- Popover de idiomas -->
+        <div id="lang-menu" class="lang-menu" hidden role="menu" aria-label="Select language">
+          <a role="menuitem" href="/ar-sa/" data-lang="ar-sa"><img src="/assets/flags/ar-sa.svg" alt=""
+              aria-hidden="true" />
+            AR-SA</a>
+          <a role="menuitem" href="/de-de/" data-lang="de-de"><img src="/assets/flags/de-de.svg" alt=""
+              aria-hidden="true" />
+            DE-DE</a>
+          <a role="menuitem" href="/en-us/" data-lang="en-us"><img src="/assets/flags/en-us.svg" alt=""
+              aria-hidden="true" />
+            EN-US</a>
+          <a role="menuitem" href="/es-es/" data-lang="es-es"><img src="/assets/flags/es-es.svg" alt=""
+              aria-hidden="true" />
+            ES-ES</a>
+          <a role="menuitem" href="/fil-ph/" data-lang="fil-ph"><img src="/assets/flags/fil-ph.svg" alt=""
+              aria-hidden="true" />
+            FIL-PH</a>
+          <a role="menuitem" href="/fr-fr/" data-lang="fr-fr"><img src="/assets/flags/fr-fr.svg" alt=""
+              aria-hidden="true" />
+            FR-FR</a>
+          <a role="menuitem" href="/hi-in/" data-lang="hi-in"><img src="/assets/flags/hi-in.svg" alt=""
+              aria-hidden="true" />
+            HI-IN</a>
+          <a role="menuitem" href="/id-id/" data-lang="id-id"><img src="/assets/flags/id-id.svg" alt=""
+              aria-hidden="true" />
+            ID-ID</a>
+          <a role="menuitem" href="/it-it/" data-lang="it-it"><img src="/assets/flags/it-it.svg" alt=""
+              aria-hidden="true" />
+            IT-IT</a>
+          <a role="menuitem" href="/ja-jp/" data-lang="ja-jp"><img src="/assets/flags/ja-jp.svg" alt=""
+              aria-hidden="true" />
+            JA-JP</a>
+          <a role="menuitem" href="/ko-kr/" data-lang="ko-kr"><img src="/assets/flags/ko-kr.svg" alt=""
+              aria-hidden="true" />
+            KO-KR</a>
+          <a role="menuitem" href="/ms-my/" data-lang="ms-my"><img src="/assets/flags/ms-my.svg" alt=""
+              aria-hidden="true" />
+            MS-MY</a>
+          <a role="menuitem" href="/pt-br/" data-lang="pt-br"><img src="/assets/flags/pt-br.svg" alt=""
+              aria-hidden="true" />
+            PT-BR</a>
+          <a role="menuitem" href="/ru-ru/" data-lang="ru-ru"><img src="/assets/flags/ru-ru.svg" alt=""
+              aria-hidden="true" />
+            RU-RU</a>
+          <a role="menuitem" href="/th-th/" data-lang="th-th"><img src="/assets/flags/th-th.svg" alt=""
+              aria-hidden="true" />
+            TH-TH</a>
+          <a role="menuitem" href="/tr-tr/" data-lang="tr-tr"><img src="/assets/flags/tr-tr.svg" alt=""
+              aria-hidden="true" />
+            TR-TR</a>
+          <a role="menuitem" href="/uk-ua/" data-lang="uk-ua"><img src="/assets/flags/uk-ua.svg" alt=""
+              aria-hidden="true" />
+            UK-UA</a>
+          <a role="menuitem" href="/vi-vn/" data-lang="vi-vn"><img src="/assets/flags/vi-vn.svg" alt=""
+              aria-hidden="true" />
+            VI-VN</a>
+          <a role="menuitem" href="/zh-cn/" data-lang="zh-cn"><img src="/assets/flags/zh-cn.svg" alt=""
+              aria-hidden="true" />
+            ZH-CN</a>
+          <a role="menuitem" href="/zh-tw/" data-lang="zh-tw"><img src="/assets/flags/zh-tw.svg" alt=""
+              aria-hidden="true" />
+            ZH-TW</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-          <!-- Popover de idiomas -->
-          <div
-            id="lang-menu"
-            class="lang-menu"
-            hidden
-            role="menu"
-            aria-label="Select language"
-          >
-            <a role="menuitem" href="/ar-sa/" data-lang="ar-sa"
-              ><img src="/assets/flags/ar-sa.svg" alt="" aria-hidden="true" />
-              AR-SA</a
-            >
-            <a role="menuitem" href="/de-de/" data-lang="de-de"
-              ><img src="/assets/flags/de-de.svg" alt="" aria-hidden="true" />
-              DE-DE</a
-            >
-            <a role="menuitem" href="/en-us/" data-lang="en-us"
-              ><img src="/assets/flags/en-us.svg" alt="" aria-hidden="true" />
-              EN-US</a
-            >
-            <a role="menuitem" href="/es-es/" data-lang="es-es"
-              ><img src="/assets/flags/es-es.svg" alt="" aria-hidden="true" />
-              ES-ES</a
-            >
-            <a role="menuitem" href="/fil-ph/" data-lang="fil-ph"
-              ><img src="/assets/flags/fil-ph.svg" alt="" aria-hidden="true" />
-              FIL-PH</a
-            >
-            <a role="menuitem" href="/fr-fr/" data-lang="fr-fr"
-              ><img src="/assets/flags/fr-fr.svg" alt="" aria-hidden="true" />
-              FR-FR</a
-            >
-            <a role="menuitem" href="/hi-in/" data-lang="hi-in"
-              ><img src="/assets/flags/hi-in.svg" alt="" aria-hidden="true" />
-              HI-IN</a
-            >
-            <a role="menuitem" href="/id-id/" data-lang="id-id"
-              ><img src="/assets/flags/id-id.svg" alt="" aria-hidden="true" />
-              ID-ID</a
-            >
-            <a role="menuitem" href="/it-it/" data-lang="it-it"
-              ><img src="/assets/flags/it-it.svg" alt="" aria-hidden="true" />
-              IT-IT</a
-            >
-            <a role="menuitem" href="/ja-jp/" data-lang="ja-jp"
-              ><img src="/assets/flags/ja-jp.svg" alt="" aria-hidden="true" />
-              JA-JP</a
-            >
-            <a role="menuitem" href="/ko-kr/" data-lang="ko-kr"
-              ><img src="/assets/flags/ko-kr.svg" alt="" aria-hidden="true" />
-              KO-KR</a
-            >
-            <a role="menuitem" href="/ms-my/" data-lang="ms-my"
-              ><img src="/assets/flags/ms-my.svg" alt="" aria-hidden="true" />
-              MS-MY</a
-            >
-            <a role="menuitem" href="/pt-br/" data-lang="pt-br"
-              ><img src="/assets/flags/pt-br.svg" alt="" aria-hidden="true" />
-              PT-BR</a
-            >
-            <a role="menuitem" href="/ru-ru/" data-lang="ru-ru"
-              ><img src="/assets/flags/ru-ru.svg" alt="" aria-hidden="true" />
-              RU-RU</a
-            >
-            <a role="menuitem" href="/th-th/" data-lang="th-th"
-              ><img src="/assets/flags/th-th.svg" alt="" aria-hidden="true" />
-              TH-TH</a
-            >
-            <a role="menuitem" href="/tr-tr/" data-lang="tr-tr"
-              ><img src="/assets/flags/tr-tr.svg" alt="" aria-hidden="true" />
-              TR-TR</a
-            >
-            <a role="menuitem" href="/uk-ua/" data-lang="uk-ua"
-              ><img src="/assets/flags/uk-ua.svg" alt="" aria-hidden="true" />
-              UK-UA</a
-            >
-            <a role="menuitem" href="/vi-vn/" data-lang="vi-vn"
-              ><img src="/assets/flags/vi-vn.svg" alt="" aria-hidden="true" />
-              VI-VN</a
-            >
-            <a role="menuitem" href="/zh-cn/" data-lang="zh-cn"
-              ><img src="/assets/flags/zh-cn.svg" alt="" aria-hidden="true" />
-              ZH-CN</a
-            >
-            <a role="menuitem" href="/zh-tw/" data-lang="zh-tw"
-              ><img src="/assets/flags/zh-tw.svg" alt="" aria-hidden="true" />
-              ZH-TW</a
-            >
+  <main class="container" id="game">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="game-sub-container text-center px-3 py-4">
+          <span class="intro-text" data-i18n="intro.title">Guess today's Dragon Ball character!</span>
+          <span class="intro-guess" data-i18n="intro.subtitle">N people have already guessed today's character!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TUTORIAL -->
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="tutorial-container px-3 py-3">
+          <div class="tutorial-title" data-i18n="tutorial.title">
+            Color Indicator
+          </div>
+
+          <div class="indicator-grid">
+            <div class="indicator-item">
+              <div class="indicator-swatch bg-correct"></div>
+              <div class="indicator-label" data-i18n="tutorial.correct">
+                Correct
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-swatch bg-partial"></div>
+              <div class="indicator-label" data-i18n="tutorial.partial">
+                Partial
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-swatch bg-incorrect"></div>
+              <div class="indicator-label" data-i18n="tutorial.incorrect">
+                Incorrect
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-swatch arrow">
+                <img src="/assets/up-arrow.png" alt="After" />
+              </div>
+              <div class="indicator-label" data-i18n="tutorial.after">
+                After
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-swatch arrow">
+                <img src="/assets/down-arrow.png" alt="Before" />
+              </div>
+              <div class="indicator-label" data-i18n="tutorial.before">
+                Before
+              </div>
+            </div>
+          </div>
+
+          <details class="indicator-help mt-2">
+            <summary class="help-summary" data-i18n="tutorial.quickGuide">
+              Need a quick guide?
+            </summary>
+
+            <div class="help-body">
+              <div class="help-row">
+                <span class="help-swatch bg-correct" aria-hidden="true"></span>
+                <span data-i18n="help.correct"><strong>Correct</strong> — This attribute is exactly
+                  right.</span>
+              </div>
+
+              <div class="help-row">
+                <span class="help-swatch bg-partial" aria-hidden="true"></span>
+                <span data-i18n="help.partial"><strong>Partial</strong> — At least one value
+                  matches.</span>
+              </div>
+
+              <div class="help-row">
+                <span class="help-swatch bg-incorrect" aria-hidden="true"></span>
+                <span data-i18n="help.incorrect"><strong>Incorrect</strong> — This attribute is completely
+                  wrong.</span>
+              </div>
+
+              <div class="help-row">
+                <span class="help-swatch arrow" aria-hidden="true">
+                  <img src="/assets/up-arrow.png" alt="" />
+                </span>
+                <span data-i18n="help.after"><strong>After</strong> — The daily character’s
+                  <em>debut saga</em> is after your guess.</span>
+              </div>
+
+              <div class="help-row">
+                <span class="help-swatch arrow" aria-hidden="true">
+                  <img src="/assets/down-arrow.png" alt="" />
+                </span>
+                <span data-i18n="help.before"><strong>Before</strong> — The daily character’s
+                  <em>debut saga</em> is before your guess.</span>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- YESTERDAY CHARACTER SECTION-->
+        <div class="row justify-content-center mt-2">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div id="yesterday-container" class="yesterday-container px-3 py-2" hidden>
+              <div class="yesterday-title" data-i18n="yesterday.title">
+                Personagem de ontem
+              </div>
+              <div class="yesterday-content">
+                <img id="yesterday-thumb" alt="" />
+                <div class="yesterday-text">
+                  <span class="yesterday-label" data-i18n="yesterday.label">Personagem:</span>
+                  <strong class="yesterday-name" id="yesterday-name">—</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
-    <main class="container" id="game">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8">
-          <div class="game-sub-container text-center px-3 py-4">
-            <span class="intro-text" data-i18n="intro.title"
-              >Guess today's Dragon Ball character!</span
-            >
-            <span class="intro-guess" data-i18n="intro.subtitle"
-              >N people have already guessed today's character!</span
-            >
-          </div>
-        </div>
-      </div>
-      <!-- tutorial -->
-      <div class="row justify-content-center mt-3">
-        <div class="col-12 col-md-8 col-lg-6">
-          <div class="tutorial-container px-3 py-3">
-            <div class="tutorial-title" data-i18n="tutorial.title">
-              Color Indicator
-            </div>
-
-            <!-- 5 blocos -->
-            <div class="indicator-grid">
-              <div class="indicator-item">
-                <div class="indicator-swatch bg-correct"></div>
-                <div class="indicator-label" data-i18n="tutorial.correct">
-                  Correct
-                </div>
+    <!-- WIN SUMMARY SECTION -->
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="summary-container px-3 py-3">
+          <div id="inline-win-wrapper" class="win-wrapper hidden" aria-live="polite">
+            <div class="win-summary">
+              <div class="win-summary__title" data-i18n="winMini.title">
+                Today’s result
               </div>
 
-              <div class="indicator-item">
-                <div class="indicator-swatch bg-partial"></div>
-                <div class="indicator-label" data-i18n="tutorial.partial">
-                  Partial
-                </div>
+              <div class="win-summary__row">
+                <span class="win-summary__label" data-i18n="winMini.tries">🔢 Tries</span>
+                <span class="win-summary__value" id="inline-tries">–</span>
               </div>
 
-              <div class="indicator-item">
-                <div class="indicator-swatch bg-incorrect"></div>
-                <div class="indicator-label" data-i18n="tutorial.incorrect">
-                  Incorrect
-                </div>
+              <div class="win-summary__row">
+                <span class="win-summary__label" data-i18n="winMini.next">⏳ Next character</span>
+                <span class="win-summary__value" id="inline-countdown">--:--:--</span>
               </div>
 
-              <div class="indicator-item">
-                <div class="indicator-swatch arrow">
-                  <img src="/assets/up-arrow.png" alt="After" />
+              <div class="win-summary__row win-summary__char">
+                <div class="char-left">
+                  <span class="win-summary__label" data-i18n="winMini.todayChar">🎯 Today’s character</span>
+                  <strong class="char-name" id="inline-char-name">—</strong>
                 </div>
-                <div class="indicator-label" data-i18n="tutorial.after">
-                  After
-                </div>
+                <img id="inline-char-thumb" alt="Character thumbnail" />
               </div>
 
-              <div class="indicator-item">
-                <div class="indicator-swatch arrow">
-                  <img src="/assets/down-arrow.png" alt="Before" />
-                </div>
-                <div class="indicator-label" data-i18n="tutorial.before">
-                  Before
-                </div>
-              </div>
-            </div>
-
-            <!-- DICAS (menu expansível, dentro do mesmo container) -->
-            <details class="indicator-help mt-2">
-              <summary class="help-summary" data-i18n="tutorial.quickGuide">
-                Need a quick guide?
-              </summary>
-
-              <div class="help-body">
-                <div class="help-row">
-                  <span
-                    class="help-swatch bg-correct"
-                    aria-hidden="true"
-                  ></span>
-                  <span data-i18n="help.correct"
-                    ><strong>Correct</strong> — This attribute is exactly
-                    right.</span
-                  >
-                </div>
-
-                <div class="help-row">
-                  <span
-                    class="help-swatch bg-partial"
-                    aria-hidden="true"
-                  ></span>
-                  <span data-i18n="help.partial"
-                    ><strong>Partial</strong> — At least one value
-                    matches.</span
-                  >
-                </div>
-
-                <div class="help-row">
-                  <span
-                    class="help-swatch bg-incorrect"
-                    aria-hidden="true"
-                  ></span>
-                  <span data-i18n="help.incorrect"
-                    ><strong>Incorrect</strong> — This attribute is completely
-                    wrong.</span
-                  >
-                </div>
-
-                <div class="help-row">
-                  <span class="help-swatch arrow" aria-hidden="true">
-                    <img src="/assets/up-arrow.png" alt="" />
-                  </span>
-                  <span data-i18n="help.after"
-                    ><strong>After</strong> — The daily character’s
-                    <em>debut saga</em> is after your guess.</span
-                  >
-                </div>
-
-                <div class="help-row">
-                  <span class="help-swatch arrow" aria-hidden="true">
-                    <img src="/assets/down-arrow.png" alt="" />
-                  </span>
-                  <span data-i18n="help.before"
-                    ><strong>Before</strong> — The daily character’s
-                    <em>debut saga</em> is before your guess.</span
-                  >
-                </div>
-              </div>
-            </details>
-          </div>
-          <!-- /.tutorial-container -->
-          <!-- YESTERDAY CARD -->
-          <div class="row justify-content-center mt-2">
-            <div class="col-12 col-md-8 col-lg-6">
-              <div
-                id="yesterday-container"
-                class="yesterday-container px-3 py-2"
-                hidden
-              >
-                <div class="yesterday-title" data-i18n="yesterday.title">
-                  Personagem de ontem
-                </div>
-                <div class="yesterday-content">
-                  <img id="yesterday-thumb" alt="" />
-                  <div class="yesterday-text">
-                    <span class="yesterday-label" data-i18n="yesterday.label"
-                      >Personagem:</span
-                    >
-                    <strong class="yesterday-name" id="yesterday-name"
-                      >—</strong
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <!-- WIN SUMMARY: card laranja próprio (fora do guess panel) -->
-      <div class="row justify-content-center mt-3">
-        <div class="col-12 col-md-8 col-lg-6">
-          <div class="summary-container px-3 py-3">
-            <div
-              id="inline-win-wrapper"
-              class="win-wrapper hidden"
-              aria-live="polite"
-            >
-              <!-- wrapper interno do cartão -->
-              <div class="win-summary">
-                <div class="win-summary__title" data-i18n="winMini.title">
-                  Today’s result
-                </div>
-
-                <div class="win-summary__row">
-                  <span class="win-summary__label" data-i18n="winMini.tries"
-                    >🔢 Tries</span
-                  >
-                  <span class="win-summary__value" id="inline-tries">–</span>
-                </div>
-
-                <div class="win-summary__row">
-                  <span class="win-summary__label" data-i18n="winMini.next"
-                    >⏳ Next character</span
-                  >
-                  <span class="win-summary__value" id="inline-countdown"
-                    >--:--:--</span
-                  >
-                </div>
-
-                <div class="win-summary__row win-summary__char">
-                  <div class="char-left">
-                    <span
-                      class="win-summary__label"
-                      data-i18n="winMini.todayChar"
-                      >🎯 Today’s character</span
-                    >
-                    <strong class="char-name" id="inline-char-name">—</strong>
-                  </div>
-                  <img id="inline-char-thumb" alt="Character thumbnail" />
-                </div>
-
-                <a
-                  id="inline-share"
-                  class="win-summary__share"
-                  href="#"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="18"
-                    height="18"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M18.9 3H22l-7.7 8.8L22.7 21H16l-5-6.3L4.8 21H2l8.4-9.6L1.6 3H8l4.5 5.7L18.9 3z"
-                    />
-                  </svg>
-                  <span data-i18n="share.label">Share on X</span>
-                </a>
-              </div>
-              <!-- /.win-summary -->
-            </div>
-            <!-- /#inline-win-wrapper -->
-          </div>
-          <!-- /.summary-container -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="row justify-content-center mt-3">
-        <div class="col-12 col-md-10 col-lg-8">
-          <!-- PAINEL DOS CHUTES -->
-          <div class="guess-container" id="guesses-panel">
-            <!-- FORM FIXO DO PRÓPRIO PAINEL -->
-            <form id="guess-form" autocomplete="off">
-              <input
-                class="guess-input"
-                id="search"
-                type="text"
-                data-i18n-placeholder="search.placeholder"
-                placeholder="Type character name..."
-              />
-              <ul id="suggestions" class="dropdown"></ul>
-              <button
-                id="submit-button"
-                class="submit-button"
-                type="submit"
-                style="background: none; border: none"
-              >
-                <img
-                  src="/assets/submit-icon.png"
-                  alt="submit"
-                  width="80"
-                  height="80"
-                  id="dragonball"
-                />
-              </button>
-            </form>
-
-            <!-- CABEÇALHO DAS COLUNAS -->
-            <div class="attribute-container" id="attribute-container">
-              <span class="attribute-type" data-i18n="columns.character"
-                >Character</span
-              >
-              <span class="attribute-type" data-i18n="columns.gender"
-                >Gender</span
-              >
-              <span class="attribute-type" data-i18n="columns.race">Race</span>
-              <span class="attribute-type" data-i18n="columns.affiliation"
-                >Affiliation</span
-              >
-              <span class="attribute-type" data-i18n="columns.transformation"
-                >Transformation</span
-              >
-              <span class="attribute-type" data-i18n="columns.attribute"
-                >Attribute</span
-              >
-              <span class="attribute-type" data-i18n="columns.series"
-                >Series</span
-              >
-              <span class="attribute-type" data-i18n="columns.saga">Saga</span>
-            </div>
-            <!-- LINHAS DE CHUTES -->
-            <div class="guesses-container" id="guesses-container"></div>
-          </div>
-        </div>
-        <div id="app"></div>
-
-        <script type="module">
-          import {
-            getLangFromPath,
-            setDocumentLang,
-            loadLocaleStrings,
-            applyStrings,
-            langToCharsFile,
-          } from "/src/i18n.js";
-
-          // 1) idioma pela rota
-          const lang = getLangFromPath();
-          setDocumentLang(lang);
-
-          // 2) strings
-          loadLocaleStrings(lang)
-            .then((strings) => {
-              // aplica textos do app
-              applyStrings(strings);
-
-              // === TITLE pela i18n (com fallback para 19 locais) ===
-              const TITLE_FALLBACKS = {
-                "en-us": "DragonBallDle — Guess the Character of the Day",
-                "pt-br": "DragonBallDle — Descubra o Personagem do Dia",
-                "es-es": "DragonBallDle — Adivina el Personaje del Día",
-                "fr-fr": "DragonBallDle — Devinez le personnage du jour",
-                "it-it": "DragonBallDle — Indovina il personaggio del giorno",
-                "de-de": "DragonBallDle — Errate den Charakter des Tages",
-                "ru-ru": "DragonBallDle — Угадайте персонажа дня",
-                "tr-tr": "DragonBallDle — Günün karakterini tahmin et",
-                "uk-ua": "DragonBallDle — Вгадайте персонажа дня",
-                "ar-sa": "DragonBallDle — خمّن شخصية اليوم",
-                "ja-jp": "DragonBallDle — 今日のキャラクターを当てよう",
-                "ko-kr": "DragonBallDle — 오늘의 캐릭터를 맞혀보세요",
-                "hi-in": "DragonBallDle — आज के पात्र का अनुमान लगाएँ",
-                "th-th": "DragonBallDle — ทายตัวละครประจำวัน",
-                "vi-vn": "DragonBallDle — Đoán nhân vật trong ngày",
-                "id-id": "DragonBallDle — Tebak Karakter Hari Ini",
-                "zh-cn": "DragonBallDle — 猜今日角色",
-                "zh-tw": "DragonBallDle — 猜今日角色",
-                "fil-ph": "DragonBallDle — Hulaan ang Karakter ng Araw",
-                "ms-my": "DragonBallDle — Teka Watak Hari Ini",
-              };
-
-              const titleFromI18n = strings?.["meta.title"];
-              const fallbackTitle =
-                TITLE_FALLBACKS[lang] || TITLE_FALLBACKS["en-us"];
-              const finalTitle = titleFromI18n || fallbackTitle;
-
-              // seta <title> e o conteúdo textual do elemento
-              document.title = finalTitle;
-              const metaTitleEl = document.getElementById("meta-title");
-              if (metaTitleEl) metaTitleEl.textContent = finalTitle;
-
-              // opcional: também atualiza o og:title
-              const ogTitle = document.getElementById("og-title");
-              if (ogTitle) ogTitle.setAttribute("content", finalTitle);
-
-              // === META DESCRIPTION pela i18n ===
-              const descFromI18n = strings?.["meta.description"];
-
-              const fallbackDesc =
-                lang === "pt-br"
-                  ? "Adivinhe o personagem de Dragon Ball de hoje. Desafio diário rápido e gratuito."
-                  : lang === "en-us"
-                    ? "Guess today’s Dragon Ball character. Fast, free daily challenge."
-                    : lang === "es-es"
-                      ? "Adivina el personaje de Dragon Ball de hoy. Reto diario rápido y gratuito."
-                      : lang === "fr-fr"
-                        ? "Devinez le personnage de Dragon Ball d’aujourd’hui. Défi quotidien rapide et gratuit."
-                        : lang === "it-it"
-                          ? "Indovina il personaggio di Dragon Ball di oggi. Sfida quotidiana veloce e gratuita."
-                          : lang === "de-de"
-                            ? "Errate den Dragon Ball-Charakter des Tages. Schnelle, kostenlose tägliche Herausforderung."
-                            : lang === "ru-ru"
-                              ? "Угадайте сегодняшнего персонажа Dragon Ball. Быстрое и бесплатное ежедневное испытание."
-                              : lang === "tr-tr"
-                                ? "Bugünün Dragon Ball karakterini tahmin et. Hızlı ve ücretsiz günlük meydan okuma."
-                                : lang === "uk-ua"
-                                  ? "Вгадай сьогоднішнього персонажа Dragon Ball. Швидке й безкоштовне щоденне випробування."
-                                  : lang === "ar-sa"
-                                    ? "خمن شخصية دراغون بول اليوم. تحدي يومي سريع ومجاني."
-                                    : lang === "ja-jp"
-                                      ? "今日のドラゴンボールのキャラクターを当てよう。早くて無料の毎日チャレンジ。"
-                                      : lang === "ko-kr"
-                                        ? "오늘의 드래곤볼 캐릭터를 맞혀보세요. 빠르고 무료인 일일 도전입니다."
-                                        : lang === "hi-in"
-                                          ? "आज के ड्रैगन बॉल चरित्र का अनुमान लगाएं। तेज़ और मुफ्त दैनिक चुनौती।"
-                                          : lang === "th-th"
-                                            ? "ทายตัวละครดราก้อนบอลประจำวันนี้ ท้าทายประจำวัน รวดเร็วและฟรี"
-                                            : lang === "vi-vn"
-                                              ? "Đoán nhân vật Dragon Ball hôm nay. Thử thách hàng ngày nhanh và miễn phí."
-                                              : lang === "id-id"
-                                                ? "Tebak karakter Dragon Ball hari ini. Tantangan harian cepat dan gratis."
-                                                : lang === "zh-cn"
-                                                  ? "猜猜今天的龙珠角色。快速且免费的每日挑战。"
-                                                  : lang === "zh-tw"
-                                                    ? "猜猜今天的七龍珠角色。快速又免費的每日挑戰。"
-                                                    : lang === "fil-ph"
-                                                      ? "Hulaan ang Dragon Ball character ngayon. Mabilis at libreng daily challenge."
-                                                      : lang === "ms-my"
-                                                        ? "Teka watak Dragon Ball hari ini. Cabaran harian pantas dan percuma."
-                                                        : "Guess today’s Dragon Ball character. Fast, free daily challenge.";
-
-              const finalDesc = descFromI18n || fallbackDesc;
-
-              const metaDesc = document.getElementById("meta-description");
-              if (metaDesc) metaDesc.setAttribute("content", finalDesc);
-            })
-            .catch(console.error);
-
-          // 3) injeta o banco correto
-          const s = document.createElement("script");
-          s.src = "/" + langToCharsFile(lang); // ex.: /characters-en_us.js
-          // s.defer = true;   // NÃO usar defer aqui
-
-          // quando terminar de carregar, "espelha" a binding global em window.characters
-          s.onload = () => {
-            try {
-              // eslint-disable-next-line no-undef
-              if (typeof characters !== "undefined" && !window.characters) {
-                // eslint-disable-next-line no-undef
-                window.characters = characters;
-              }
-            } catch (e) {
-              console.warn(
-                "characters carregado mas não exportado como binding global",
-                e,
-              );
-            }
-          };
-          s.onerror = (e) =>
-            console.error("Falha ao carregar o banco:", s.src, e);
-          document.head.appendChild(s);
-        </script>
-
-        <script type="module" src="/src/main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-        <footer class="site-footer footer-glass mt-5">
-          <div class="container py-3 text-center">
-            <div class="fw-bold fs-5 mb-1" data-i18n="footer.brand">
-              DragonBallDle
-            </div>
-            <div class="small mb-3" data-i18n="footer.tagline">
-              The daily challenge for true Dragon Ball fans
-            </div>
-
-            <div class="d-flex justify-content-center gap-4 mb-3">
-              <a
-                href="https://www.linkedin.com/in/arthur-coelho-9a77a1216/"
-                target="_blank"
-                class="text-light text-decoration-none"
-              >
-                <span data-i18n="footer.arthur">Arthur (LinkedIn)</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/j%C3%BAlio-villa-pires-2678431b8/"
-                target="_blank"
-                class="text-light text-decoration-none"
-              >
-                <span data-i18n="footer.julio">Júlio (LinkedIn)</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/gildofj/"
-                target="_blank"
-                class="text-light text-decoration-none"
-              >
-                <span data-i18n="footer.gildo">Gildo (LinkedIn)</span>
+              <a id="inline-share" class="win-summary__share" href="#" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M18.9 3H22l-7.7 8.8L22.7 21H16l-5-6.3L4.8 21H2l8.4-9.6L1.6 3H8l4.5 5.7L18.9 3z" />
+                </svg>
+                <span data-i18n="share.label">Share on X</span>
               </a>
             </div>
-
-            <div class="small text-secondary">
-              <span id="currentYear"></span>
-              <span data-i18n="footer.brand">DragonBallDle</span>.
-            </div>
-          </div>
-        </footer>
-
-        <script>
-          // insere automaticamente o ano atual no footer
-          document.getElementById("currentYear").textContent =
-            new Date().getFullYear();
-        </script>
-
-        <div id="win-game">
-          <div class="win-card">
-            <div class="win-art">
-              <img
-                class="win-img"
-                src="/assets/win-png.png"
-                alt="Baba Uranai"
-              />
-              <div id="clip-character-popup">
-                <img
-                  id="clip-character-image"
-                  src=""
-                  alt="Daily Character Portrait"
-                />
-              </div>
-            </div>
-
-            <div class="winText-container">
-              <h2 class="congrats" data-i18n="popup.congrats">
-                Congratulations!
-              </h2>
-              <p class="win-line">
-                <span data-i18n="popup.line.before"
-                  >You guessed today’s Dragon Ball character in</span
-                >
-                <strong id="try-count">0</strong>
-                <span data-i18n="popup.line.after">tries:</span>
-              </p>
-
-              <p class="win-name"><span id="character-name"></span></p>
-
-              <!-- countdown (preexistente no DOM; o JS só atualiza) -->
-              <div
-                id="countdown"
-                class="countdown-badge"
-                aria-live="polite"
-              ></div>
-            </div>
-
-            <button id="close-popup">X</button>
           </div>
         </div>
-        <script>
-          (function () {
-            const btn = document.getElementById("lang-fixed");
-            const menu = document.getElementById("lang-menu");
-            const flag = document.getElementById("current-flag");
-            if (!btn || !menu || !flag) return;
-
-            // SUPPORTED deve bater com i18n.js
-            const SUPPORTED = [
-              "pt-br",
-              "en-us",
-              "es-es",
-              "fr-fr",
-              "it-it",
-              "de-de",
-              "ru-ru",
-              "tr-tr",
-              "uk-ua",
-              "ar-sa",
-              "ja-jp",
-              "ko-kr",
-              "hi-in",
-              "th-th",
-              "vi-vn",
-              "id-id",
-              "zh-cn",
-              "zh-tw",
-              "fil-ph",
-              "ms-my",
-            ];
-
-            // Mapa de códigos -> bandeiras (adicione/ajuste conforme seus arquivos)
-            const FLAG_BY_LANG = {
-              "pt-br": "/assets/flags/pt-br.svg",
-              "en-us": "/assets/flags/en-us.svg",
-              "es-es": "/assets/flags/es-es.svg",
-              "fr-fr": "/assets/flags/fr-fr.svg",
-              "it-it": "/assets/flags/it-it.svg",
-              "de-de": "/assets/flags/de-de.svg",
-              "ru-ru": "/assets/flags/ru-ru.svg",
-              "tr-tr": "/assets/flags/tr-tr.svg",
-              "uk-ua": "/assets/flags/uk-ua.svg",
-              "ar-sa": "/assets/flags/ar-sa.svg",
-              "ja-jp": "/assets/flags/ja-jp.svg",
-              "ko-kr": "/assets/flags/ko-kr.svg",
-              "hi-in": "/assets/flags/hi-in.svg",
-              "th-th": "/assets/flags/th-th.svg",
-              "vi-vn": "/assets/flags/vi-vn.svg",
-              "id-id": "/assets/flags/id-id.svg",
-              "zh-cn": "/assets/flags/zh-cn.svg",
-              "zh-tw": "/assets/flags/zh-tw.svg",
-              "fil-ph": "/assets/flags/fil-ph.svg",
-              "ms-my": "/assets/flags/ms-my.svg",
-            };
-
-            // Descobre o idioma atual pela rota (dinâmico)
-            const path = location.pathname.replace(/\/+$/, "");
-            const rx = new RegExp("/(" + SUPPORTED.join("|") + ")(/|$)", "i");
-            const currentLang = (rx.exec(path) || [, "en-us"])[1].toLowerCase();
-
-            // Mostra a bandeira atual no botão
-            flag.src = FLAG_BY_LANG[currentLang] || FLAG_BY_LANG["en-us"];
-            flag.alt = currentLang.toUpperCase();
-
-            function openMenu() {
-              menu.hidden = false;
-              btn.setAttribute("aria-expanded", "true");
-            }
-            function closeMenu() {
-              menu.hidden = true;
-              btn.setAttribute("aria-expanded", "false");
-            }
-            function toggleMenu() {
-              (menu.hidden ? openMenu : closeMenu)();
-            }
-
-            btn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              toggleMenu();
-            });
-            document.addEventListener("click", (e) => {
-              if (menu.hidden) return;
-              if (e.target === btn || menu.contains(e.target)) return;
-              closeMenu();
-            });
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") closeMenu();
-            });
-
-            // Tooltip (fallback inglês para os novos)
-            const TOOLTIP = {
-              "pt-br": "Mudar idioma",
-              "en-us": "Change language",
-              "es-es": "Cambiar idioma",
-            };
-            btn.title = TOOLTIP[currentLang] || TOOLTIP["en-us"];
-          })();
-        </script>
-
-        <script>
-          // Em SPA, empurre um evento de “virtual pageview” quando a URL muda
-          (function () {
-            function pushPageView() {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
-                event: "page_view",
-                page_path: location.pathname + location.search + location.hash,
-                page_title: document.title,
-                page_language: document.documentElement.lang || "",
-              });
-            }
-
-            // 1) Primeiro carregamento
-            pushPageView();
-
-            // 2) Quando mudar o idioma via clique (se sua troca de idioma NÃO recarregar):
-            document.addEventListener("click", function (e) {
-              const a = e.target.closest("a[href]");
-              if (!a) return;
-              const url = new URL(a.href, location.origin);
-              // se for navegação interna:
-              if (url.origin === location.origin) {
-                // deixa o navegador navegar; se não houver reload, empurra o evento depois
-                setTimeout(pushPageView, 50);
-              }
-            });
-
-            // 3) Voltar/avançar do browser (caso use History API no futuro)
-            window.addEventListener("popstate", pushPageView);
-          })();
-        </script>
       </div>
-    </main>
-  </body>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-10 col-lg-8">
+        <!-- PAINEL DOS CHUTES -->
+        <div class="guess-container" id="guesses-panel">
+          <!-- FORM FIXO DO PRÓPRIO PAINEL -->
+          <form id="guess-form" autocomplete="off">
+            <input class="guess-input" id="search" type="text" data-i18n-placeholder="search.placeholder"
+              placeholder="Type character name..." />
+            <ul id="suggestions" class="dropdown"></ul>
+            <button id="submit-button" class="submit-button" type="submit">
+              <img src="/assets/submit-icon.png" alt="submit" width="80" height="80" id="dragonball" />
+            </button>
+          </form>
+
+          <!-- CABEÇALHO DAS COLUNAS -->
+          <div class="attribute-container" id="attribute-container">
+            <span class="attribute-type" data-i18n="columns.character">Character</span>
+            <span class="attribute-type" data-i18n="columns.gender">Gender</span>
+            <span class="attribute-type" data-i18n="columns.race">Race</span>
+            <span class="attribute-type" data-i18n="columns.affiliation">Affiliation</span>
+            <span class="attribute-type" data-i18n="columns.transformation">Transformation</span>
+            <span class="attribute-type" data-i18n="columns.attribute">Attribute</span>
+            <span class="attribute-type" data-i18n="columns.series">Series</span>
+            <span class="attribute-type" data-i18n="columns.saga">Saga</span>
+          </div>
+          <div class="guesses-container" id="guesses-container"></div>
+        </div>
+      </div>
+
+      <footer class="site-footer footer-glass mt-5">
+        <div class="container py-3 text-center">
+          <div class="fw-bold fs-5 mb-1" data-i18n="footer.brand">
+            DragonBallDle
+          </div>
+          <div class="small mb-3" data-i18n="footer.tagline">
+            The daily challenge for true Dragon Ball fans
+          </div>
+
+          <div class="d-flex justify-content-center gap-4 mb-3">
+            <a href="https://www.linkedin.com/in/arthur-coelho-9a77a1216/" target="_blank"
+              class="text-light text-decoration-none">
+              <span data-i18n="footer.arthur">Arthur (LinkedIn)</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/j%C3%BAlio-villa-pires-2678431b8/" target="_blank"
+              class="text-light text-decoration-none">
+              <span data-i18n="footer.julio">Júlio (LinkedIn)</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/gildofj/" target="_blank" class="text-light text-decoration-none">
+              <span data-i18n="footer.gildo">Gildo (LinkedIn)</span>
+            </a>
+          </div>
+
+          <div class="small text-secondary">
+            <span id="currentYear"></span>
+            <span data-i18n="footer.brand">DragonBallDle</span>.
+          </div>
+        </div>
+      </footer>
+
+      <div id="win-game">
+        <div class="win-card">
+          <div class="win-art">
+            <img class="win-img" src="/assets/win-png.png" alt="Baba Uranai" />
+            <div id="clip-character-popup">
+              <img id="clip-character-image" src="" alt="Daily Character Portrait" />
+            </div>
+          </div>
+
+          <div class="winText-container">
+            <h2 class="congrats" data-i18n="popup.congrats">
+              Congratulations!
+            </h2>
+            <p class="win-line">
+              <span data-i18n="popup.line.before">You guessed today’s Dragon Ball character in</span>
+              <strong id="try-count">0</strong>
+              <span data-i18n="popup.line.after">tries:</span>
+            </p>
+
+            <p class="win-name"><span id="character-name"></span></p>
+
+            <div id="countdown" class="countdown-badge" aria-live="polite"></div>
+          </div>
+
+          <button id="close-popup">X</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>

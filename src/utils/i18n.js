@@ -1,3 +1,33 @@
+export const DEFAULT_LANG = "en-us";
+export const SUPPORTED = [
+  "pt-br",
+  "en-us",
+  "es-es",
+  "fr-fr",
+  "it-it",
+  "de-de",
+  "ru-ru",
+  "tr-tr",
+  "uk-ua",
+  "ar-sa",
+  "ja-jp",
+  "ko-kr",
+  "hi-in",
+  "th-th",
+  "vi-vn",
+  "id-id",
+  "zh-cn",
+  "zh-tw",
+  "fil-ph",
+  "ms-my",
+];
+
+
+export function langToCharsFile(lang = DEFAULT_LANG) {
+  const code = String(lang || DEFAULT_LANG).toLowerCase();
+  return `characters-${code.replace("-", "_")}.js`;
+}
+
 /**
  * Retorna a mensagem de "N pessoas já acertaram" no idioma atual.
  * Função pura: não depende de globals; o chamador deve passar o dict de locale.

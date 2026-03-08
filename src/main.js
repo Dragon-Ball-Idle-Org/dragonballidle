@@ -8,24 +8,23 @@
 //   ui     →  importa utils + state
 //   main   →  importa tudo e inicializa
 // ============================================================
+import { getLangFromPath } from "./state/i18n.js";
+import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
+import { setupSeoMetaTags } from "./head-seo.js";
+import { langToCharsFile } from "./utils/i18n.js";
+import { initLangMenu } from "./ui/lang-menu.js";
+import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
-import {
-  initSuggestionsListeners,
-  openSuggestions,
-  closeSuggestions,
-  setActiveIndex,
-} from "./ui/suggestions.js";
+import { initSuggestionsListeners, } from "./ui/suggestions.js";
 import {
   setupCountdown,
-  waitForCharacters,
   getThumbSrc,
   fitAllTypeBoxes,
   scrollToLeftNow,
 } from "./ui/helpers.js";
-import { createGuessBox, handleGuess } from "./ui/guess-box.js";
+import { createGuessBox } from "./ui/guess-box.js";
 import {
-  ensureWinsBadgeCSS,
   startWinsPolling,
   scheduleMidnightRefresh,
   showInlineWinSummary,
@@ -48,22 +47,56 @@ import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 
-// Breakpoint onde telas "pequenas" não devem rolar para a direita
 const STICK_LEFT_BP = 768;
 
-// ── Bootstrap de UI independente de dados ────────────────────────────────────
+const bootLang = getLangFromPath();
+setDocumentLang(bootLang);
+
+const localePromise = loadLocaleStrings(bootLang)
+  .then((strings) => {
+    applyStrings(strings);
+    setupSeoMetaTags(bootLang, strings);
+  })
+  .catch(console.error);
+
+const charactersPromise = new Promise((resolve, reject) => {
+  const charScript = document.createElement("script");
+  charScript.src = "/" + langToCharsFile(bootLang);
+  charScript.onload = () => {
+    try {
+      if (typeof characters !== "undefined" && !window.characters) {
+        window.characters = characters;
+      }
+      resolve(window.characters);
+    } catch (e) {
+      console.warn("characters carregado mas não exportado como binding global", e);
+      reject(e);
+    }
+  };
+  charScript.onerror = (e) => {
+    console.error("Falha ao carregar o banco:", charScript.src, e);
+    reject(e);
+  };
+  document.head.appendChild(charScript);
+});
+
 initViewport();
 
 const guessInput = document.getElementById("search");
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const yearEl = document.getElementById("currentYear");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   try {
-    window.characters = await waitForCharacters(5000);
+    await localePromise;
+    window.characters = await charactersPromise;
   } catch (e) {
-    console.error(e);
+    console.error("Critical loading error:", e);
     return;
   }
 
+  initAnalytics();
   getDailyCharacter();
   ensureDailyResetOnBoot();
   initFormEventListeners();
@@ -71,6 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initHoverTooltip();
   initSuggestionsListeners();
   initDetailsTagBehaviorsListener();
+  initLangMenu();
 
   // expõe globals de debug
   if (import.meta.env.DEV) {
@@ -100,7 +134,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
-  ensureWinsBadgeCSS();
   startWinsPolling();
   scheduleMidnightRefresh();
 
@@ -175,31 +208,3 @@ startMidnightCheck();
 if (!localStorage.getItem("lastResetDay")) {
   localStorage.setItem("lastResetDay", todayBrasiliaKey());
 }
-
-// TODO: Verificar porque existe esse metodo sem ser usado
-// Encontra o container real da grade de chutes, independente do id/classe
-// function getGuessesHost() {
-//   const el =
-//     document.getElementById("guesses-container") || // que usei no patch anterior
-//     document.getElementById("guesses") ||
-//     document.getElementById("guessesGrid") ||
-//     document.querySelector(".guesses-container") ||
-//     document.querySelector("#guesses .rows") ||
-//     document.querySelector("#grid .rows") ||
-//     document.querySelector("#grid") ||
-//     document.querySelector('[data-role="guesses"]');
-
-//   if (!el) {
-//     console.error(
-//       "Guesses host not found — ajuste o seletor aqui para o seu HTML.",
-//     );
-//     throw new Error("Guesses host not found");
-//   }
-//   return el;
-// }
-
-/*teste personagem*/
-
-/*const headers = document.getElementById("headers");
-headers.innerHTML = randomCharacter.name;
-headers.style.color = "white";*/
