@@ -21,46 +21,7 @@ let _inlineCountdownTimer = null;
 
 // ── CSS do badge (injetado uma vez) ──────────────────────────────────────────
 
-export function ensureWinsBadgeCSS() {
-  if (document.getElementById("wins-badge-style")) return;
-  const css = `
-  .intro-guess .wins-badge{
-    display:inline-block;
-    padding:0.15rem 0.55rem;
-    border-radius:999px;
-    background:linear-gradient(135deg, #32cd32, #228b22);
-    color:#fff;
-    font-weight:800;
-    box-shadow:0 6px 18px rgba(255,61,0,.35);
-    text-shadow:0 1px 0 rgba(0,0,0,.25);
-    transform:translateZ(0);
-  }
-  .intro-guess .wins-badge.pulse{
-    animation:winsPulse .6s ease-out;
-  }
-  @keyframes winsPulse{
-    0%{ transform:scale(1); box-shadow:0 0 0 rgba(255,61,0,0); }
-    40%{ transform:scale(1.08); box-shadow:0 10px 24px rgba(255,61,0,.45); }
-    100%{ transform:scale(1); box-shadow:0 6px 18px rgba(255,61,0,.35); }
-  }`;
-  const style = document.createElement("style");
-  style.id = "wins-badge-style";
-  style.textContent = css;
-  document.head.appendChild(style);
-}
-
-//TODO: Gerado por IA diferente do original, entender porque
-// function ensureWinsBadgeCSS() {
-//   if (document.getElementById("wins-badge-style")) return;
-//   const style = document.createElement("style");
-//   style.id = "wins-badge-style";
-//   style.textContent = `
-//     .wins-badge { display:inline-block; font-weight:bold; }
-//     @keyframes pulse-badge { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
-//     .wins-badge.pulse { animation: pulse-badge .4s ease; }
-//   `;
-//   document.head.appendChild(style);
-// }
+export function ensureWinsBadgeCSS() {}
 
 // ── Atualiza o elemento .intro-guess com a contagem ──────────────────────────
 

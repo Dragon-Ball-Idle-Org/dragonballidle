@@ -83,10 +83,9 @@ export function createGuessBox(itemFound) {
     cell.appendChild(content);
 
     const result = compareValuesArray(itemFound[key], randomCharacter[key]);
-    if (result === "exact") cell.style.backgroundColor = "rgb(0,180,0)";
-    else if (result === "partial")
-      cell.style.backgroundColor = "rgba(236,138,10,1)";
-    else cell.style.backgroundColor = "rgb(255,0,0)";
+    if (result === "exact") cell.classList.add("bg-correct");
+    else if (result === "partial") cell.classList.add("bg-partial");
+    else cell.classList.add("bg-incorrect");
 
     // seta da SAGA (↑ / ↓)
     if (key === "debutSaga")

@@ -10,12 +10,7 @@
 // ============================================================
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
-import {
-  initSuggestionsListeners,
-  openSuggestions,
-  closeSuggestions,
-  setActiveIndex,
-} from "./ui/suggestions.js";
+import { initSuggestionsListeners, } from "./ui/suggestions.js";
 import {
   setupCountdown,
   waitForCharacters,
@@ -23,9 +18,8 @@ import {
   fitAllTypeBoxes,
   scrollToLeftNow,
 } from "./ui/helpers.js";
-import { createGuessBox, handleGuess } from "./ui/guess-box.js";
+import { createGuessBox } from "./ui/guess-box.js";
 import {
-  ensureWinsBadgeCSS,
   startWinsPolling,
   scheduleMidnightRefresh,
   showInlineWinSummary,
@@ -100,7 +94,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
-  ensureWinsBadgeCSS();
   startWinsPolling();
   scheduleMidnightRefresh();
 
@@ -175,31 +168,3 @@ startMidnightCheck();
 if (!localStorage.getItem("lastResetDay")) {
   localStorage.setItem("lastResetDay", todayBrasiliaKey());
 }
-
-// TODO: Verificar porque existe esse metodo sem ser usado
-// Encontra o container real da grade de chutes, independente do id/classe
-// function getGuessesHost() {
-//   const el =
-//     document.getElementById("guesses-container") || // que usei no patch anterior
-//     document.getElementById("guesses") ||
-//     document.getElementById("guessesGrid") ||
-//     document.querySelector(".guesses-container") ||
-//     document.querySelector("#guesses .rows") ||
-//     document.querySelector("#grid .rows") ||
-//     document.querySelector("#grid") ||
-//     document.querySelector('[data-role="guesses"]');
-
-//   if (!el) {
-//     console.error(
-//       "Guesses host not found — ajuste o seletor aqui para o seu HTML.",
-//     );
-//     throw new Error("Guesses host not found");
-//   }
-//   return el;
-// }
-
-/*teste personagem*/
-
-/*const headers = document.getElementById("headers");
-headers.innerHTML = randomCharacter.name;
-headers.style.color = "white";*/
