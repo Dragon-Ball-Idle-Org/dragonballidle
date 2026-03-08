@@ -46,6 +46,7 @@ import { getCurrentLang } from "./utils/lang.js";
 import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
 import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";
+import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 
 // Breakpoint onde telas "pequenas" não devem rolar para a direita
 const STICK_LEFT_BP = 768;
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPopupListeners();
   initHoverTooltip();
   initSuggestionsListeners();
+  initDetailsTagBehaviorsListener();
 
   // expõe globals de debug
   if (import.meta.env.DEV) {
