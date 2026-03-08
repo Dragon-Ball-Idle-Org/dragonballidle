@@ -1,5 +1,5 @@
 # PNPM build
-FROM node:24-alpine AS builder
+FROM node:24-slim AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -11,7 +11,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
 # Nginx + Certbot
-FROM nginx:alpine
+FROM nginx:1.28.2-alpine
 RUN apk add --no-cache certbot certbot-nginx
 
 COPY --from=build /app/dist/ /usr/share/nginx/html/
