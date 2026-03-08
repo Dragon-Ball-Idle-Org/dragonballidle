@@ -1,0 +1,112 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.brand {
+  position: relative; /* âncora do botão */
+  display: inline-block;
+}
+
+.site-header {
+  display: grid;
+  place-items: center;
+  margin-top: 12px;
+}
+
+.logo {
+  display: block;
+  margin-inline: auto;
+  width: min(var(--logo-vw), var(--logo-max));
+  height: auto;
+  max-width: 100%;
+}
+
+.lang-wrap {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translate(100%, -50%); /* fica colado à direita da logo */
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 10px); /* abre para baixo do botão */
+  right: 0; /* gruda pela direita do wrapper/botão */
+  left: auto;
+  transform: none; /* nada de translateX aqui */
+  background: #131313;
+  border: 1px solid #00000066;
+  border-radius: 10px;
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  min-width: 150px;
+  z-index: var(--z-popover);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  max-height: calc(5 * 36px + 4 * 6px);
+  overflow-y: auto;
+
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    color: #fff !important;
+    text-decoration: none;
+    font: 600 13px/1.1 var(--font-base);
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+    }
+  }
+
+  & img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  }
+}
+
+.lang-fixed {
+  position: static;
+  width: 36px;
+  height: 36px;
+  border-radius: 100% !important;
+  border: 1.5px solid #00000055;
+  background: #0e0e0e;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Normaliza tamanho das bandeiras (nada gigante!) */
+.lang-fixed img,
+.lang-menu img {
+  width: 24px;
+  height: 16px;
+  display: block;
+  object-fit: cover; /* mantém proporção */
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+}
