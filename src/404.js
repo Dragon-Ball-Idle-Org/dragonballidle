@@ -1,4 +1,4 @@
-import { getLangFromPath } from "./i18n.js";
+import { getLangFromPath } from "./state/i18n.js";
 
 // Ajusta idioma e rótulos conforme a rota
 export function init404Page() {

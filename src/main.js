@@ -8,14 +8,10 @@
 //   ui     →  importa utils + state
 //   main   →  importa tudo e inicializa
 // ============================================================
-import {
-  getLangFromPath,
-  setDocumentLang,
-  loadLocaleStrings,
-  applyStrings,
-  setupSeoMetaTags,
-  langToCharsFile,
-} from "./i18n.js";
+import { getLangFromPath } from "./state/i18n.js";
+import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
+import { setupSeoMetaTags } from "./head-seo.js";
+import { langToCharsFile } from "./utils/i18n.js";
 import { initLangMenu } from "./ui/lang-menu.js";
 import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";

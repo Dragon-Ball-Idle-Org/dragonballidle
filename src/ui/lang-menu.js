@@ -1,5 +1,5 @@
-import { getLangFromPath } from "../i18n.js";
-
+import { getLangFromPath } from "../state/i18n.js";
+import { persistLang } from "../state/i18n.js";
 export function initLangMenu() {
   const btn = document.getElementById("lang-fixed");
   const menu = document.getElementById("lang-menu");
