@@ -8,7 +8,7 @@
 //   ui     →  importa utils + state
 //   main   →  importa tudo e inicializa
 // ============================================================
-import { getLangFromPath } from "./state/i18n.js";
+import { getCurrentLang, persistLang } from "./state/i18n.js";
 import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
 import { setupSeoMetaTags } from "./head-seo.js";
 import { langToCharsFile } from "./utils/i18n.js";
@@ -41,16 +41,20 @@ import {
   getSavedGuesses,
   getRandomCharacter,
 } from "./state/game-state.js";
-import { getCurrentLang } from "./utils/lang.js";
 import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
 import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 import { incrementWinsToday } from "./services/wins.js";
+import { getLangFromDoc, getLangFromPath } from "./utils/lang.js";
 
 const STICK_LEFT_BP = 768;
 
-const bootLang = getLangFromPath();
+let bootLang = getCurrentLang();
+if (!bootLang) {
+  bootLang = getLangFromPath(window.location.pathname);
+  persistLang(bootLang);
+}
 setDocumentLang(bootLang);
 
 const localePromise = loadLocaleStrings(bootLang)
@@ -86,9 +90,12 @@ const charactersPromise = new Promise((resolve, reject) => {
 
 initViewport();
 
-const guessInput = document.getElementById("search");
-
 document.addEventListener("DOMContentLoaded", async () => {
+  if (!bootLang) {
+    bootLang = getLangFromDoc(document.documentElement.getAttribute("lang"));
+    persistLang(bootLang);
+  }
+
   const yearEl = document.getElementById("currentYear");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -159,11 +166,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Erro ao carregar personagem de ontem:", e);
   }
 
-  const lang = getCurrentLang(
-    location.pathname,
-    document.documentElement.getAttribute("lang"),
-  );
-  await loadSagaOrderByCSV(lang);
+  await loadSagaOrderByCSV(bootLang || "en-us");
 
   const savedGuesses = getSavedGuesses();
   for (let i = 0; i < savedGuesses.length; i++) {
@@ -194,6 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   if (isGameWon()) {
+    const guessInput = document.getElementById("search");
     guessInput.disabled = true;
     openWinPopup();
     showInlineWinSummary();

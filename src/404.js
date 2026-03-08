@@ -1,8 +1,8 @@
-import { getLangFromPath } from "./state/i18n.js";
+import { getCurrentLang } from "./state/i18n";
 
 // Ajusta idioma e rótulos conforme a rota
 export function init404Page() {
-  const lang = getLangFromPath();
+  const lang = getCurrentLang();
 
   const t = {
     "en-us": {

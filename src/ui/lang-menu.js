@@ -1,10 +1,13 @@
-import { getLangFromPath } from "../state/i18n.js";
+import { getCurrentLang } from "../state/i18n.js";
 import { persistLang } from "../state/i18n.js";
+import { getLangFromPath } from "../utils/lang.js";
+
 export function initLangMenu() {
   const btn = document.getElementById("lang-fixed");
   const menu = document.getElementById("lang-menu");
   const flag = document.getElementById("current-flag");
-  if (!btn || !menu || !flag) return;
+  const itens = document.querySelectorAll(".lang-item");
+  if (!btn || !menu || !flag || !itens) return;
 
   const FLAG_BY_LANG = {
     "pt-br": "/assets/flags/pt-br.svg",
@@ -29,7 +32,11 @@ export function initLangMenu() {
     "ms-my": "/assets/flags/ms-my.svg",
   };
 
-  const currentLang = getLangFromPath();
+  let currentLang = getCurrentLang();
+  if (!currentLang) {
+    currentLang = getLangFromPath(window.location.pathname);
+    persistLang(currentLang);
+  }
 
   // Mostra a bandeira atual no botão
   flag.src = FLAG_BY_LANG[currentLang] || FLAG_BY_LANG["en-us"];
@@ -39,25 +46,37 @@ export function initLangMenu() {
     menu.hidden = false;
     btn.setAttribute("aria-expanded", "true");
   }
+
   function closeMenu() {
     menu.hidden = true;
     btn.setAttribute("aria-expanded", "false");
   }
+
   function toggleMenu() {
     (menu.hidden ? openMenu : closeMenu)();
   }
 
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  });
   document.addEventListener("click", (e) => {
     if (menu.hidden) return;
     if (e.target === btn || menu.contains(e.target)) return;
     closeMenu();
   });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
+  });
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  itens.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const pathname = new URL(item.href).pathname;
+      const normalizedLang = getLangFromPath(pathname);
+      persistLang(normalizedLang);
+    });
   });
 
   const TOOLTIP = {
