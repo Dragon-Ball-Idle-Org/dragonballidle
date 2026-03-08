@@ -1,22 +1,40 @@
 :root {
+  /* Dimensions & Sizes */
   --logo-vw: 68vw;
   --logo-max: 520px;
-
   --col-w: 87px; /* largura fixa de cada coluna (img + 7 atributos) */
   --col-gap: 12px; /* ÚNICO gap entre colunas para header e linhas */
-
   --header-tile-w: 320px;
   --header-tile-h: 78px;
-
   --hero-pad-y: clamp(10px, 1.8vh, 16px); /* padding vertical do card */
   --hero-title: clamp(20px, 2.4vw, 32px); /* tamanho do "Guess today’s"  */
   --hero-sub: clamp(13px, 1.6vw, 18px); /* tamanho do "Type any..."   */
   --hero-pad-x: clamp(14px, 3vw, 28px);
-
   --swatch: 64px; /* tamanho dos blocos de cor / setas */
   --indicator-gap: 18px;
-
   --form-gap-top: clamp(12px, 2.6vh, 20px);
+
+  /* Colors */
+  --color-primary: #fb8c00;
+  --color-primary-light: #ffa726;
+  --color-primary-dark: #e65100;
+  --color-correct: rgb(0, 180, 0);
+  --color-correct-dark: #228b22;
+  --color-correct-light: #32cd32;
+  --color-partial: rgba(236, 138, 10, 1);
+  --color-incorrect: rgb(255, 0, 0);
+
+  /* Typography */
+  --font-base: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  --font-display: "Bangers", sans-serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+
+  /* Z-indexes */
+  --z-overlay: 99999;
+  --z-modal: 10000;
+  --z-dropdown: 9000;
+  --z-tooltip: 9999;
+  --z-popover: 100001;
 }
 
 @keyframes focusIn {
@@ -64,9 +82,65 @@
   }
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Força texto branco com sombra em elementos de interface */

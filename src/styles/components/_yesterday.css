@@ -9,8 +9,8 @@
 }
 
 .yesterday-container {
-  background: linear-gradient(135deg, #fb8c00, #ffa726);
-  border: 2px solid #e65100;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: 2px solid var(--color-primary-dark);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   color: #fff;
@@ -28,10 +28,7 @@
 }
 
 .yesterday-title {
-  font:
-    700 14px/1.2 Roboto,
-    system-ui,
-    sans-serif;
+  font: 700 14px/1.2 var(--font-base);
   letter-spacing: 0.2px;
   margin-bottom: 0; /* evitamos altura extra */
 }
@@ -63,21 +60,15 @@
 }
 
 .yesterday-label {
-  font:
-    600 13px/1 Roboto,
-    system-ui,
-    sans-serif;
+  font: 600 13px/1 var(--font-base);
   opacity: 0.9;
 }
 
 .yesterday-name {
-  font:
-    800 clamp(14px, 2.6vw, 16px)/1.1 Inter,
-    system-ui,
-    sans-serif;
+  font: 800 clamp(14px, 2.6vw, 16px)/1.1 var(--font-ui);
   padding: 2px 8px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #32cd32, #228b22);
+  background: linear-gradient(135deg, var(--color-correct-light), var(--color-correct-dark));
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   box-shadow:

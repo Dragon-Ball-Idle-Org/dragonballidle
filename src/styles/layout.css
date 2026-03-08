@@ -17,15 +17,15 @@ body {
   max-width: 720px; /* um pouco menor para caber tudo antes da dobra */
   margin: 0 auto;
   padding: var(--hero-pad-y) var(--hero-pad-x);
-  background: linear-gradient(135deg, #fb8c00, #ffa726);
-  border: 2px solid #e65100;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: 2px solid var(--color-primary-dark);
   border-radius: 10px;
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
   gap: 6px;
 }
 
 .intro-text {
-  font-family: "Bangers", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--hero-title);
   color: #fff;
   text-shadow: 3px 3px 4px #000;
@@ -33,7 +33,7 @@ body {
 }
 
 .intro-guess {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-base);
   font-weight: 700;
   font-size: var(--hero-sub);
   color: #1e2328;
@@ -48,16 +48,22 @@ body {
   -webkit-backdrop-filter: blur(6px);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   color: #e0e0e0;
-  font-family: "Roboto", sans-serif;
-}
-
-.footer-glass a {
-  color: #e0e0e0;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-glass a:hover {
-  color: #f1c40f;
+  font-family: var(--font-base);
+  
+  & a {
+    color: #e0e0e0;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover,
+    &:focus-visible {
+      color: #f1c40f;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid #f1c40f;
+      outline-offset: 2px;
+    }
+  }
 }

@@ -45,57 +45,59 @@ header {
   display: grid;
   gap: 6px;
   min-width: 150px;
-  z-index: 100001;
+  z-index: var(--z-popover);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   max-height: calc(5 * 36px + 4 * 6px);
   overflow-y: auto;
-}
 
-.lang-menu a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 36px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  color: #fff;
-  text-decoration: none;
-  font:
-    600 13px/1.1 Roboto,
-    system-ui,
-    sans-serif;
-}
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    color: #fff !important;
+    text-decoration: none;
+    font: 600 13px/1.1 var(--font-base);
 
-.lang-menu a:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
+    &:hover,
+    &:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+    }
+  }
 
-.lang-menu img {
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  & img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  }
 }
 
 .lang-fixed {
   position: static;
-  margin-left: 0px;
   width: 36px;
   height: 36px;
-  border-radius: 999px;
+  border-radius: 100% !important;
   border: 1.5px solid #00000055;
   background: #0e0e0e;
   display: grid;
   place-items: center;
-  cursor: pointer;
   box-shadow:
     0 4px 14px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
 
-.lang-fixed:hover {
-  filter: brightness(1.1);
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
 }
 
 /* Normaliza tamanho das bandeiras (nada gigante!) */
