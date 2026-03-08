@@ -8,12 +8,21 @@
 //   ui     →  importa utils + state
 //   main   →  importa tudo e inicializa
 // ============================================================
+import {
+  getLangFromPath,
+  setDocumentLang,
+  loadLocaleStrings,
+  applyStrings,
+  setupSeoMetaTags,
+  langToCharsFile,
+} from "./i18n.js";
+import { initLangMenu } from "./ui/lang-menu.js";
+import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
 import { initSuggestionsListeners, } from "./ui/suggestions.js";
 import {
   setupCountdown,
-  waitForCharacters,
   getThumbSrc,
   fitAllTypeBoxes,
   scrollToLeftNow,
@@ -42,22 +51,56 @@ import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 
-// Breakpoint onde telas "pequenas" não devem rolar para a direita
 const STICK_LEFT_BP = 768;
 
-// ── Bootstrap de UI independente de dados ────────────────────────────────────
+const bootLang = getLangFromPath();
+setDocumentLang(bootLang);
+
+const localePromise = loadLocaleStrings(bootLang)
+  .then((strings) => {
+    applyStrings(strings);
+    setupSeoMetaTags(bootLang, strings);
+  })
+  .catch(console.error);
+
+const charactersPromise = new Promise((resolve, reject) => {
+  const charScript = document.createElement("script");
+  charScript.src = "/" + langToCharsFile(bootLang);
+  charScript.onload = () => {
+    try {
+      if (typeof characters !== "undefined" && !window.characters) {
+        window.characters = characters;
+      }
+      resolve(window.characters);
+    } catch (e) {
+      console.warn("characters carregado mas não exportado como binding global", e);
+      reject(e);
+    }
+  };
+  charScript.onerror = (e) => {
+    console.error("Falha ao carregar o banco:", charScript.src, e);
+    reject(e);
+  };
+  document.head.appendChild(charScript);
+});
+
 initViewport();
 
 const guessInput = document.getElementById("search");
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const yearEl = document.getElementById("currentYear");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   try {
-    window.characters = await waitForCharacters(5000);
+    await localePromise;
+    window.characters = await charactersPromise;
   } catch (e) {
-    console.error(e);
+    console.error("Critical loading error:", e);
     return;
   }
 
+  initAnalytics();
   getDailyCharacter();
   ensureDailyResetOnBoot();
   initFormEventListeners();
@@ -65,6 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initHoverTooltip();
   initSuggestionsListeners();
   initDetailsTagBehaviorsListener();
+  initLangMenu();
 
   // expõe globals de debug
   if (import.meta.env.DEV) {

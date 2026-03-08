@@ -1,8 +1,7 @@
-// src/i18n.js
-const SUPPORTED = [
+export const SUPPORTED = [
   "pt-br",
   "en-us",
-  "es-es", // os 3 que já existiam
+  "es-es",
   "fr-fr",
   "it-it",
   "de-de",
@@ -19,7 +18,7 @@ const SUPPORTED = [
   "zh-cn",
   "zh-tw",
   "fil-ph",
-  "ms-my", // os 16 novos
+  "ms-my",
 ];
 const DEFAULT_LANG = "en-us";
 
@@ -30,20 +29,16 @@ export function getLangFromPath(pathname = location.pathname) {
   return localStorage.getItem("lang") || DEFAULT_LANG;
 }
 
-// characters-[lang].js onde o hífen vira para "_"
-// pt-br -> characters-pt_br.js | en-us -> characters-en_us.js | fr-fr -> characters-fr_fr.js
 export function langToCharsFile(lang = DEFAULT_LANG) {
   const code = String(lang || DEFAULT_LANG).toLowerCase();
   return `characters-${code.replace("-", "_")}.js`;
 }
 
 export function applyStrings(dict) {
-  // exemplo de binding por data-i18n
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (dict[key]) el.textContent = dict[key];
   });
-  // placeholders
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     const key = el.getAttribute("data-i18n-placeholder");
     if (dict[key]) el.setAttribute("placeholder", dict[key]);
@@ -51,7 +46,7 @@ export function applyStrings(dict) {
 }
 
 export function setDocumentLang(lang) {
-  document.documentElement.lang = lang; // <html lang="...">
+  document.documentElement.lang = lang;
 }
 
 export function persistLang(lang) {
