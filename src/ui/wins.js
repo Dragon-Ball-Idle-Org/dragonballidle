@@ -19,16 +19,11 @@ let _winsPollTimer = null;
 let _lastWinsShown = null;
 let _inlineCountdownTimer = null;
 
-// ── CSS do badge (injetado uma vez) ──────────────────────────────────────────
-
-export function ensureWinsBadgeCSS() {}
-
 // ── Atualiza o elemento .intro-guess com a contagem ──────────────────────────
 
 function _updateIntroWins(n) {
   const el = getIntroEl();
   if (!el) return;
-  ensureWinsBadgeCSS();
 
   const strings = window.LOCALE ?? {};
   const plain = formatWinsI18n(Number(n) || 0, strings);
