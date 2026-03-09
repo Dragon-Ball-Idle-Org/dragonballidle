@@ -99,11 +99,8 @@ function _onChangeTextGuessInputListenerInit() {
         usingMouse = true;
       });
       li.addEventListener("click", () => {
-        handleGuess(c.name, attributeContainer, tryNumber, (v) => {
-          guessInput.value = v;
-        });
+        handleGuess(c.name);
         closeSuggestions();
-        guessInput.value = "";
       });
 
       suggestions.appendChild(li);
