@@ -82,6 +82,12 @@
   }
 }
 
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   tab-size: 4;

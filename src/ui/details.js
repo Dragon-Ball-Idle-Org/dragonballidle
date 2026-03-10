@@ -26,9 +26,10 @@ function _animateOpen(details, content) {
   details.setAttribute("open", "");
 
   if (supportsInterpolateSize) {
-    content.style.animation = "none";
-    content.offsetHeight; // força reflow
-    content.style.animation = "";
+    content.animate(
+      [{ height: "0px" }, { height: content.scrollHeight + "px" }],
+      { duration: ANIMATION_DURATION, easing: "ease-out" },
+    );
   } else {
     const height = content.scrollHeight + "px";
     content.style.transition = "none";
