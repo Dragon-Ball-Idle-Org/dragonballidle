@@ -10,9 +10,9 @@ import { todayBrasiliaKey } from "../utils/date.js";
 import {
   fitAllTypeBoxes,
   fitTextToBox,
-  getThumbSrc,
+  getThumbCdnPath,
   scrollToLeftNow,
-} from "./helpers.js";
+} from "./utils.js";
 import { drawSagaArrow } from "./saga.js";
 import { winGame } from "./wins.js";
 
@@ -43,7 +43,7 @@ export function createGuessBox(itemFound) {
   pic.style.overflow = "hidden";
 
   const img = document.createElement("img");
-  img.src = getThumbSrc(itemFound.image);
+  img.src = getThumbCdnPath(itemFound.image);
   img.alt = itemFound.name;
   img.loading = "lazy";
   img.loading = "lazy";

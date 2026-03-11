@@ -1,11 +1,16 @@
 import { isGameWon } from "../state/game-state.js";
 import { getBrasiliaTime } from "../utils/date.js";
 
-const CHAR_IMG_BASE_THUMB = "/thumbs/";
+const BASE_CHAR_CDN_URL = import.meta.env.VITE_CDN_BASE_URL + "/characters";
+const CHAR_IMG_BASE = `${BASE_CHAR_CDN_URL}/images/`;
+const CHAR_IMG_BASE_THUMB = `${BASE_CHAR_CDN_URL}/thumbs/`;
 
-// --- Util para apontar para o thumb (public/thumb/<arquivo>.png) ---
-export function getThumbSrc(imagePath) {
-  // Ex.: "image/android_13.png" -> "android_13.png"
+export function getImageCdnPath(imagePath) {
+  const filename = imagePath.split("/").pop();
+  return `${CHAR_IMG_BASE}${filename}`;
+}
+
+export function getThumbCdnPath(imagePath) {
   const filename = imagePath.split("/").pop();
   return `${CHAR_IMG_BASE_THUMB}${filename}`;
 }
@@ -89,8 +94,6 @@ export function setupCountdown() {
     setupCountdown._timer = setInterval(updateCountdown, 1000);
   }
 }
-
-
 
 // pega o span do herói onde estava o "Type any character..."
 export function getIntroEl() {

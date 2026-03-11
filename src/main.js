@@ -19,10 +19,10 @@ import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
 import { initSuggestionsListeners } from "./ui/suggestions.js";
 import {
   setupCountdown,
-  getThumbSrc,
+  getThumbCdnPath,
   fitAllTypeBoxes,
   scrollToLeftNow,
-} from "./ui/helpers.js";
+} from "./ui/utils.js";
 import { createGuessBox } from "./ui/guess-box.js";
 import {
   startWinsPolling,
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const yThumb = document.getElementById("yesterday-thumb");
     if (yWrap && yName && yThumb && yesterdayChar) {
       yName.textContent = yesterdayChar.name;
-      yThumb.src = getThumbSrc(yesterdayChar.image);
+      yThumb.src = getThumbCdnPath(yesterdayChar.image);
       yThumb.alt = yesterdayChar.name + " (yesterday)";
       yWrap.hidden = false;
     }

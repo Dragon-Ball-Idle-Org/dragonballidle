@@ -8,9 +8,9 @@ import { fetchWinsToday, incrementWinsToday } from "../services/wins.js";
 import {
   buildXShareURL,
   getIntroEl,
-  getThumbSrc,
+  getThumbCdnPath,
   setupCountdown,
-} from "./helpers.js";
+} from "./utils.js";
 import { formatHMS, getMsToNextDailyReset } from "../utils/date.js";
 import { openWinPopup } from "./popup.js";
 import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
@@ -89,7 +89,7 @@ export function showInlineWinSummary() {
   const tryCount = getTryCount();
   const character = getRandomCharacter();
   const name = character?.name || "—";
-  const thumb = getThumbSrc(character?.image || "");
+  const thumb = getThumbCdnPath(character?.image || "");
 
   tries.textContent = String(tryCount);
   nameEl.textContent = name;

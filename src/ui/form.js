@@ -1,6 +1,6 @@
 import { getSavedGuesses } from "../state/game-state";
 import { handleGuess } from "./guess-box";
-import { getThumbSrc } from "./helpers";
+import { getThumbCdnPath } from "./utils";
 import {
   closeSuggestions,
   openSuggestions,
@@ -79,7 +79,7 @@ function _onChangeTextGuessInputListenerInit() {
       li.dataset.name = c.name;
 
       const img = document.createElement("img");
-      img.src = getThumbSrc(c.image);
+      img.src = getThumbCdnPath(c.image);
       img.width = 56;
       img.height = 56;
       img.className = "thumb";
