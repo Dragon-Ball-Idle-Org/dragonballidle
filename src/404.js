@@ -2,6 +2,11 @@ import { getCurrentLang } from "./state/i18n";
 
 // Ajusta idioma e rótulos conforme a rota
 export function init404Page() {
+  document.body.style.background = `
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url("${import.meta.env.VITE_CDN_BASE_URL}/background-img.jpg") center bottom / cover no-repeat fixed
+  `;
+
   const lang = getCurrentLang();
 
   const t = {

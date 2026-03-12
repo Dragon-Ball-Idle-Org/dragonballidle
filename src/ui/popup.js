@@ -1,6 +1,6 @@
 import { getRandomCharacter, getTryCount } from "../state/game-state.js";
 import { formatPopupLineI18n } from "../utils/i18n.js";
-import { getImageCdnPath } from "./utils.js";
+import { getImageCdnCharacterPath } from "./utils.js";
 
 function getEls() {
   return {
@@ -20,7 +20,7 @@ export function openWinPopup() {
   const tries = getTryCount();
 
   // preenche conteúdo
-  if (image && character) image.src = getImageCdnPath(character.image);
+  if (image && character) image.src = getImageCdnCharacterPath(character.image);
   if (tryCountEl) tryCountEl.textContent = String(tries);
   if (charNameEl && character) charNameEl.textContent = character.name;
   if (winLine) {

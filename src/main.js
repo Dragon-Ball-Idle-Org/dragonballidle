@@ -12,14 +12,14 @@ import { getCurrentLang, persistLang } from "./state/i18n.js";
 import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
 import { setupSeoMetaTags } from "./head-seo.js";
 import { langToCharsFile } from "./utils/i18n.js";
-import { initLangMenu } from "./ui/lang-menu.js";
+import { initLangMenu } from "./ui/header.js";
 import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
 import { initSuggestionsListeners } from "./ui/suggestions.js";
 import {
   setupCountdown,
-  getThumbCdnPath,
+  getThumbCdnCharacterPath,
   fitAllTypeBoxes,
   scrollToLeftNow,
 } from "./ui/utils.js";
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const yThumb = document.getElementById("yesterday-thumb");
     if (yWrap && yName && yThumb && yesterdayChar) {
       yName.textContent = yesterdayChar.name;
-      yThumb.src = getThumbCdnPath(yesterdayChar.image);
+      yThumb.src = getThumbCdnCharacterPath(yesterdayChar.image);
       yThumb.alt = yesterdayChar.name + " (yesterday)";
       yWrap.hidden = false;
     }
@@ -212,6 +212,10 @@ document.addEventListener("midnightBrasilia", () => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
+document.body.style.background = `
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url("${import.meta.env.VITE_CDN_BASE_URL}/background-img.jpg") center bottom / cover no-repeat fixed
+`;
 startMidnightCheck();
 if (!localStorage.getItem("lastResetDay")) {
   localStorage.setItem("lastResetDay", todayBrasiliaKey());

@@ -5,12 +5,12 @@ const BASE_CHAR_CDN_URL = import.meta.env.VITE_CDN_BASE_URL + "/characters";
 const CHAR_IMG_BASE = `${BASE_CHAR_CDN_URL}/images/`;
 const CHAR_IMG_BASE_THUMB = `${BASE_CHAR_CDN_URL}/thumbs/`;
 
-export function getImageCdnPath(imagePath) {
+export function getImageCdnCharacterPath(imagePath) {
   const filename = imagePath.split("/").pop();
   return `${CHAR_IMG_BASE}${filename}`;
 }
 
-export function getThumbCdnPath(imagePath) {
+export function getThumbCdnCharacterPath(imagePath) {
   const filename = imagePath.split("/").pop();
   return `${CHAR_IMG_BASE_THUMB}${filename}`;
 }
