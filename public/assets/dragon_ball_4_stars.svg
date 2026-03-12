@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="ballGradient" cx="66%" cy="34%" r="76%">
+      <stop offset="0%" stop-color="#ffe548"/>
+      <stop offset="40%" stop-color="#ffcf12"/>
+      <stop offset="100%" stop-color="#ef9900"/>
+    </radialGradient>
+
+    <radialGradient id="specular" cx="30%" cy="24%" r="32%">
+      <stop offset="0%" stop-color="#fff6a8" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#fff6a8" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="innerShade" cx="44%" cy="54%" r="72%">
+      <stop offset="70%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#cf7200" stop-opacity="0.18"/>
+    </radialGradient>
+
+    <filter id="starGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5.2"/>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="220" fill="url(#ballGradient)" stroke="#f25a19" stroke-width="10"/>
+  <circle cx="256" cy="256" r="213" fill="url(#innerShade)"/>
+  <ellipse cx="322" cy="175" rx="92" ry="84" fill="url(#specular)"/>
+
+  <polygon points="188.00,185.00 196.70,208.03 221.29,209.18 202.08,224.57 208.57,248.32 188.00,234.80 167.43,248.32 173.92,224.57 154.71,209.18 179.30,208.03" fill="#ffb347" opacity="0.70" filter="url(#starGlow)"/>
+<polygon points="312.00,185.00 320.70,208.03 345.29,209.18 326.08,224.57 332.57,248.32 312.00,234.80 291.43,248.32 297.92,224.57 278.71,209.18 303.30,208.03" fill="#ffb347" opacity="0.70" filter="url(#starGlow)"/>
+<polygon points="208.00,285.00 216.70,308.03 241.29,309.18 222.08,324.57 228.57,348.32 208.00,334.80 187.43,348.32 193.92,324.57 174.71,309.18 199.30,308.03" fill="#ffb347" opacity="0.70" filter="url(#starGlow)"/>
+<polygon points="332.00,285.00 340.70,308.03 365.29,309.18 346.08,324.57 352.57,348.32 332.00,334.80 311.43,348.32 317.92,324.57 298.71,309.18 323.30,308.03" fill="#ffb347" opacity="0.70" filter="url(#starGlow)"/>
+  <polygon points="188.00,185.00 196.70,208.03 221.29,209.18 202.08,224.57 208.57,248.32 188.00,234.80 167.43,248.32 173.92,224.57 154.71,209.18 179.30,208.03" fill="#dd4410" opacity="0.98"/>
+<polygon points="312.00,185.00 320.70,208.03 345.29,209.18 326.08,224.57 332.57,248.32 312.00,234.80 291.43,248.32 297.92,224.57 278.71,209.18 303.30,208.03" fill="#dd4410" opacity="0.98"/>
+<polygon points="208.00,285.00 216.70,308.03 241.29,309.18 222.08,324.57 228.57,348.32 208.00,334.80 187.43,348.32 193.92,324.57 174.71,309.18 199.30,308.03" fill="#dd4410" opacity="0.98"/>
+<polygon points="332.00,285.00 340.70,308.03 365.29,309.18 346.08,324.57 352.57,348.32 332.00,334.80 311.43,348.32 317.92,324.57 298.71,309.18 323.30,308.03" fill="#dd4410" opacity="0.98"/>
+</svg>
