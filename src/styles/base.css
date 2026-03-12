@@ -35,6 +35,7 @@
   --z-dropdown: 9000;
   --z-tooltip: 9999;
   --z-popover: 100001;
+  --z-loading: 1000001;
 }
 
 @keyframes focusIn {

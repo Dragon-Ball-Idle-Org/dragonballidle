@@ -47,6 +47,7 @@ import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 import { incrementWinsToday } from "./services/wins.js";
 import { getLangFromDoc, getLangFromPath } from "./utils/lang.js";
+import { hideLoading } from "./ui/loading.js";
 
 const STICK_LEFT_BP = 768;
 
@@ -203,6 +204,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     showInlineWinSummary();
     setupCountdown();
   }
+
+  hideLoading();
 });
 
 document.addEventListener("midnightBrasilia", () => {
