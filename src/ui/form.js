@@ -106,6 +106,7 @@ function _onChangeTextGuessInputListenerInit() {
       suggestions.appendChild(li);
     });
 
+    activeIndex = setActiveIndex(0, activeIndex);
     openSuggestions();
     currentItems = Array.from(suggestions.querySelectorAll("li"));
   });
@@ -118,8 +119,10 @@ function _onMoveToSuggestionByKeyboardListenerInit() {
     if (
       !suggestions?.classList.contains("open") ||
       !suggestions.children.length
-    )
+    ) {
       return;
+    }
+
     // Impede a página ou o container rolarem com as setas
     if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key))
       e.preventDefault();
