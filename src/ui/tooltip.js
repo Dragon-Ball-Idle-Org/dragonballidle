@@ -19,6 +19,16 @@ export function initHoverTooltip() {
       );
   });
 
+  document.addEventListener("touchstart", (e) => {
+    const cell = e.target.closest(".guess-image");
+    if (cell) {
+      showHoverName(
+        cell,
+        cell.getAttribute("data-label") || cell.textContent.trim(),
+      );
+    }
+  }, { passive: true });
+
   document.addEventListener("mousemove", (e) => {
     const cell = e.target.closest(".guess-image");
     if (!cell) return;
