@@ -10,3 +10,4 @@
 @import "./components/_win_banner.css" layer(components);
 @import "./components/_yesterday.css" layer(components);
 @import "./components/_loading.css" layer(components);
+@import "./components/_footer.css" layer(components);
