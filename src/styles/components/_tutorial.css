@@ -36,13 +36,13 @@
 .tutorial-container {
   margin: 0 auto;
   max-width: min(96vw, 620px);
-  padding: 16px 18px; /* um pouquinho mais de respiro */
+  padding: 16px 18px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   border: 2px solid var(--color-primary-dark);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   text-align: center;
-  overflow: hidden; /* nada vaza pra fora */
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -58,7 +58,7 @@
 /* ===== COLOR INDICATOR – grade fixa com 5 colunas ===== */
 .indicator-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr)); /* sempre 5 colunas */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--indicator-gap);
   align-items: start;
   justify-items: center;
@@ -80,7 +80,8 @@
   width: min(72%, clamp(38px, 13.5vw, 64px));
   aspect-ratio: 1 / 1;
   border-radius: 8px;
-  border: 3px solid #fff; /* borda branca do jogo */
+  border: 3px solid #fff;
+  /* borda branca do jogo */
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.55);
   display: grid;
   place-items: center;
@@ -108,11 +109,13 @@
 /* === Legendas: podem quebrar sem achatar nada === */
 .indicator-label {
   margin-top: 6px;
-  padding: 0 2px; /* micro padding pra não encostar */
+  padding: 0 2px;
+  /* micro padding pra não encostar */
   font: 700 clamp(11px, 1.7vw, 15px)/1.1 var(--font-base);
   color: #1e2328;
   text-align: center;
-  word-break: break-word; /* se precisar, quebra palavra longa */
+  word-break: break-word;
+  /* se precisar, quebra palavra longa */
   overflow-wrap: anywhere;
   text-shadow:
     0 2px 3px rgba(255, 255, 255, 0.35),
@@ -182,6 +185,8 @@
 .help-swatch {
   width: 20px;
   height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   border-radius: 4px;
   border: 1.5px solid #fff;
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.45);
