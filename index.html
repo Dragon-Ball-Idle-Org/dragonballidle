@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+  <!-- Previne de exibir elementos antes de carregar todos os elementos -->
+  <style>
+    body>*:not(#app-loading) {
+      visibility: hidden;
+    }
+  </style>
   <meta charset="UTF-8" />
   <link id="canon" rel="canonical" href="" />
   <meta id="robotsTag" name="robots" content="index,follow" />

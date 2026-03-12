@@ -4,6 +4,10 @@ body {
   padding-bottom: 60px;
 }
 
+body > *:not(#app-loading) {
+  visibility: visible !important;
+}
+
 .game-sub-container {
   display: flex;
   flex-direction: column;
