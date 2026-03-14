@@ -1,7 +1,7 @@
 .tutorial-container {
   margin: 0 auto;
   max-width: min(96vw, 620px);
-  padding: var(--space-4) 18px;
+  padding: var(--space-4);
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   border: 2px solid var(--color-primary-dark);
   border-radius: var(--radius-md);
