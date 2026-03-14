@@ -1,3 +1,33 @@
+.site-footer {
+  position: relative;
+  width: 100%;
+}
+
+.footer-glass {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e0e0e0;
+  font-family: var(--font-base);
+
+  & a {
+    color: #e0e0e0;
+    font-weight: var(--weight-medium);
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: #f1c40f;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #f1c40f;
+      outline-offset: 2px;
+    }
+  }
+}
+
 .info-section {
   display: flex;
   align-items: center;
@@ -13,5 +43,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px
+  gap: var(--space-2);
 }

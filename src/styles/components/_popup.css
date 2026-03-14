@@ -1,72 +1,23 @@
-@keyframes popupZoom {
-  from {
-    transform: scale(0.88);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@media (max-width: 560px) {
-  #win-game {
-    --crystal-y: 80% !important;
-  }
-}
-@media (max-width: 500px) {
-  #win-game {
-    --crystal-y: 80% !important;
-  }
-}
-
-@media (max-width: 480px) {
-  #win-game {
-    --art-scale: 0.95;
-    --crystal-size: 36%;
-    --crystal-y: 73%;
-  }
-}
-
-@media (max-width: 460px) {
-  #win-game {
-    --crystal-y: 80% !important;
-  }
-}
-
-@media (max-width: 420px) {
-  #win-game {
-    --crystal-y: 80% !important;
-  }
-}
-
-@media (max-width: 380px) {
-  #win-game {
-    --crystal-y: 80% !important;
-  }
-}
-
 #win-game {
-  --card-width: min(80vw, 500px); /* largura do card */
+  --card-width: min(80vw, 500px);
   --card-margin-top: clamp(8px, 6vh, 40px);
-  --art-scale: 1; /* escala da arte da Baba */
-  --art-offset-y: -15%; /* sobe/desce a arte */
-  --crystal-x: 49%; /* posição X do centro da bolinha */
-  --crystal-y: 80%; /* posição Y do centro da bolinha */
-  --crystal-size: 36%; /* diâmetro da bolinha relativo à arte */
+  --art-scale: 1;
+  --art-offset-y: -15%;
+  --crystal-x: 49%;
+  --crystal-y: 80%;
+  --crystal-size: 36%;
   --popup-duration: 420ms;
-  --focus-delay: 200ms; /* atraso para começar a nitidez */
-  --focus-duration: 1200ms; /* tempo para “ficar nítido” */
+  --focus-delay: 200ms;
+  --focus-duration: 1200ms;
   --focus-ease: cubic-bezier(0.28, 0.79, 0.28, 0.79);
 
-  /* ---- overlay ---- */
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay);
-  display: none; /* começa SEMPRE escondido */
+  display: none;
   padding: clamp(12px, 3vw, 24px);
-  place-items: start center; /* centraliza horizontalmente */
-  overflow: auto; /* rola se a tela for baixa */
+  place-items: start center;
+  overflow: auto;
 
   &.show {
     display: grid;
@@ -88,11 +39,11 @@
   width: var(--card-width);
   margin-top: var(--card-margin-top);
   margin-inline: auto;
-  background: linear-gradient(to bottom, #32cd32, #228b22);
+  background: linear-gradient(to bottom, var(--color-correct-light), var(--color-correct-dark));
   border: 3px solid #ffcc00;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.7);
-  overflow: visible; /* chapéu pode “vazar” */
+  overflow: visible;
   padding: clamp(12px, 2.5vw, 24px);
   animation: popupZoom var(--popup-duration) ease-out both;
 }
@@ -100,7 +51,7 @@
 #clip-character-popup {
   display: none;
   position: absolute;
-  z-index: 3;
+  z-index: var(--z-raised);
   left: var(--crystal-x);
   top: var(--crystal-y);
   transform: translate(-50%, -50%);
@@ -117,55 +68,55 @@
     object-fit: cover;
     border-radius: 50%;
     position: relative;
-    z-index: 1; /* sempre atrás do vidro */
-    opacity: 0.75; /* = 35% visível => ~65% transparente */
-    transition: none; /* não deixa outra transição “roubar” a opacidade */
+    z-index: var(--z-base);
+    opacity: 0.75;
   }
 
   &.show {
-    animation: focusIn var(--focus-duration) var(--focus-ease)
-      var(--focus-delay) both;
+    animation: focusIn var(--focus-duration) var(--focus-ease) var(--focus-delay) both;
   }
 }
 
-/* textos */
+/* Textos do popup */
 .winText-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-top: 14px;
+  gap: var(--space-5);
+  margin-top: var(--space-3);
   text-align: center;
+}
+
+.congrats {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-2xl));
+  font-weight: var(--weight-regular);
 }
 
 .win-line {
   margin: 2px 0 0;
-  font:
-    600 clamp(14px, 2.3vw, 18px)/1.25 "Roboto",
-    system-ui,
-    sans-serif;
-  color: #112;
+  font-size: clamp(var(--text-sm), 2.3vw, var(--text-md));
+  font-weight: var(--weight-semibold);
   text-align: center;
 }
+
 .win-name {
-  margin: 0 0 6px;
-  font: 800 clamp(18px, 3vw, 24px)/1.2 var(--font-ui);
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-ui);
+  font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
+  font-weight: var(--weight-black);
   text-align: center;
 
   & #character-name {
     display: inline-block;
-    padding: 2px 10px;
-    border-radius: 999px;
-    color: #fff !important;
-    text-shadow: 2px 2px 4px #000 !important;
-    background: linear-gradient(
-      135deg,
-      var(--color-primary),
-      var(--color-primary-light)
-    ) !important; /* mesmo laranja dos menus */
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-pill);
+    color: var(--palette-white);
+    text-shadow: 2px 2px 4px var(--palette-black);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     border: 2px solid var(--color-primary-dark);
     box-shadow:
-      0 2px 12px rgba(230, 81, 0, 0.35) inset,
+      inset 0 2px 12px rgba(230, 81, 0, 0.35),
       0 2px 10px rgba(0, 0, 0, 0.12);
   }
 }
@@ -173,35 +124,28 @@
 .countdown-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-  padding: 6px 12px;
-  border-radius: 12px;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
   background: rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: 1.5px solid rgba(255, 255, 255, 0.55);
-  color: #fff;
-  font:
-    800 clamp(14px, 2.4vw, 18px)/1 "Inter",
-    system-ui,
-    sans-serif;
+  color: var(--palette-white);
+  font-family: var(--font-ui);
+  font-size: clamp(var(--text-sm), 2.4vw, var(--text-md));
+  font-weight: var(--weight-black);
   box-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.18) inset,
+    inset 0 2px 12px rgba(0, 0, 0, 0.18),
     0 4px 16px rgba(0, 0, 0, 0.15);
-  text-shadow: 1px 1px 3px #000;
-}
+  text-shadow: 1px 1px 3px var(--palette-black);
 
-.countdown-badge::before {
-  content: "⏳";
-  font-size: 1.1em;
-  line-height: 1;
-}
-
-.congrats {
-  font-family: var(--font-display);
-  color: #1e2328;
-  font-size: clamp(20px, 4vw, 28px);
+  &::before {
+    content: "⏳";
+    font-size: 1.1em;
+    line-height: 1;
+  }
 }
 
 #close-popup {
@@ -210,16 +154,35 @@
   right: -10px;
   width: 30px;
   height: 30px;
-  border-radius: 4px !important;
-  border: 2px solid #1e2328;
+  border-radius: var(--space-1);
+  border: 2px solid var(--palette-ink);
   background: #e53935;
-  color: #fff;
+  color: var(--palette-white);
   font: bold 16px/30px var(--font-base);
   text-align: center;
-  cursor: pointer;
 
   &:hover,
   &:focus-visible {
-    border: 2px solid #000;
+    border-color: var(--palette-black);
+  }
+}
+
+/* ── Breakpoints ── */
+
+@media (max-width: 480px) {
+  #win-game {
+    --art-scale: 0.95;
+    --crystal-size: 36%;
+    --crystal-y: 73%;
+  }
+}
+
+@media (max-width: 560px),
+(max-width: 500px),
+(max-width: 460px),
+(max-width: 420px),
+(max-width: 380px) {
+  #win-game {
+    --crystal-y: 80%;
   }
 }

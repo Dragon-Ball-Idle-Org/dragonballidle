@@ -1,0 +1,63 @@
+.game-sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--hero-pad-y) var(--hero-pad-x);
+  gap: var(--space-4);
+
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: 2px solid var(--color-primary-dark);
+  border-radius: var(--radius-md);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.intro-text {
+  font-family: var(--font-display);
+  font-size: var(--text-hero-title);
+  color: var(--color-text-on-primary);
+  text-shadow: 3px 3px 4px var(--palette-black);
+  margin: 0;
+}
+
+.intro-guess {
+  font-family: var(--font-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-hero-sub);
+  margin: 0;
+}
+
+/* Badge de streak/vitórias */
+.wins-badge {
+  display: inline-block;
+  padding: .15rem .55rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-correct-light), var(--color-correct-dark));
+  color: var(--palette-white);
+  font-weight: var(--weight-black);
+  box-shadow: 0 6px 18px rgba(255, 61, 0, 0.35);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+  &.pulse {
+    animation: winsPulse 0.6s ease-out;
+  }
+}
+
+/* Breakpoints */
+
+@media (min-width: 992px) {
+  .game-sub-container {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+}
+
+@media (min-width: 768px) {
+  .game-sub-container {
+    flex: 0 0 auto;
+    width: 83.3333333%;
+  }
+}

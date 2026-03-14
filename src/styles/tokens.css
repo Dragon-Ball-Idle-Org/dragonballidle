@@ -1,0 +1,165 @@
+:root {
+  /* ── Cores: primitivas ──────────────────────────────────── */
+  --palette-orange-base: #fb8c00;
+  --palette-orange-light: #ffa726;
+  --palette-orange-dark: #e65100;
+
+  --palette-green-base: #00b400;
+  --palette-green-dark: #228b22;
+  --palette-green-light: #32cd32;
+
+  --palette-amber: #ec8a0a;
+  --palette-red: #ff0000;
+
+  --palette-white: #ffffff;
+  --palette-ink: #1e2328;
+  --palette-black: #000000;
+
+  /* ── Cores: semânticas (referenciam primitivas) ─────────── */
+  --color-primary: var(--palette-orange-base);
+  --color-primary-light: var(--palette-orange-light);
+  --color-primary-dark: var(--palette-orange-dark);
+
+  --color-correct: var(--palette-green-base);
+  --color-correct-dark: var(--palette-green-dark);
+  --color-correct-light: var(--palette-green-light);
+
+  --color-partial: var(--palette-amber);
+  --color-incorrect: var(--palette-red);
+
+  --color-text-on-primary: var(--palette-white);
+
+  /* ── Tipografia ─────────────────────────────────────────── */
+  --font-base: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  --font-display: "Bangers", sans-serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+
+  /* Font-Size: Escala manual — cada step é arredondado para valor legível*/
+  /* 12px */
+  --text-xs: 0.75rem;
+  /* 14px */
+  --text-sm: 0.875rem;
+  /* 16px — corpo base */
+  --text-md: 1rem;
+  /* 20px */
+  --text-lg: 1.25rem;
+  /* 24px */
+  --text-xl: 1.5rem;
+  /* 30px */
+  --text-2xl: 1.875rem;
+  /* 36px */
+  --text-3xl: 2.25rem;
+  /* 48px */
+  --text-4xl: 3rem;
+
+  --text-hero-title: clamp(var(--text-2xl), 2.4vw, var(--text-3xl));
+  --text-hero-sub: clamp(var(--text-xs), 1.6vw, var(--text-md));
+
+  /* Font-Weight */
+  /* corpo, parágrafos                 */
+  --weight-regular: 400;
+  /* labels, nav, botões secundários   */
+  --weight-medium: 500;
+  /* subtítulos, destaques suaves      */
+  --weight-semibold: 600;
+  /* títulos, botões primários         */
+  --weight-bold: 700;
+  /* scores, contadores, win summary   */
+  --weight-black: 900;
+
+  /* ── Espaçamento ────────────────────────────────────────── */
+  /* 4px  */
+  --space-1: 0.25rem;
+  /* 8px  */
+  --space-2: 0.5rem;
+  /* 12px */
+  --space-3: 0.75rem;
+  /* 16px */
+  --space-4: 1rem;
+  /* 20px */
+  --space-5: 1.25rem;
+  /* 24px */
+  --space-6: 1.5rem;
+  /* 32px */
+  --space-8: 2rem;
+  /* 40px */
+  --space-10: 2.5rem;
+  /* 48px */
+  --space-12: 3rem;
+
+  /* ── Layout: logo ───────────────────────────────────────── */
+  --logo-vw: 68vw;
+  /* 520px */
+  --logo-max: 32.5rem;
+
+  /* ── Layout: game grid ──────────────────────────────────── */
+  --col-w: 87px;
+  --col-gap: 12px;
+
+  /* ── Layout: hero card ──────────────────────────────────── */
+  --hero-pad-y: clamp(0.625rem, 1.8vh, 1rem);
+  --hero-pad-x: clamp(0.875rem, 3vw, 1.75rem);
+
+  /* ── Layout: tutorial ───────────────────────────────────── */
+  /* 18px */
+  --indicator-gap: 1.125rem;
+  /* 64px */
+  --swatch-size: 4rem;
+
+  /* ── Layout: misc ───────────────────────────────────────── */
+  /* 320px */
+  --header-tile-w: 20rem;
+  /* 78px  */
+  --header-tile-h: 4.875rem;
+
+  /* ── Bordas ─────────────────────────────────────────────── */
+  /* 6px   */
+  --radius-xs: 0.375rem;
+  /* 10px  */
+  --radius-sm: 0.625rem;
+  /* 12px  */
+  --radius-md: 0.75rem;
+  /* 14px  */
+  --radius-lg: 0.875rem;
+  /* pill — mantém px intencionalmente */
+  --radius-pill: 999px;
+
+  /* ── Z-index: escala semântica controlada ───────────────── */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-tooltip: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-overlay: 500;
+  --z-loading: 600;
+}
+
+@media (max-width: 420px) {
+  :root {
+    /* 12px */
+    --indicator-gap: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    /* 10px */
+    --indicator-gap: 0.625rem;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    /* 280px */
+    --header-tile-w: 17.5rem;
+    /* 72px  */
+    --header-tile-h: 4.5rem;
+  }
+}
+
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}

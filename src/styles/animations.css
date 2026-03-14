@@ -1,0 +1,82 @@
+@keyframes focusIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes glossIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes charFinish {
+  to {
+    filter: saturate(1.08) contrast(1.06) brightness(1.05) drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+@keyframes popupZoom {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cellPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes winsPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 61, 0, 0);
+  }
+
+  40% {
+    transform: scale(1.08);
+    box-shadow: 0 10px 24px rgba(255, 61, 0, .45);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 18px rgba(255, 61, 0, .35);
+  }
+}

@@ -1,52 +1,40 @@
-@media (max-width: 560px) {
-  .yesterday-content {
-    gap: 8px;
-  }
-  #yesterday-thumb {
-    width: 40px;
-    height: 40px;
-  }
-}
-
 .yesterday-container {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   border: 2px solid var(--color-primary-dark);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  color: #fff;
-  text-shadow: 1px 1px 3px #000;
+  color: var(--palette-white);
+  text-shadow: 1px 1px 3px var(--palette-black);
   text-align: center;
   display: grid;
   justify-items: center;
-  padding: 10px 12px;
-
-  /* NOVO: compacto e centralizado */
+  padding: var(--space-2) var(--space-3);
   width: fit-content;
   max-width: 100%;
   margin-inline: auto;
-  row-gap: 8px;
+  row-gap: var(--space-2);
 }
 
 .yesterday-title {
-  font: 700 14px/1.2 var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.2px;
-  margin-bottom: 0; /* evitamos altura extra */
 }
 
 .yesterday-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: nowrap; /* mantém compacto em telas médias */
+  gap: var(--space-2);
+  flex-wrap: nowrap;
 }
 
 #yesterday-thumb {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   object-fit: cover;
-  background: #fff; /* <-- corrige parêntese extra */
+  background: var(--palette-white);
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.6),
     0 4px 12px rgba(0, 0, 0, 0.3);
@@ -56,22 +44,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 .yesterday-label {
-  font: 600 13px/1 var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
   opacity: 0.9;
 }
 
 .yesterday-name {
-  font: 800 clamp(14px, 2.6vw, 16px)/1.1 var(--font-ui);
-  padding: 2px 8px;
-  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: clamp(var(--text-sm), 2.6vw, var(--text-md));
+  font-weight: var(--weight-black);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
   background: linear-gradient(135deg, var(--color-correct-light), var(--color-correct-dark));
-  color: #fff;
+  color: var(--palette-white);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.18) inset,
+    inset 0 2px 10px rgba(0, 0, 0, 0.18),
     0 1px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Breakpoints ── */
+
+@media (max-width: 560px) {
+  .yesterday-content {
+    gap: var(--space-2);
+  }
+
+  #yesterday-thumb {
+    width: 40px;
+    height: 40px;
+  }
 }

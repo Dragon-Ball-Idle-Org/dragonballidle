@@ -1,0 +1,147 @@
+/* ── Margin top ── */
+.mt-1 {
+  margin-top: var(--space-1);
+}
+
+.mt-2 {
+  margin-top: var(--space-2);
+}
+
+.mt-3 {
+  margin-top: var(--space-3);
+}
+
+.mt-4 {
+  margin-top: var(--space-4);
+}
+
+.mt-5 {
+  margin-top: var(--space-5);
+}
+
+.mt-6 {
+  margin-top: var(--space-6);
+}
+
+.mt-8 {
+  margin-top: var(--space-8);
+}
+
+.mt-10 {
+  margin-top: var(--space-10);
+}
+
+.mt-12 {
+  margin-top: var(--space-12);
+}
+
+/* ── Margin bottom ── */
+.mb-1 {
+  margin-bottom: var(--space-1);
+}
+
+.mb-2 {
+  margin-bottom: var(--space-2);
+}
+
+.mb-3 {
+  margin-bottom: var(--space-3);
+}
+
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.mb-5 {
+  margin-bottom: var(--space-5);
+}
+
+.mb-6 {
+  margin-bottom: var(--space-6);
+}
+
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+
+.mb-10 {
+  margin-bottom: var(--space-10);
+}
+
+.mb-12 {
+  margin-bottom: var(--space-12);
+}
+
+/* ── Padding inline (horizontal) ── */
+.px-1 {
+  padding-inline: var(--space-1);
+}
+
+.px-2 {
+  padding-inline: var(--space-2);
+}
+
+.px-3 {
+  padding-inline: var(--space-3);
+}
+
+.px-4 {
+  padding-inline: var(--space-4);
+}
+
+.px-5 {
+  padding-inline: var(--space-5);
+}
+
+.px-6 {
+  padding-inline: var(--space-6);
+}
+
+.px-8 {
+  padding-inline: var(--space-8);
+}
+
+.px-10 {
+  padding-inline: var(--space-10);
+}
+
+.px-12 {
+  padding-inline: var(--space-12);
+}
+
+/* ── Padding block (vertical) ── */
+.py-1 {
+  padding-block: var(--space-1);
+}
+
+.py-2 {
+  padding-block: var(--space-2);
+}
+
+.py-3 {
+  padding-block: var(--space-3);
+}
+
+.py-4 {
+  padding-block: var(--space-4);
+}
+
+.py-5 {
+  padding-block: var(--space-5);
+}
+
+.py-6 {
+  padding-block: var(--space-6);
+}
+
+.py-8 {
+  padding-block: var(--space-8);
+}
+
+.py-10 {
+  padding-block: var(--space-10);
+}
+
+.py-12 {
+  padding-block: var(--space-12);
+}
