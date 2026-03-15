@@ -1,8 +1,6 @@
 import { getBrasiliaTime, todayBrasiliaKey } from "../../utils/date";
 
 export function doDailyResetState() {
-  _tryCount = 1;
-
   localStorage.setItem("attributeContainer", "false");
   localStorage.setItem("gameWon", "false");
   localStorage.setItem("wonTab", "false");
