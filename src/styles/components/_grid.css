@@ -1,14 +1,8 @@
-/* =============================================================
-   Grid
-   Responsabilidade: grade de palpites (linhas, células, cabeçalho).
-   @keyframes cellPop está em animations.css.
-   ============================================================= */
-
 .guesses-container {
   display: block;
   align-items: flex-start;
   justify-content: flex-start;
-  width: max-content;
+  width: 100%;
   position: relative;
   z-index: var(--z-raised);
   overflow: visible;
@@ -93,14 +87,14 @@
 /* Cabeçalho: escondido por padrão, ativado via JS */
 .attribute-container {
   position: relative;
-  z-index: var(--z-raised);
   display: none;
+  justify-content: start;
   grid-template-columns: repeat(8, var(--col-w));
   gap: var(--col-gap);
-  justify-content: start;
-  width: max-content;
+  width: 100%;
   margin-top: 0;
-  margin-bottom: 2px;
+  margin-bottom: var(--space-1-2);
+  z-index: var(--z-raised);
 
   &.show-attrs {
     display: grid;
