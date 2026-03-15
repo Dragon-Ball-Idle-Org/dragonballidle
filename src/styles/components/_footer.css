@@ -49,17 +49,14 @@
 }
 
 .footer-info-section {
-  & a {
+  & img {
     transition: transform 0.2s ease;
+    width: 4rem;
+    height: 4rem;
 
     &:hover,
     &:focus-visible {
       transform: scale(1.1);
-    }
-
-    & img {
-      width: 4rem;
-      height: 4rem;
     }
   }
 }

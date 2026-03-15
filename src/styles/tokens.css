@@ -11,6 +11,8 @@
   --palette-amber: #ec8a0a;
   --palette-red: #ff0000;
 
+  --pallete-blue: #48a8db;
+
   --palette-white: #ffffff;
   --palette-gray: #a8acb2;
   --palette-black: #000000;
@@ -26,6 +28,8 @@
 
   --color-partial: var(--palette-amber);
   --color-incorrect: var(--palette-red);
+
+  --color-buy-me-a-coffe: var(--pallete-blue);
 
   --color-text-on-primary: var(--palette-white);
 
@@ -68,6 +72,8 @@
   --weight-black: 900;
 
   /* ── Espaçamento ────────────────────────────────────────── */
+  /* 2px  */
+  --space-1-2: 0.125rem;
   /* 4px  */
   --space-1: 0.25rem;
   /* 8px  */
