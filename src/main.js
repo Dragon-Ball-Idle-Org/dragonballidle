@@ -31,16 +31,18 @@ import {
 } from "./ui/wins.js";
 import { loadSagaOrderByCSV } from "./ui/saga.js";
 import { initHoverTooltip } from "./ui/tooltip.js";
+import { isGameWon } from "./state/game/won.state.js";
+import { getSavedGuesses } from "./state/game/guesses.state.js";
 import {
-  hardReloadClearCaches,
-  startMidnightCheck,
-  doDailyResetState,
-  getDailyCharacter,
-  getCharacterForDay,
-  isGameWon,
-  getSavedGuesses,
   getRandomCharacter,
-} from "./state/game-state.js";
+  getCharacterForDay,
+  getDailyCharacter,
+} from "./state/game/character.state.js";
+import {
+  startMidnightCheck,
+  hardReloadClearCaches,
+  doDailyResetState,
+} from "./state/game/reset.state.js";
 import { todayBrasiliaKey, getBrasiliaTime, formatYMD } from "./utils/date.js";
 import { doDailyResetUi, ensureDailyResetOnBoot } from "./ui/reset.js";
 import { initFormEventListeners } from "./ui/form.js";

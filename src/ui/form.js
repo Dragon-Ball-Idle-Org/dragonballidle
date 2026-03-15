@@ -1,4 +1,4 @@
-import { getSavedGuesses } from "../state/game-state";
+import { getSavedGuesses } from "../state/game/guesses.state";
 import { handleGuess } from "./guess-box";
 import { getThumbCdnCharacterPath } from "./utils";
 import {

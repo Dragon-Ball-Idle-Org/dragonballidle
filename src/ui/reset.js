@@ -1,4 +1,4 @@
-import { doDailyResetState, getTryCount } from "../state/game-state";
+import { doDailyResetState } from "../state/game/reset.state";
 import { todayBrasiliaKey } from "../utils/date";
 import { hideInlineWinSummary } from "./wins";
 
@@ -15,7 +15,7 @@ export function doDailyResetUi() {
   hideInlineWinSummary();
 
   const tryNumber = document.getElementById("nTry");
-  if (tryNumber) tryNumber.innerHTML = getTryCount();
+  if (tryNumber) tryNumber.innerHTML = 0;
 
   const guessesContainer = document.getElementById("guesses-container");
   if (guessesContainer) guessesContainer.innerHTML = "";

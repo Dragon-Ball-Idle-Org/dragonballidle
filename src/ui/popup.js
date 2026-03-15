@@ -1,4 +1,5 @@
-import { getRandomCharacter, getTryCount } from "../state/game-state.js";
+import { getRandomCharacter } from "../state/game/character.state.js";
+import { getTryCount } from "../state/game/guesses.state.js";
 import { formatPopupLineI18n } from "../utils/i18n.js";
 import { getImageCdnCharacterPath } from "./utils.js";
 

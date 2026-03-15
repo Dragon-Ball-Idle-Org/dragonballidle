@@ -1,8 +1,6 @@
-import {
-  getRandomCharacter,
-  getTryCount,
-  markGameWon,
-} from "../state/game-state.js";
+import { markGameWon } from "../state/game/won.state.js";
+import { getRandomCharacter } from "../state/game/character.state.js";
+import { getTryCount } from "../state/game/guesses.state.js";
 import { formatWinsI18n } from "../utils/i18n.js";
 import { fetchWinsToday, incrementWinsToday } from "../services/wins.js";
 import {

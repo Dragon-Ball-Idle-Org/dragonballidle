@@ -1,5 +1,5 @@
 // === Seed & PRNG fortes para o "personagem do dia" ===
-const DAILY_SECRET = import.meta.env.VITE_DAILY_SECRET;
+export const DAILY_SECRET = import.meta.env.VITE_DAILY_SECRET;
 
 /**
  * cyrb128: hash 128-bit rápido e estável.

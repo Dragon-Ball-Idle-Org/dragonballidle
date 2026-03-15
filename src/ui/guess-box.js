@@ -1,10 +1,9 @@
 import {
-  getRandomCharacter,
   getTryCount,
   guessAlreadyMade,
   saveGuessId,
-  setTryCount,
-} from "../state/game-state.js";
+} from "../state/game/guesses.state.js";
+import { getRandomCharacter } from "../state/game/character.state.js";
 import { compareValuesArray } from "../utils/array.js";
 import { todayBrasiliaKey } from "../utils/date.js";
 import {
@@ -112,9 +111,7 @@ export function createGuessBox(itemFound) {
 
 export function handleGuess(userInput) {
   const attributeContainer = document.getElementById("attribute-container");
-  const tryNumber = document.getElementById("nTry");
   const guessInput = document.getElementById("search");
-  let tryCount = getTryCount();
   const g = String(userInput || "").trim();
   if (!g) return;
 
@@ -167,12 +164,6 @@ export function handleGuess(userInput) {
   attributeContainer.classList.add("show-attrs");
   document.querySelector(".guess-container")?.classList.add("scroll-on");
 
-  if (!correct) {
-    tryCount++;
-    if (tryNumber) tryNumber.innerHTML = tryCount;
-  }
-
-  setTryCount(tryCount);
   saveGuessId(itemFound.id);
 
   // desenha linha
@@ -181,12 +172,18 @@ export function handleGuess(userInput) {
   scroller?.classList.add("panel-active", "scroll-on");
   scrollToLeftNow(scroller);
 
-  // tira do pool desta sessão (opcional)
+  // tira do pool desta sessão
   const idx = window.characters.indexOf(itemFound);
   if (idx !== -1) window.characters.splice(idx, 1);
 
   localStorage.setItem("attributeContainer", "true");
-  if (correct) winGame(tryCount);
+  const tryCount = getTryCount();
+  if (correct) {
+    winGame(tryCount);
+  } else {
+    const tryNumber = document.getElementById("nTry");
+    if (tryNumber) tryNumber.innerHTML = tryCount;
+  }
 }
 
 export function scrollGuessesToRight() {

@@ -1,5 +1,5 @@
-import { isGameWon } from "../state/game-state.js";
-import { getBrasiliaTime } from "../utils/date.js";
+import { isGameWon } from "../state/game/won.state";
+import { getBrasiliaTime } from "../utils/date";
 
 const BASE_CHAR_CDN_URL = import.meta.env.VITE_CDN_BASE_URL + "/characters";
 const CHAR_IMG_BASE = `${BASE_CHAR_CDN_URL}/images/`;
