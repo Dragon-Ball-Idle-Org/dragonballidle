@@ -7,26 +7,14 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.4s ease;
-}
 
-#app-loading.hidden {
-  opacity: 0;
-  pointer-events: none;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .loading-img {
   width: 180px;
   animation: pulse 1.2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.08);
-    opacity: 0.75;
-  }
 }

@@ -1,0 +1,23 @@
+.hidden {
+  display: none;
+}
+
+/* Cores de resultado do jogo — referenciam tokens */
+.bg-correct {
+  background: var(--color-correct);
+}
+
+.bg-partial {
+  background: var(--color-partial);
+}
+
+.bg-incorrect {
+  background: var(--color-incorrect);
+}
+
+/* Texto em branco com sombra sobre fundos coloridos do jogo.
+   Aplicado via JS aos elementos de interface sobre o laranja. */
+.text-on-game-bg {
+  color: var(--color-text-on-primary);
+  text-shadow: 2px 2px 4px var(--palette-black);
+}
