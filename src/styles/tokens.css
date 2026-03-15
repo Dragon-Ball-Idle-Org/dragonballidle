@@ -12,7 +12,7 @@
   --palette-red: #ff0000;
 
   --palette-white: #ffffff;
-  --palette-ink: #1e2328;
+  --palette-gray: #a8acb2;
   --palette-black: #000000;
 
   /* ── Cores: semânticas (referenciam primitivas) ─────────── */
@@ -88,17 +88,13 @@
   --space-12: 3rem;
 
   /* ── Layout: logo ───────────────────────────────────────── */
-  --logo-vw: 68vw;
+  --logo-vw: 80vw;
   /* 520px */
-  --logo-max: 32.5rem;
+  --logo-max: 40rem;
 
   /* ── Layout: game grid ──────────────────────────────────── */
   --col-w: 87px;
   --col-gap: 12px;
-
-  /* ── Layout: hero card ──────────────────────────────────── */
-  --hero-pad-y: clamp(0.625rem, 1.8vh, 1rem);
-  --hero-pad-x: clamp(0.875rem, 3vw, 1.75rem);
 
   /* ── Layout: tutorial ───────────────────────────────────── */
   /* 18px */
@@ -135,8 +131,15 @@
   --z-loading: 600;
 }
 
+@media (max-width: 640px) {
+  :root {
+    --logo-vw: 70vw;
+  }
+}
+
 @media (max-width: 420px) {
   :root {
+    --logo-vw: 60vw;
     /* 12px */
     --indicator-gap: 0.75rem;
   }

@@ -206,15 +206,15 @@
     </div>
   </header>
 
-  <main id="game" class="container"">
-    <div class=" game-sub-container text-center px-4 py-6">
+  <main id="game" class="main-container"">
+    <div class=" game-sub-container text-center">
     <span class="intro-text" data-i18n="intro.title">Guess today's Dragon Ball character!</span>
     <span class="intro-guess text-on-game-bg" data-i18n="intro.subtitle">N people have already guessed today's
       character!</span>
     </div>
 
     <!-- TUTORIAL -->
-    <div class="tutorial-container mt-3">
+    <div class="tutorial-container">
       <div class="tutorial-title text-on-game-bg" data-i18n="tutorial.title">
         Color Indicator
       </div>
@@ -260,7 +260,7 @@
         </div>
       </div>
 
-      <details class="indicator-help mt-2">
+      <details class="indicator-help">
         <summary class="help-summary text-on-game-bg" data-i18n="tutorial.quickGuide">
           Need a quick guide?
         </summary>
@@ -304,7 +304,7 @@
     </div>
 
     <!-- YESTERDAY CHARACTER SECTION-->
-    <div id="yesterday-container" class="yesterday-container mt-2" hidden>
+    <div id="yesterday-container" class="yesterday-container" hidden>
       <div class="yesterday-title" data-i18n="yesterday.title">
         Personagem de ontem
       </div>
@@ -361,7 +361,7 @@
     </div>
 
     <!-- PAINEL DOS CHUTES -->
-    <div id="guesses-panel" class="container guess-container">
+    <div id="guesses-panel" class="guess-container">
       <!-- FORM FIXO DO PRÓPRIO PAINEL -->
       <form id="guess-form" autocomplete="off">
         <input class="guess-input" id="search" type="text" data-i18n-placeholder="search.placeholder"
@@ -386,47 +386,45 @@
       <div class="guesses-container" id="guesses-container"></div>
   </main>
 
-  <footer class="site-footer footer-glass mt-5">
-    <div class="container py-3 text-center">
-      <div class="fw-bold fs-5 mb-1" data-i18n="footer.brand">
-        DragonBallDle
-      </div>
-      <div class="small mb-3" data-i18n="footer.tagline">
-        The daily challenge for true Dragon Ball fans
-      </div>
+  <footer class="footer-container footer-glass mt-4">
+    <div class="footer-title" data-i18n="footer.brand">
+      DragonBallDle
+    </div>
+    <div class="footer-subtitle" data-i18n="footer.tagline">
+      The daily challenge for true Dragon Ball fans
+    </div>
 
-      <div class="d-flex justify-content-center gap-4 mb-3">
-        <a href="https://www.linkedin.com/in/arthur-coelho-9a77a1216/" target="_blank"
-          class="text-light text-decoration-none">
-          <span data-i18n="footer.arthur">Arthur (LinkedIn)</span>
-        </a>
+    <div class="footer-creators">
+      <a href="https://www.linkedin.com/in/arthur-coelho-9a77a1216/" target="_blank"
+        class="text-light text-decoration-none">
+        <span data-i18n="footer.arthur">Arthur (LinkedIn)</span>
+      </a>
 
-        <a href="https://www.linkedin.com/in/j%C3%BAlio-villa-pires-2678431b8/" target="_blank"
-          class="text-light text-decoration-none">
-          <span data-i18n="footer.julio">Júlio (LinkedIn)</span>
-        </a>
+      <a href="https://www.linkedin.com/in/j%C3%BAlio-villa-pires-2678431b8/" target="_blank"
+        class="text-light text-decoration-none">
+        <span data-i18n="footer.julio">Júlio (LinkedIn)</span>
+      </a>
 
-        <a href="https://www.linkedin.com/in/gildofj/" target="_blank" class="text-light text-decoration-none">
-          <span data-i18n="footer.gildo">Gildo (LinkedIn)</span>
-        </a>
+      <a href="https://www.linkedin.com/in/gildofj/" target="_blank" class="text-light text-decoration-none">
+        <span data-i18n="footer.gildo">Gildo (LinkedIn)</span>
+      </a>
+    </div>
+
+    <div class="footer-info-section">
+      <a href="https://buymeacoffee.com/dragonballdle" target="_blank" rel="noopener">
+        <img src="/assets/buy-me-a-coffe.webp" alt="Buy me a coffe" />
+      </a>
+    </div>
+
+    <div class="footer-credits">
+      <div>
+        <span id="currentYear"></span>
+        <span data-i18n="footer.brand">DragonBallDle</span>.
       </div>
-
-      <div class="info-section">
-        <a href="https://buymeacoffee.com/dragonballdle" target="_blank" rel="noopener">
-          <img src="/assets/buy-me-a-coffe.webp" alt="Buy me a coffe" />
-        </a>
-      </div>
-
-      <div class="small text-secondary">
-        <div>
-          <span id="currentYear"></span>
-          <span data-i18n="footer.brand">DragonBallDle</span>.
-        </div>
-        <span>Dragon Ball is a registered trademark and property of Akira Toriyama/Shueisha, Toei Animation, who
-          do
-          not endorse or
-          sponsor this game.</span>
-      </div>
+      <span>Dragon Ball is a registered trademark and property of Akira Toriyama/Shueisha, Toei Animation, who
+        do
+        not endorse or
+        sponsor this game.</span>
     </div>
   </footer>
 

@@ -4,9 +4,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 720px;
+  max-width: 45rem;
   margin: 0 auto;
-  padding: var(--hero-pad-y) var(--hero-pad-x);
+  padding: var(--space-4);
   gap: var(--space-4);
 
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
@@ -43,21 +43,5 @@
 
   &.pulse {
     animation: winsPulse 0.6s ease-out;
-  }
-}
-
-/* Breakpoints */
-
-@media (min-width: 992px) {
-  .game-sub-container {
-    flex: 0 0 auto;
-    width: 66.666667%;
-  }
-}
-
-@media (min-width: 768px) {
-  .game-sub-container {
-    flex: 0 0 auto;
-    width: 83.3333333%;
   }
 }

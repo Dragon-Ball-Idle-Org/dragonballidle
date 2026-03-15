@@ -1,11 +1,11 @@
 .guess-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
+  align-items: center;
   padding: var(--space-3) var(--space-3) 28px;
   position: relative;
-  margin-top: var(--space-1);
+  width: 100%;
+  max-width: 50rem;
   z-index: var(--z-base);
 
   background: rgba(0, 0, 0, 0.06);
@@ -34,14 +34,14 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--z-dropdown);
+  width: 100%;
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  width: 100%;
   margin: 0 0 var(--space-2) 0;
   background: transparent;
   overflow: visible;
+  z-index: var(--z-dropdown);
 }
 
 .guess-input {
@@ -50,8 +50,8 @@
   height: 56px;
   padding: 0 var(--space-4);
   font-family: var(--font-ui);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-on-primary);
   caret-color: var(--color-text-on-primary);
 
@@ -147,7 +147,8 @@
     gap: var(--space-3);
     padding: var(--space-3) 14px;
     min-height: 80px;
-    font: 600 16px/1.2 var(--font-ui);
+    font-family: var(--font-ui);
+    font-weight: var(--weight-semibold);
     color: var(--palette-white);
     text-shadow: 2px 2px 3px var(--palette-black);
     cursor: pointer;

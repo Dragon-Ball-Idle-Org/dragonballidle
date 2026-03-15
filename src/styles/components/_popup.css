@@ -155,7 +155,7 @@
   width: 30px;
   height: 30px;
   border-radius: var(--space-1);
-  border: 2px solid var(--palette-ink);
+  border: 2px solid var(--palette-black);
   background: #e53935;
   color: var(--palette-white);
   font: bold 16px/30px var(--font-base);
