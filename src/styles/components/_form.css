@@ -1,27 +1,22 @@
 .guess-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-
-  padding: 12px 12px 16px 12px; /* era 16px 12px 20px 12px */
+  align-items: center;
+  padding: var(--space-3) var(--space-3) 28px;
   position: relative;
-  margin-top: 6px; /* era clamp(16px, 3vh, 28px) */
-  max-height: none;
-  overflow: visible;
-
-  padding-bottom: 28px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scroll-snap-type: x proximity;
-
-  z-index: 1;
+  width: 100%;
+  max-width: 50rem;
+  z-index: var(--z-base);
 
   background: rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
 
   &.scroll-on {
     overflow-x: auto;
@@ -37,61 +32,58 @@
 #guess-form {
   position: sticky;
   top: 0;
-  left: 0; /* <- gruda na borda esquerda do scrollport   */
-  right: 0; /* <- mantém largura fixa ao rolar na horiz.  */
-  z-index: var(--z-dropdown);
+  left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin: 0 0 8px 0;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2) 0;
   background: transparent;
   overflow: visible;
+  z-index: var(--z-dropdown);
 }
 
 .guess-input {
   flex: 1 1 auto;
   min-width: 0;
   height: 56px;
-  padding: 0 16px;
+  padding: 0 var(--space-4);
   font-family: var(--font-ui);
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff; /* texto branco */
-  caret-color: #fff; /* cursor branco */
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-on-primary);
+  caret-color: var(--color-text-on-primary);
 
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-primary-light)
-  );
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   border: 2px solid var(--color-primary-dark);
-  border-radius: 6px;
-  box-sizing: border-box;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55); /* sombra p/ contraste */
+  border-radius: var(--radius-sm);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55);
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--palette-white);
     outline-offset: 2px;
   }
 
   &::placeholder {
-    color: #fff;
+    color: var(--palette-white);
     opacity: 0.95;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
   }
 
   &::-webkit-input-placeholder {
-    color: #fff !important;
+    color: var(--palette-white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   }
+
   &::-moz-placeholder {
-    color: #fff !important;
+    color: var(--palette-white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
     opacity: 1;
   }
+
   &:-ms-input-placeholder {
-    color: #fff !important;
+    color: var(--palette-white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   }
 }
@@ -100,21 +92,16 @@
   flex: 0 0 auto;
   width: clamp(56px, 10vw, 80px);
   height: clamp(56px, 10vw, 80px);
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
   display: grid;
   place-items: center;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 
   &:hover {
-    cursor: pointer;
     filter: brightness(1.1);
   }
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--palette-white);
     outline-offset: 2px;
   }
 }
@@ -123,36 +110,30 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
 }
 
-/* ===== Dropdown preso ao form ===== */
+/* ── Dropdown ── */
+
 #suggestions.dropdown {
-  width: auto;
   display: none;
-  list-style: none;
   margin: 0;
-  padding: 4px 0;
+  padding: var(--space-1) 0;
   max-height: calc(5 * 80px);
   overflow-y: auto;
   background: var(--color-primary);
   border: 2px solid var(--color-primary-dark);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  z-index: var(--z-modal); /* antes era 4000/10000 */
+  z-index: var(--z-modal);
 
   &.portal {
-    position: fixed !important;
+    position: fixed;
     left: 0;
-    right: auto !important;
-    top: auto;
-    bottom: auto;
-    width: auto;
     z-index: var(--z-overlay);
   }
 
   &.open {
-    display: block !important;
+    display: block;
   }
 
   &.drop-up {
@@ -160,16 +141,16 @@
     bottom: calc(100% + 8px);
   }
 
-  /* Itens do dropdown */
   & li {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
+    gap: var(--space-3);
+    padding: var(--space-3) 14px;
     min-height: 80px;
-    font: 600 16px/1.2 var(--font-ui);
-    color: #fff;
-    text-shadow: 2px 2px 3px #000;
+    font-family: var(--font-ui);
+    font-weight: var(--weight-semibold);
+    color: var(--palette-white);
+    text-shadow: 2px 2px 3px var(--palette-black);
     cursor: pointer;
     transition: background 0.12s ease;
 
@@ -186,7 +167,7 @@
     }
 
     &.selected {
-      outline: 2px solid #fff;
+      outline: 2px solid var(--palette-white);
       outline-offset: -2px;
       background: rgba(255, 255, 255, 0.22);
     }
@@ -196,8 +177,8 @@
     width: 56px;
     height: 56px;
     object-fit: cover;
-    border-radius: 6px;
-    background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset;
+    border-radius: var(--radius-sm);
+    background: var(--palette-white);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
   }
 }

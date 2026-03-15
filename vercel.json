@@ -1,5 +1,4 @@
 {
-  "cleanUrls": false,
   "trailingSlash": true,
   "redirects": [
     {
@@ -8,25 +7,26 @@
       "permanent": true
     },
     {
-      "source": "/(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)",
-      "destination": "/$1/",
+      "source": "/:locale(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)",
+      "destination": "/:locale/",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)/:path+",
-      "destination": "/$1/"
+      "source": "/:locale(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:locale(pt-br|en-us|es-es|fr-fr|it-it|de-de|ru-ru|tr-tr|uk-ua|ar-sa|ja-jp|ko-kr|hi-in|th-th|vi-vn|id-id|zh-cn|zh-tw|fil-ph|ms-my)/",
+      "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.+\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|webmanifest))",
+      "source": "/:file+\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|webmanifest)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]

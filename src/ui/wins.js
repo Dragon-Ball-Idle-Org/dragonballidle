@@ -8,9 +8,9 @@ import { fetchWinsToday, incrementWinsToday } from "../services/wins.js";
 import {
   buildXShareURL,
   getIntroEl,
-  getThumbSrc,
+  getThumbCdnCharacterPath,
   setupCountdown,
-} from "./helpers.js";
+} from "./utils.js";
 import { formatHMS, getMsToNextDailyReset } from "../utils/date.js";
 import { openWinPopup } from "./popup.js";
 import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
@@ -18,8 +18,6 @@ import { todayBrasiliaKey, getBrasiliaTime } from "../utils/date.js";
 let _winsPollTimer = null;
 let _lastWinsShown = null;
 let _inlineCountdownTimer = null;
-
-// ── Atualiza o elemento .intro-guess com a contagem ──────────────────────────
 
 function _updateIntroWins(n) {
   const el = getIntroEl();
@@ -89,7 +87,7 @@ export function showInlineWinSummary() {
   const tryCount = getTryCount();
   const character = getRandomCharacter();
   const name = character?.name || "—";
-  const thumb = getThumbSrc(character?.image || "");
+  const thumb = getThumbCdnCharacterPath(character?.image || "");
 
   tries.textContent = String(tryCount);
   nameEl.textContent = name;

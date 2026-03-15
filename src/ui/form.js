@@ -1,6 +1,6 @@
 import { getSavedGuesses } from "../state/game-state";
 import { handleGuess } from "./guess-box";
-import { getThumbSrc } from "./helpers";
+import { getThumbCdnCharacterPath } from "./utils";
 import {
   closeSuggestions,
   openSuggestions,
@@ -79,7 +79,7 @@ function _onChangeTextGuessInputListenerInit() {
       li.dataset.name = c.name;
 
       const img = document.createElement("img");
-      img.src = getThumbSrc(c.image);
+      img.src = getThumbCdnCharacterPath(c.image);
       img.width = 56;
       img.height = 56;
       img.className = "thumb";
@@ -99,16 +99,14 @@ function _onChangeTextGuessInputListenerInit() {
         usingMouse = true;
       });
       li.addEventListener("click", () => {
-        handleGuess(c.name, attributeContainer, tryNumber, (v) => {
-          guessInput.value = v;
-        });
+        handleGuess(c.name);
         closeSuggestions();
-        guessInput.value = "";
       });
 
       suggestions.appendChild(li);
     });
 
+    activeIndex = setActiveIndex(0, activeIndex);
     openSuggestions();
     currentItems = Array.from(suggestions.querySelectorAll("li"));
   });
@@ -121,8 +119,10 @@ function _onMoveToSuggestionByKeyboardListenerInit() {
     if (
       !suggestions?.classList.contains("open") ||
       !suggestions.children.length
-    )
+    ) {
       return;
+    }
+
     // Impede a página ou o container rolarem com as setas
     if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key))
       e.preventDefault();

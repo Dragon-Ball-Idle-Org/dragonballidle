@@ -12,17 +12,17 @@ import { getCurrentLang, persistLang } from "./state/i18n.js";
 import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
 import { setupSeoMetaTags } from "./head-seo.js";
 import { langToCharsFile } from "./utils/i18n.js";
-import { initLangMenu } from "./ui/lang-menu.js";
+import { initLangMenu } from "./ui/header.js";
 import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
 import { initSuggestionsListeners } from "./ui/suggestions.js";
 import {
   setupCountdown,
-  getThumbSrc,
+  getThumbCdnCharacterPath,
   fitAllTypeBoxes,
   scrollToLeftNow,
-} from "./ui/helpers.js";
+} from "./ui/utils.js";
 import { createGuessBox } from "./ui/guess-box.js";
 import {
   startWinsPolling,
@@ -47,6 +47,7 @@ import { initFormEventListeners } from "./ui/form.js";
 import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 import { incrementWinsToday } from "./services/wins.js";
 import { getLangFromDoc, getLangFromPath } from "./utils/lang.js";
+import { hideLoading } from "./ui/loading.js";
 
 const STICK_LEFT_BP = 768;
 
@@ -158,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const yThumb = document.getElementById("yesterday-thumb");
     if (yWrap && yName && yThumb && yesterdayChar) {
       yName.textContent = yesterdayChar.name;
-      yThumb.src = getThumbSrc(yesterdayChar.image);
+      yThumb.src = getThumbCdnCharacterPath(yesterdayChar.image);
       yThumb.alt = yesterdayChar.name + " (yesterday)";
       yWrap.hidden = false;
     }
@@ -179,15 +180,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (itemFound) createGuessBox(itemFound);
   }
 
-  fitAllTypeBoxes();
-
   if (savedGuesses.length) {
+    const attributeContainer = document.getElementById("attribute-container");
     const scroller = document.querySelector(".guess-container");
+
+    attributeContainer?.classList.add("show-attrs");
+
     if (scroller) {
       scroller.classList.add("scroll-on", "panel-active");
       if (window.innerWidth < STICK_LEFT_BP) scrollToLeftNow(scroller);
     }
   }
+
+  fitAllTypeBoxes();
 
   // Se o usuário virar o celular/resize p/ menor, mantenha colado à esquerda
   window.addEventListener("resize", () => {
@@ -203,6 +208,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     showInlineWinSummary();
     setupCountdown();
   }
+
+  hideLoading();
 });
 
 document.addEventListener("midnightBrasilia", () => {
@@ -212,6 +219,10 @@ document.addEventListener("midnightBrasilia", () => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
+document.body.style.background = `
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url("${import.meta.env.VITE_CDN_BASE_URL}/background-img.jpg") center bottom / cover no-repeat fixed
+`;
 startMidnightCheck();
 if (!localStorage.getItem("lastResetDay")) {
   localStorage.setItem("lastResetDay", todayBrasiliaKey());

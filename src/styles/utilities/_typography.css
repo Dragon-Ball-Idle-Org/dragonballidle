@@ -1,0 +1,35 @@
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fw-black {
+  font-weight: 900;
+}
+
+.fs-5 {
+  font-size: 1.25rem;
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.text-light {
+  color: #f8f9fa;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
