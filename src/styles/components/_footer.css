@@ -5,9 +5,9 @@
   align-items: center;
   gap: var(--space-2);
   width: 100%;
+  text-align: center;
   padding: var(--space-2);
   border-radius: var(--radius-md);
-  text-align: center;
 }
 
 .footer-glass {
@@ -69,4 +69,11 @@
   gap: var(--space-2);
   font-size: var(--text-sm);
   color: var(--palette-gray);
+}
+
+/* Breakpoints */
+@media (min-height: 100vh) {
+  .footer-container {
+    margin-bottom: var(--space-2) !important;
+  }
 }
