@@ -180,15 +180,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (itemFound) createGuessBox(itemFound);
   }
 
-  fitAllTypeBoxes();
-
   if (savedGuesses.length) {
+    const attributeContainer = document.getElementById("attribute-container");
     const scroller = document.querySelector(".guess-container");
+
+    attributeContainer?.classList.add("show-attrs");
+
     if (scroller) {
       scroller.classList.add("scroll-on", "panel-active");
       if (window.innerWidth < STICK_LEFT_BP) scrollToLeftNow(scroller);
     }
   }
+
+  fitAllTypeBoxes();
 
   // Se o usuário virar o celular/resize p/ menor, mantenha colado à esquerda
   window.addEventListener("resize", () => {
