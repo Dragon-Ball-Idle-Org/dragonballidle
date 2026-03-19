@@ -213,96 +213,6 @@
         character!</span>
     </div>
 
-    <!-- TUTORIAL -->
-    <div class="tutorial-container">
-      <div class="tutorial-title text-on-game-bg" data-i18n="tutorial.title">
-        Color Indicator
-      </div>
-
-      <div class="indicator-grid">
-        <div class="indicator-item">
-          <div class="indicator-swatch bg-correct"></div>
-          <div class="indicator-label text-on-game-bg" data-i18n="tutorial.correct">
-            Correct
-          </div>
-        </div>
-
-        <div class="indicator-item">
-          <div class="indicator-swatch bg-partial"></div>
-          <div class="indicator-label text-on-game-bg" data-i18n="tutorial.partial">
-            Partial
-          </div>
-        </div>
-
-        <div class="indicator-item">
-          <div class="indicator-swatch bg-incorrect"></div>
-          <div class="indicator-label text-on-game-bg" data-i18n="tutorial.incorrect">
-            Incorrect
-          </div>
-        </div>
-
-        <div class="indicator-item">
-          <div class="indicator-swatch arrow">
-            <img src="/assets/up-arrow.png" alt="After" />
-          </div>
-          <div class="indicator-label text-on-game-bg" data-i18n="tutorial.after">
-            After
-          </div>
-        </div>
-
-        <div class="indicator-item">
-          <div class="indicator-swatch arrow">
-            <img src="/assets/down-arrow.png" alt="Before" />
-          </div>
-          <div class="indicator-label text-on-game-bg" data-i18n="tutorial.before">
-            Before
-          </div>
-        </div>
-      </div>
-
-      <details class="indicator-help">
-        <summary class="help-summary text-on-game-bg" data-i18n="tutorial.quickGuide">
-          Need a quick guide?
-        </summary>
-
-        <div class="help-body">
-          <div class="help-row">
-            <span class="help-swatch bg-correct" aria-hidden="true"></span>
-            <span data-i18n="help.correct"><strong>Correct</strong> — This attribute is exactly
-              right.</span>
-          </div>
-
-          <div class="help-row">
-            <span class="help-swatch bg-partial" aria-hidden="true"></span>
-            <span data-i18n="help.partial"><strong>Partial</strong> — At least one value
-              matches.</span>
-          </div>
-
-          <div class="help-row">
-            <span class="help-swatch bg-incorrect" aria-hidden="true"></span>
-            <span data-i18n="help.incorrect"><strong>Incorrect</strong> — This attribute is completely
-              wrong.</span>
-          </div>
-
-          <div class="help-row">
-            <span class="help-swatch arrow" aria-hidden="true">
-              <img src="/assets/up-arrow.png" alt="" />
-            </span>
-            <span data-i18n="help.after"><strong>After</strong> — The daily character’s
-              <em>debut saga</em> is after your guess.</span>
-          </div>
-
-          <div class="help-row">
-            <span class="help-swatch arrow" aria-hidden="true">
-              <img src="/assets/down-arrow.png" alt="" />
-            </span>
-            <span data-i18n="help.before"><strong>Before</strong> — The daily character’s
-              <em>debut saga</em> is before your guess.</span>
-          </div>
-        </div>
-      </details>
-    </div>
-
     <!-- YESTERDAY CHARACTER SECTION-->
     <div id="yesterday-container" class="yesterday-container" hidden>
       <div class="yesterday-title" data-i18n="yesterday.title">
@@ -384,6 +294,51 @@
         <span class="attribute-type" data-i18n="columns.saga">Saga</span>
       </div>
       <div class="guesses-container" id="guesses-container"></div>
+    </div>
+
+    <!-- TUTORIAL -->
+
+    <details class="indicator-help" open>
+      <summary class="help-summary text-on-game-bg" data-i18n="tutorial.quickGuide">
+        Need a quick guide?
+      </summary>
+
+      <div class="help-body">
+        <div class="help-row">
+          <span class="help-swatch bg-correct" aria-hidden="true"></span>
+          <span data-i18n="help.correct"><strong>Correct</strong> — This attribute is exactly
+            right.</span>
+        </div>
+
+        <div class="help-row">
+          <span class="help-swatch bg-partial" aria-hidden="true"></span>
+          <span data-i18n="help.partial"><strong>Partial</strong> — At least one value
+            matches.</span>
+        </div>
+
+        <div class="help-row">
+          <span class="help-swatch bg-incorrect" aria-hidden="true"></span>
+          <span data-i18n="help.incorrect"><strong>Incorrect</strong> — This attribute is completely
+            wrong.</span>
+        </div>
+
+        <div class="help-row">
+          <span class="help-swatch arrow" aria-hidden="true">
+            <img src="/assets/up-arrow.png" alt="" />
+          </span>
+          <span data-i18n="help.after"><strong>After</strong> — The daily character’s
+            <em>debut saga</em> is after your guess.</span>
+        </div>
+
+        <div class="help-row">
+          <span class="help-swatch arrow" aria-hidden="true">
+            <img src="/assets/down-arrow.png" alt="" />
+          </span>
+          <span data-i18n="help.before"><strong>Before</strong> — The daily character’s
+            <em>debut saga</em> is before your guess.</span>
+        </div>
+      </div>
+    </details>
   </main>
 
   <footer class="footer-container footer-glass mt-4">
