@@ -94,15 +94,9 @@ export async function initBackButton() {
 
   await loadSVG("/assets/arrow-fat-left.svg", btn);
 
+  const currentLang = getCurrentLang();
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    if (
-      document.referrer &&
-      new URL(document.referrer).origin === window.location.origin
-    ) {
-      window.history.back();
-    } else {
-      window.location.href = "/";
-    }
+    window.location.href = `https://dragonballdle.site/${currentLang}/`;
   });
 }
