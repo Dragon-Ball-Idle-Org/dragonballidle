@@ -1,6 +1,7 @@
 import { getCurrentLang } from "../state/i18n.js";
 import { persistLang } from "../state/i18n.js";
 import { getLangFromPath } from "../utils/lang.js";
+import { loadSVG } from "./utils.js";
 
 export function initLangMenu() {
   const btn = document.getElementById("lang-fixed");
@@ -85,4 +86,23 @@ export function initLangMenu() {
     "es-es": "Cambiar idioma",
   };
   btn.title = TOOLTIP[currentLang] || TOOLTIP["en-us"];
+}
+
+export async function initBackButton() {
+  const btn = document.getElementById("back-button");
+  if (!btn) return;
+
+  await loadSVG("/assets/arrow-fat-left.svg", btn);
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (
+      document.referrer &&
+      new URL(document.referrer).origin === window.location.origin
+    ) {
+      window.history.back();
+    } else {
+      window.location.href = "/";
+    }
+  });
 }

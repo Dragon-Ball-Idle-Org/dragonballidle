@@ -1,5 +1,3 @@
-import { DEFAULT_LANG } from "../utils/i18n.js";
-
 let currentLang = null;
 
 export function persistLang(lang) {

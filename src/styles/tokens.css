@@ -125,6 +125,7 @@
   --radius-lg: 0.875rem;
   /* pill — mantém px intencionalmente */
   --radius-pill: 999px;
+  --radius-all: 100%;
 
   /* ── Z-index: escala semântica controlada ───────────────── */
   --z-base: 1;

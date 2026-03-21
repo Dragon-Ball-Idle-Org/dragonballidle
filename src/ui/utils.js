@@ -26,7 +26,7 @@ export function buildXShareURL(tries) {
   const tpl = tries === 1 ? one : other;
   const text = tpl
     .replace("{tries}", String(tries))
-    .replace("{url}", "https://dragonballdle.site/");
+    .replace("{url}", "https://classic.dragonballdle.site/");
   return "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
 }
 
@@ -98,4 +98,10 @@ export function setupCountdown() {
 // pega o span do herói onde estava o "Type any character..."
 export function getIntroEl() {
   return document.querySelector(".intro-guess");
+}
+
+export async function loadSVG(url, container) {
+  const res = await fetch(url);
+  const svg = await res.text();
+  container.innerHTML = svg;
 }

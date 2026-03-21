@@ -1,5 +1,11 @@
 body {
-  margin: 0;
+  width: 100%;
+  max-width: 1140px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  padding-inline: var(--space-3);
   font-family: var(--font-base);
   font-weight: var(--weight-regular);
   font-size: var(--text-md);
@@ -10,13 +16,6 @@ body {
    (complementa o inline style no <head>) */
 body>*:not(#app-loading) {
   visibility: visible !important;
-}
-
-.page-container {
-  width: 100%;
-  max-width: 1140px;
-  margin-inline: auto;
-  padding-inline: var(--space-3);
 }
 
 .main-container {

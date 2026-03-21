@@ -12,7 +12,7 @@ import { getCurrentLang, persistLang } from "./state/i18n.js";
 import { setDocumentLang, loadLocaleStrings, applyStrings } from "./ui/i18n.js";
 import { setupSeoMetaTags } from "./head-seo.js";
 import { langToCharsFile } from "./utils/i18n.js";
-import { initLangMenu } from "./ui/header.js";
+import { initBackButton, initLangMenu } from "./ui/header.js";
 import { initAnalytics } from "./analytics.js";
 import { initViewport } from "./ui/viewport.js";
 import { initPopupListeners, openWinPopup, closeWinPopup } from "./ui/popup.js";
@@ -50,6 +50,7 @@ import { initDetailsTagBehaviorsListener } from "./ui/details.js";
 import { incrementWinsToday } from "./services/wins.js";
 import { getLangFromDoc, getLangFromPath } from "./utils/lang.js";
 import { hideLoading } from "./ui/loading.js";
+import { initFooter } from "./ui/footer.js";
 
 const STICK_LEFT_BP = 768;
 
@@ -99,9 +100,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     persistLang(bootLang);
   }
 
-  const yearEl = document.getElementById("currentYear");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
   try {
     await localePromise;
     window.characters = await charactersPromise;
@@ -118,7 +116,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   initHoverTooltip();
   initSuggestionsListeners();
   initDetailsTagBehaviorsListener();
+  initBackButton();
   initLangMenu();
+  initFooter();
   startWinsPolling();
   scheduleMidnightRefresh();
 

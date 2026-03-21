@@ -10,7 +10,7 @@
   </style>
   <meta charset="UTF-8" />
   <link id="canon" rel="canonical" href="" />
-  <meta id="robotsTag" name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta id="ogUrl" property="og:url" content="" />
 
   <!-- ICO (compat amplo) -->
@@ -70,8 +70,6 @@
   <meta property="og:title" id="og-title" content="" />
   <meta property="og:description" id="og-description" content="" />
 
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-
   <!-- Social preview / Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="DragonBallDle" />
@@ -122,14 +120,18 @@
   <script type="module" src="/src/head-seo.js"></script>
 </head>
 
-<body class="page-container">
+<body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXJ5C7KW" height="0" width="0"
       style="display: none; visibility: hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <header class="site-header">
-    <div class="brand">
+    <div class="header-container">
+      <div class="back-button-wrapper">
+        <button id="back-button" class="back-button"></button>
+      </div>
+
       <img id="logo" class="logo" src="%VITE_CDN_BASE_URL%/logo.png" alt="DragonBallDle logo" />
 
       <!-- Botão fixo de idioma  -->
@@ -366,6 +368,11 @@
     </div>
 
     <div class="footer-info-section">
+      <a id="legal-info-anchor" href="/legal">
+        <div class="legal-info-icon">
+          i
+        </div>
+      </a>
       <a href="https://buymeacoffee.com/dragonballdle" target="_blank" rel="noopener">
         <img src="/assets/buy-me-a-coffe.webp" alt="Buy me a coffe" />
       </a>
